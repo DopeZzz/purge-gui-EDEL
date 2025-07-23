@@ -144,6 +144,7 @@ export default function DashboardPage() {
   const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0])
   const [soundEnabled, setSoundEnabled] = useState(true)
   const [voicesEnabled, setVoicesEnabled] = useState(false)
+  const [voiceVolume, setVoiceVolume] = useState([100])
 
   const applyTheme = useCallback(
     (themeValue: string) => {
@@ -183,10 +184,11 @@ export default function DashboardPage() {
           .getVoices()
           .find((v) => v.name.toLowerCase().includes(selectedVoice.split(" ")[0].toLowerCase()))
         if (match) utter.voice = match
+        utter.volume = voiceVolume[0] / 100
         speechSynthesis.speak(utter)
       }
     },
-    [soundEnabled, voicesEnabled, selectedVoice],
+    [soundEnabled, voicesEnabled, selectedVoice, voiceVolume],
   )
 
   const handleScriptEnabledChange = useCallback(
@@ -1088,7 +1090,7 @@ export default function DashboardPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-white">Voices</p>
+                      <p className="text-sm font-medium text-white">Weapon Voices</p>
                       <p className="text-xs text-gray-500">Speak toggle state</p>
                     </div>
                     <Switch
@@ -1097,9 +1099,9 @@ export default function DashboardPage() {
                       className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
                     />
                   </div>
-                  <div>
+                  <div className="flex items-center gap-4">
                     <Select value={selectedVoice} onValueChange={setSelectedVoice}>
-                      <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
+                      <SelectTrigger className="w-40 bg-gray-800 border-gray-600 text-white h-12">
                         <SelectValue placeholder="Choose voice" />
                       </SelectTrigger>
                       <SelectContent className="bg-gray-800 border-gray-600 text-white">
@@ -1114,6 +1116,14 @@ export default function DashboardPage() {
                         ))}
                       </SelectContent>
                     </Select>
+                    <Slider
+                      value={voiceVolume}
+                      onValueChange={setVoiceVolume}
+                      min={0}
+                      max={100}
+                      step={1}
+                      className="flex-1"
+                    />
                   </div>
                 </CardContent>
               </Card>
