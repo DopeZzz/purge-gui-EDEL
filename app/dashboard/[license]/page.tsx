@@ -39,6 +39,9 @@ import {
   Keyboard,
   Power,
   Download,
+  Palette,
+  Volume2,
+  Mic,
 } from "lucide-react"
 import {
   submitConfiguration,
@@ -128,6 +131,72 @@ export default function DashboardPage() {
   const [autoDetectToggleKey, setAutoDetectToggleKey] = useState("")
   const [configLoaded, setConfigLoaded] = useState(false)
 
+  const themeOptions = [
+    { value: "default", label: "Default", primary: "142 76% 36%", secondary: "203 39% 20%" },
+    { value: "sunset", label: "Sunset", primary: "14 90% 50%", secondary: "30 90% 40%" },
+    { value: "ocean", label: "Ocean", primary: "198 90% 50%", secondary: "171 80% 40%" },
+    { value: "amethyst", label: "Amethyst", primary: "262 52% 47%", secondary: "292 60% 40%" },
+    { value: "mono", label: "Mono", primary: "0 0% 50%", secondary: "0 0% 30%" },
+  ] as const
+  const [selectedTheme, setSelectedTheme] = useState<string>(themeOptions[0].value)
+
+  const voiceOptions = ["Brittany Voice", "Grandpa Voice", "Matt Voice"] as const
+  const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0])
+  const [soundEnabled, setSoundEnabled] = useState(true)
+  const [voicesEnabled, setVoicesEnabled] = useState(false)
+
+  const applyTheme = useCallback(
+    (themeValue: string) => {
+      const t = themeOptions.find((th) => th.value === themeValue)
+      if (t) {
+        document.documentElement.style.setProperty("--primary", t.primary)
+        document.documentElement.style.setProperty("--secondary", t.secondary)
+      }
+    },
+    [themeOptions],
+  )
+
+  useEffect(() => {
+    applyTheme(selectedTheme)
+  }, [selectedTheme, applyTheme])
+
+  const playToggleFeedback = useCallback(
+    (isOn: boolean) => {
+      if (soundEnabled) {
+        try {
+          const ctx = new (window.AudioContext || (window as any).webkitAudioContext)()
+          const osc = ctx.createOscillator()
+          const gain = ctx.createGain()
+          osc.type = "sine"
+          osc.frequency.value = isOn ? 880 : 220
+          osc.connect(gain)
+          gain.connect(ctx.destination)
+          osc.start()
+          osc.stop(ctx.currentTime + 0.15)
+        } catch (_) {
+          /* ignore */
+        }
+      }
+      if (voicesEnabled) {
+        const utter = new SpeechSynthesisUtterance(isOn ? "On" : "Off")
+        const match = speechSynthesis
+          .getVoices()
+          .find((v) => v.name.toLowerCase().includes(selectedVoice.split(" ")[0].toLowerCase()))
+        if (match) utter.voice = match
+        speechSynthesis.speak(utter)
+      }
+    },
+    [soundEnabled, voicesEnabled, selectedVoice],
+  )
+
+  const handleScriptEnabledChange = useCallback(
+    (val: boolean) => {
+      setScriptEnabled(val)
+      playToggleFeedback(val)
+    },
+    [playToggleFeedback],
+  )
+
 
   // Load saved configuration on initial mount
   useEffect(() => {
@@ -183,7 +252,7 @@ export default function DashboardPage() {
       if (typeof cfg.zoom === 'boolean') setZoom(cfg.zoom)
       if (typeof cfg.zoom_key === 'number') setZoomKey(codeToKeyName(cfg.zoom_key))
       if (typeof cfg.auto_detection === 'boolean') setAutoDetection(cfg.auto_detection)
-      if (typeof cfg.script_on === 'boolean') setScriptEnabled(cfg.script_on)
+      if (typeof cfg.script_on === 'boolean') handleScriptEnabledChange(cfg.script_on)
       if (typeof cfg.script_toggle_key === 'number')
         setScriptToggleKey(codeToKeyName(cfg.script_toggle_key))
       if (typeof cfg.auto_detection_toggle_key === 'number')
@@ -259,7 +328,7 @@ export default function DashboardPage() {
       }
       if (scriptToggleKey && key === scriptToggleKey) {
         event.preventDefault()
-        setScriptEnabled((p) => !p)
+        handleScriptEnabledChange(!scriptEnabled)
       }
       if (autoDetectToggleKey && key === autoDetectToggleKey) {
         event.preventDefault()
@@ -272,7 +341,7 @@ export default function DashboardPage() {
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [scriptToggleKey, autoDetectToggleKey, hipfireKey])
+  }, [scriptToggleKey, autoDetectToggleKey, hipfireKey, scriptEnabled, handleScriptEnabledChange])
 
   const checkApiConnection = useCallback(
     async (isSilent = false) => {
@@ -342,7 +411,7 @@ export default function DashboardPage() {
       setSelectedScope,
       setSelectedBarrel,
       onProgramConnected: handleProgramConnected,
-      setScriptEnabled,
+      handleScriptEnabledChange,
       setAutoDetection,
       setHipfire,
     }),
@@ -351,7 +420,7 @@ export default function DashboardPage() {
       setSelectedScope,
       setSelectedBarrel,
       handleProgramConnected,
-      setScriptEnabled,
+      handleScriptEnabledChange,
       setAutoDetection,
       setHipfire,
     ]
@@ -479,7 +548,7 @@ export default function DashboardPage() {
                 </div>
                 <Switch
                   checked={scriptEnabled}
-                  onCheckedChange={setScriptEnabled}
+                  onCheckedChange={handleScriptEnabledChange}
                   className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-red-500/80"
                 />
               </div>
@@ -968,6 +1037,84 @@ export default function DashboardPage() {
                       />
                     </div>
                   )}
+                </CardContent>
+              </Card>
+              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
+                <CardHeader>
+                  <CardTitle className="text-green-400 flex items-center">
+                    <Palette className="w-5 h-5 mr-2" />
+                    Theme Selector
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Select value={selectedTheme} onValueChange={setSelectedTheme}>
+                    <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
+                      <SelectValue placeholder="Choose theme" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-gray-800 border-gray-600 text-white">
+                      {themeOptions.map((t) => (
+                        <SelectItem
+                          key={t.value}
+                          value={t.value}
+                          className="text-white focus:bg-gray-700 focus:text-white"
+                        >
+                          {t.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="grid grid-cols-1 mt-6">
+              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardHeader>
+                  <CardTitle className="text-green-400 flex items-center">
+                    <Volume2 className="w-5 h-5 mr-2" />
+                    Audio Settings
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-white">Sound Effects</p>
+                      <p className="text-xs text-gray-500">Play sound on toggle</p>
+                    </div>
+                    <Switch
+                      checked={soundEnabled}
+                      onCheckedChange={setSoundEnabled}
+                      className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-white">Voices</p>
+                      <p className="text-xs text-gray-500">Speak toggle state</p>
+                    </div>
+                    <Switch
+                      checked={voicesEnabled}
+                      onCheckedChange={setVoicesEnabled}
+                      className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                    />
+                  </div>
+                  <div>
+                    <Select value={selectedVoice} onValueChange={setSelectedVoice}>
+                      <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
+                        <SelectValue placeholder="Choose voice" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-gray-800 border-gray-600 text-white">
+                        {voiceOptions.map((v) => (
+                          <SelectItem
+                            key={v}
+                            value={v}
+                            className="text-white focus:bg-gray-700 focus:text-white"
+                          >
+                            {v}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </CardContent>
               </Card>
             </div>
