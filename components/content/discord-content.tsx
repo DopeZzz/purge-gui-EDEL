@@ -22,9 +22,10 @@ export function DiscordContent() {
           <div className="w-16 h-16 bg-[#5865F2] rounded-full flex items-center justify-center mx-auto mb-6">
             <MessageCircle className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-2xl font-semibold text-white mb-4">Public Discord Server</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">Main Discord Server</h2>
           <p className="text-gray-300 mb-6 text-base">
-            Primary community hub with general support, discussions, announcements, and community events.
+            Primary community hub with general support, discussions, announcements, and community events. Perfect for
+            new users and general questions.
           </p>
           <Button
             className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-3 font-semibold w-full text-base"
@@ -38,7 +39,7 @@ export function DiscordContent() {
           <div className="w-16 h-16 bg-[#00ff88] rounded-full flex items-center justify-center mx-auto mb-6">
             <Shield className="w-8 h-8 text-black" />
           </div>
-          <h2 className="text-2xl font-semibold text-white mb-4">Private Discord Server</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">VIP Discord Server</h2>
           <p className="text-gray-300 mb-6 text-base">
             Exclusive server for premium users with priority support, beta features, advanced configurations, and direct
             developer access.

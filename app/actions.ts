@@ -5,6 +5,7 @@ import { callLoginApi } from "@/lib/loginApi"
 interface LoginResult {
   success: boolean
   license?: string
+  licenseType?: string
   error?: string
 }
 
@@ -16,7 +17,10 @@ export async function handleLogin(licenseKey: string): Promise<LoginResult> {
   const result = await callLoginApi(licenseKey)
 
   if (result.success) {
-    return { success: true, license: licenseKey }
+    return { success: true, license: licenseKey, licenseType: result.license }
   }
-  return { success: false, error: result.error || "Invalid license key or API error." }
+  return {
+    success: false,
+    error: result.error || "Invalid license key or API error."
+  }
 }

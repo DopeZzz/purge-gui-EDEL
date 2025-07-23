@@ -13,10 +13,10 @@ interface MobileSidebarProps {
 
 const tabs = [
   { id: "install", label: "How to Install", icon: Download },
-  { id: "configure", label: "How to Configure", icon: Settings },
-  { id: "autodetect", label: "Autodetect", icon: Target },
-  { id: "faqs", label: "FAQs", icon: HelpCircle },
-  { id: "discord", label: "Discord Support", icon: MessageCircle },
+  //{ id: "configure", label: "How to Configure", icon: Settings },
+  //{ id: "autodetect", label: "Autodetect", icon: Target },
+  //{ id: "faqs", label: "FAQs", icon: HelpCircle },
+  //{ id: "discord", label: "Discord Support", icon: MessageCircle },
 ]
 
 export function MobileSidebar({ activeTab, setActiveTab }: MobileSidebarProps) {

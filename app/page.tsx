@@ -32,7 +32,14 @@ export default function LoginPage() {
     const result = await handleLogin(licenseKey)
 
     if (result.success && result.license) {
-      router.push(`/dashboard/${result.license}`) // Changed URL structure
+      if (result.licenseType) {
+        try {
+          localStorage.setItem('licenseType', result.licenseType)
+        } catch (_) {
+          /* ignore */
+        }
+      }
+      router.push(`/dashboard/${result.license}`)
     } else {
       setError(result.error || "Login failed. Please check your license key.")
       setIsLoading(false)

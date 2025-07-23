@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Purge 2.0",
   description: "Rust Cloud Scripting",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({

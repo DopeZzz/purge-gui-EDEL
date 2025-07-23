@@ -8,6 +8,9 @@ interface Handlers {
   setSelectedScope?: (id: string) => void;
   setSelectedBarrel?: (id: string) => void;
   onProgramConnected?: () => void;
+  setScriptEnabled?: (val: boolean) => void;
+  setAutoDetection?: (val: boolean) => void;
+  setHipfire?: (val: boolean) => void;
 }
 
 export function useRealtimeUpdates(serial: string | undefined, handlers: Handlers) {
@@ -43,6 +46,12 @@ export function useRealtimeUpdates(serial: string | undefined, handlers: Handler
             }
           } else if (data.cmd === "client_connected") {
             current.onProgramConnected?.()
+          } else if (data.cmd === "set_script_on" && current.setScriptEnabled) {
+            current.setScriptEnabled(Boolean(data.value))
+          } else if (data.cmd === "set_auto_detection" && current.setAutoDetection) {
+            current.setAutoDetection(Boolean(data.value))
+          } else if (data.cmd === "set_hipfire" && current.setHipfire) {
+            current.setHipfire(Boolean(data.value))
           }
         } catch (_) {
           /* ignore malformed */

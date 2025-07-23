@@ -28,7 +28,7 @@ export function ConfigureContent() {
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10">
         <div className="order-2 xl:order-1 space-y-6">
-        <YouTubeEmbed videoId="XxSg8zK4eF0" title="Purge 2.0 Configuration & Usage Guide" />
+          <YouTubeEmbed videoId="dQw4w9WgXcQ" title="Purge 2.0 Configuration & Usage Guide" />
 
           <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
             <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-3">

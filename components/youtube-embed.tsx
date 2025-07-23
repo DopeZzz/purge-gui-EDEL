@@ -35,5 +35,4 @@ export function YouTubeEmbed() {
       </a>
     </div>
   )
-  
 }

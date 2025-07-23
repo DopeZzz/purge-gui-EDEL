@@ -5,7 +5,7 @@ import { useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
-import { keyNameToCode, codeToKeyName } from '@/lib/keycodes'
+import { KEY_NAME_TO_CODE, keyNameToCode, codeToKeyName } from '@/lib/keycodes'
 import {
   WEAPON_NAMES_API,
   WEAPON_DISPLAY_NAMES,
@@ -37,9 +37,8 @@ import {
   WifiOff,
   Loader2,
   Keyboard,
+  Power,
   Download,
-  Palette,
-  Volume2,
 } from "lucide-react"
 import {
   submitConfiguration,
@@ -53,6 +52,39 @@ export default function DashboardPage() {
   const params = useParams()
   const licenseKey = params.license as string
   const { toast } = useToast()
+
+  const [licenseType, setLicenseType] = useState<string | null>(null)
+  
+  useEffect(() => {
+    try {
+      const lt = localStorage.getItem('licenseType')
+      if (lt) setLicenseType(lt)
+    } catch (_) {
+      /* ignore */
+    }
+  }, [])
+
+  const autodetectAllowed = useMemo(() => {
+    if (!licenseType) return true
+    return !['WEEK', 'TRIAL', 'MONTH', 'LIFETIME'].includes(
+      licenseType.toUpperCase()
+    )
+  }, [licenseType])
+
+  useEffect(() => {
+    if (!autodetectAllowed) {
+      setAutoDetection(false)
+    }
+  }, [autodetectAllowed])
+
+  const CODE_ALIAS_MAP: Record<string, string> = {}
+  for (const name in KEY_NAME_TO_CODE) {
+    if (name.startsWith('Left')) {
+      CODE_ALIAS_MAP[name.slice(4) + 'Left'] = name
+    } else if (name.startsWith('Right')) {
+      CODE_ALIAS_MAP[name.slice(5) + 'Right'] = name
+    }
+  }
 
   // Script/Feature states (no longer control connection badge)
   const [autoDetection, setAutoDetection] = useState(true)
@@ -84,57 +116,17 @@ export default function DashboardPage() {
   const [detectionAccuracy, setDetectionAccuracy] = useState([0.8])
   const [hipfire, setHipfire] = useState(false)
   const [hipfireKey, setHipfireKey] = useState("")
-  const [alternateFOV, setAlternateFOV] = useState(false)
-  const [alternateFOVKey, setAlternateFOVKey] = useState("")
+  const [zoom, setZoom] = useState(false)
+  const [zoomKey, setZoomKey] = useState("")
   const [weaponHotkeys, setWeaponHotkeys] = useState<Record<string, string>>({})
   const [scopeHotkeys, setScopeHotkeys] = useState<Record<string, string>>({})
   const [barrelHotkeys, setBarrelHotkeys] = useState<Record<string, string>>({})
   // Default hotkeys for first time users
   const [crouchKey, setCrouchKey] = useState(codeToKeyName(162))
   const [aimKey, setAimKey] = useState(codeToKeyName(2))
+  const [scriptToggleKey, setScriptToggleKey] = useState("")
+  const [autoDetectToggleKey, setAutoDetectToggleKey] = useState("")
   const [configLoaded, setConfigLoaded] = useState(false)
-
-  // Audio and theme states
-  const [soundEnabled, setSoundEnabled] = useState(true)
-  const [voicesEnabled, setVoicesEnabled] = useState(true)
-  const [selectedVoice, setSelectedVoice] = useState("brittany")
-  const [theme, setTheme] = useState("default")
-
-  const playToggleSound = useCallback(async (on: boolean) => {
-    try {
-      const AudioCtx =
-        (window as any).AudioContext || (window as any).webkitAudioContext
-      const ctx = new AudioCtx()
-      // Ensure context is running (required by some browsers)
-      await ctx.resume()
-      const osc = ctx.createOscillator()
-      const gain = ctx.createGain()
-      osc.type = 'sine'
-      osc.frequency.value = on ? 880 : 440
-      gain.gain.setValueAtTime(0.1, ctx.currentTime)
-      osc.connect(gain)
-      gain.connect(ctx.destination)
-      osc.start()
-      osc.stop(ctx.currentTime + 0.1)
-      osc.onended = () => ctx.close()
-    } catch (err) {
-      console.error('Failed to play toggle sound', err)
-    }
-  }, [])
-
-  const THEME_OPTIONS: Record<string, string[]> = {
-    default: ['from-slate-900', 'via-blue-900', 'to-slate-800'],
-    emerald: ['from-slate-900', 'via-green-900', 'to-slate-800'],
-    sunset: ['from-slate-900', 'via-orange-900', 'to-slate-800'],
-    cherry: ['from-slate-900', 'via-red-900', 'to-slate-800'],
-    violet: ['from-slate-900', 'via-purple-900', 'to-slate-800'],
-  }
-
-  useEffect(() => {
-    const all = Object.values(THEME_OPTIONS).flat()
-    document.body.classList.remove(...all)
-    document.body.classList.add(...THEME_OPTIONS[theme])
-  }, [theme])
 
 
   // Load saved configuration on initial mount
@@ -188,10 +180,14 @@ export default function DashboardPage() {
       }
       if (typeof cfg.hipfire === 'boolean') setHipfire(cfg.hipfire)
       if (typeof cfg.hipfire_key === 'number') setHipfireKey(codeToKeyName(cfg.hipfire_key))
-      if (typeof cfg.alternate_fov === 'boolean') setAlternateFOV(cfg.alternate_fov)
-      if (typeof cfg.alternate_fov_key === 'number') setAlternateFOVKey(codeToKeyName(cfg.alternate_fov_key))
+      if (typeof cfg.zoom === 'boolean') setZoom(cfg.zoom)
+      if (typeof cfg.zoom_key === 'number') setZoomKey(codeToKeyName(cfg.zoom_key))
       if (typeof cfg.auto_detection === 'boolean') setAutoDetection(cfg.auto_detection)
       if (typeof cfg.script_on === 'boolean') setScriptEnabled(cfg.script_on)
+      if (typeof cfg.script_toggle_key === 'number')
+        setScriptToggleKey(codeToKeyName(cfg.script_toggle_key))
+      if (typeof cfg.auto_detection_toggle_key === 'number')
+        setAutoDetectToggleKey(codeToKeyName(cfg.auto_detection_toggle_key))
       setConfigLoaded(true)
     }
     loadConfig()
@@ -219,16 +215,64 @@ export default function DashboardPage() {
       aim_key: keyNameToCode(aimKey) ?? 2,
       detection_accuracy: detectionAccuracy[0],
       hipfire,
-      hipfire_key: hipfire ? keyNameToCode(hipfireKey) ?? 0 : undefined,
-      alternate_fov: alternateFOV,
-      alternate_fov_key: alternateFOV ? keyNameToCode(alternateFOVKey) ?? 0 : undefined,
+      hipfire_key: keyNameToCode(hipfireKey) ?? undefined,
+      zoom: zoom,
+      zoom_key: zoom ? keyNameToCode(zoomKey) ?? 0 : undefined,
       weapon_hotkeys: convertMap(weaponHotkeys),
       scope_hotkeys: convertMap(scopeHotkeys),
       barrel_hotkeys: convertMap(barrelHotkeys),
+      script_toggle_key: keyNameToCode(scriptToggleKey) ?? undefined,
+      auto_detection_toggle_key: keyNameToCode(autoDetectToggleKey) ?? undefined,
       auto_detection: autoDetection,
       script_on: scriptEnabled,
     }
-  }, [licenseKey, selectedWeapon, selectedScope, selectedBarrel, fov, sensitivity, scopeSensitivity, randomness, crouchKey, aimKey, detectionAccuracy, hipfire, hipfireKey, alternateFOV, alternateFOVKey, weaponHotkeys, scopeHotkeys, barrelHotkeys, autoDetection, scriptEnabled])
+  }, [
+    licenseKey,
+    selectedWeapon,
+    selectedScope,
+    selectedBarrel,
+    fov,
+    sensitivity,
+    scopeSensitivity,
+    randomness,
+    crouchKey,
+    aimKey,
+    detectionAccuracy,
+    hipfire,
+    hipfireKey,
+    zoom,
+    zoomKey,
+    weaponHotkeys,
+    scopeHotkeys,
+    barrelHotkeys,
+    scriptToggleKey,
+    autoDetectToggleKey,
+    autoDetection,
+    scriptEnabled,
+  ])
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      let key = event.code
+      if (!KEY_NAME_TO_CODE[key] && CODE_ALIAS_MAP[key]) {
+        key = CODE_ALIAS_MAP[key]
+      }
+      if (scriptToggleKey && key === scriptToggleKey) {
+        event.preventDefault()
+        setScriptEnabled((p) => !p)
+      }
+      if (autoDetectToggleKey && key === autoDetectToggleKey) {
+        event.preventDefault()
+        setAutoDetection((p) => !p)
+      }
+      if (hipfireKey && key === hipfireKey) {
+        event.preventDefault()
+        setHipfire((p) => !p)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [scriptToggleKey, autoDetectToggleKey, hipfireKey])
 
   const checkApiConnection = useCallback(
     async (isSilent = false) => {
@@ -298,12 +342,18 @@ export default function DashboardPage() {
       setSelectedScope,
       setSelectedBarrel,
       onProgramConnected: handleProgramConnected,
+      setScriptEnabled,
+      setAutoDetection,
+      setHipfire,
     }),
     [
       setSelectedWeapon,
       setSelectedScope,
       setSelectedBarrel,
       handleProgramConnected,
+      setScriptEnabled,
+      setAutoDetection,
+      setHipfire,
     ]
   )
 
@@ -351,8 +401,10 @@ export default function DashboardPage() {
     detectionAccuracy,
     hipfire,
     hipfireKey,
-    alternateFOV,
-    alternateFOVKey,
+    zoom,
+    zoomKey,
+    scriptToggleKey,
+    autoDetectToggleKey,
     autoDetection,
     scriptEnabled,
     handleSendConfiguration,
@@ -427,10 +479,7 @@ export default function DashboardPage() {
                 </div>
                 <Switch
                   checked={scriptEnabled}
-                  onCheckedChange={(checked) => {
-                    setScriptEnabled(checked)
-                    if (soundEnabled) playToggleSound(checked)
-                  }}
+                  onCheckedChange={setScriptEnabled}
                   className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-red-500/80"
                 />
               </div>
@@ -441,11 +490,11 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-400">Auto Detection</p>
-                  <p className="text-xs text-gray-500">Auto detect weapon</p>
                 </div>
                 <Switch
                   checked={autoDetection}
                   onCheckedChange={setAutoDetection}
+                  disabled={!autodetectAllowed}
                   className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-red-500/80"
                 />
               </div>
@@ -508,13 +557,15 @@ export default function DashboardPage() {
               <Gamepad2 className="w-4 h-4 mr-2" />
               Keybinds
             </TabsTrigger>
-            <TabsTrigger
-              value="autodetect"
-              className="data-[state=active]:bg-green-500 data-[state=active]:text-white transition-all duration-200"
-            >
-              <Radar className="w-4 h-4 mr-2" />
-              Autodetect
-            </TabsTrigger>
+            {autodetectAllowed && (
+              <TabsTrigger
+                value="autodetect"
+                className="data-[state=active]:bg-green-500 data-[state=active]:text-white transition-all duration-200"
+              >
+                <Radar className="w-4 h-4 mr-2" />
+                Autodetect
+              </TabsTrigger>
+            )}
             <TabsTrigger
               value="miscellaneous"
               className="data-[state=active]:bg-green-500 data-[state=active]:text-white transition-all duration-200"
@@ -726,6 +777,40 @@ export default function DashboardPage() {
                   <p className="text-xs text-gray-500">Select the key you use to aim in game</p>
                 </CardContent>
               </Card>
+              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
+                  <CardTitle className="text-green-400 flex items-center">
+                    <Power className="w-5 h-5 mr-2" />
+                    Script ON / OFF
+                  </CardTitle>
+                  <HotkeySelector
+                    value={scriptToggleKey}
+                    onValueChange={setScriptToggleKey}
+                    placeholder="Set toggle key"
+                  />
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <p className="text-xs text-gray-500">Select the key to turn the script on or off</p>
+                </CardContent>
+              </Card>
+              {autodetectAllowed && (
+                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
+                    <CardTitle className="text-green-400 flex items-center">
+                      <Radar className="w-5 h-5 mr-2" />
+                      Auto Detect
+                    </CardTitle>
+                    <HotkeySelector
+                      value={autoDetectToggleKey}
+                      onValueChange={setAutoDetectToggleKey}
+                      placeholder="Set toggle key"
+                    />
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-xs text-gray-500">Select the key to enable or disable auto detection</p>
+                  </CardContent>
+                </Card>
+              )}
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 md:col-span-2">
                 <CardHeader>
                   <CardTitle className="text-green-400 flex items-center">
@@ -796,35 +881,37 @@ export default function DashboardPage() {
               </Card>
             </div>
           </TabsContent>
-          <TabsContent value="autodetect" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Radar className="w-5 h-5 mr-2" />
-                    Detection Accuracy
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Accuracy</span>
-                    <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-                      {detectionAccuracy[0].toFixed(1)}
-                    </Badge>
-                  </div>
-                  <Slider
-                    value={detectionAccuracy}
-                    onValueChange={setDetectionAccuracy}
-                    min={0.1}
-                    max={0.9}
-                    step={0.1}
-                    className="w-full"
-                  />
-                  <p className="text-xs text-gray-500">Detection precision level</p>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
+          {autodetectAllowed && (
+            <TabsContent value="autodetect" className="mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <CardHeader>
+                    <CardTitle className="text-green-400 flex items-center">
+                      <Radar className="w-5 h-5 mr-2" />
+                      Detection Accuracy
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium">Accuracy</span>
+                      <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                        {detectionAccuracy[0].toFixed(1)}
+                      </Badge>
+                    </div>
+                    <Slider
+                      value={detectionAccuracy}
+                      onValueChange={setDetectionAccuracy}
+                      min={0.1}
+                      max={0.9}
+                      step={0.1}
+                      className="w-full"
+                    />
+                    <p className="text-xs text-gray-500">Detection precision level</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+          )}
           <TabsContent value="miscellaneous" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
@@ -838,12 +925,11 @@ export default function DashboardPage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-white">Enable Hipfire</p>
-                      <p className="text-xs text-gray-500">Aim without scoping. Feature not yet available.</p>
+                      <p className="text-xs text-gray-500">Activate to fire from the hip and cursor check.</p>
                     </div>
                     <Switch
                       checked={hipfire}
                       onCheckedChange={setHipfire}
-                      disabled
                       className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
                     />
                   </div>
@@ -858,90 +944,30 @@ export default function DashboardPage() {
                 <CardHeader>
                   <CardTitle className="text-green-400 flex items-center">
                     <Eye className="w-5 h-5 mr-2" />
-                    Alternate FOV
+                    Zoom
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-white">Enable Alt FOV</p>
-                      <p className="text-xs text-gray-500">Activate script FOV adjustment to 70 on hotkey press. Feature not yet available.</p>
+                      <p className="text-sm font-medium text-white">Enable Zoom</p>
+                      <p className="text-xs text-gray-500">To activate the Zoom assign a hotkey.</p>
                     </div>
                     <Switch
-                      checked={alternateFOV}
-                      onCheckedChange={setAlternateFOV}
-                      disabled
+                      checked={zoom}
+                      onCheckedChange={setZoom}
                       className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
                     />
                   </div>
-                  {alternateFOV && (
+                  {zoom && (
                     <div className="space-y-2">
                       <HotkeySelector
-                        value={alternateFOVKey}
-                        onValueChange={setAlternateFOVKey}
+                        value={zoomKey}
+                        onValueChange={setZoomKey}
                         placeholder="Set hotkey"
                       />
                     </div>
                   )}
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Palette className="w-5 h-5 mr-2" />
-                    Theme Selector
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <Select value={theme} onValueChange={setTheme}>
-                    <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
-                      <SelectValue placeholder="Select theme" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-600 text-white">
-                      <SelectItem value="default">Default</SelectItem>
-                      <SelectItem value="emerald">Emerald</SelectItem>
-                      <SelectItem value="sunset">Sunset</SelectItem>
-                      <SelectItem value="cherry">Cherry</SelectItem>
-                      <SelectItem value="violet">Violet</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <p className="text-xs text-gray-500">Choose dashboard colors</p>
-                </CardContent>
-              </Card>
-            </div>
-            <div className="mt-6">
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 md:col-span-3">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Volume2 className="w-5 h-5 mr-2" />
-                    Audio Settings
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-sm">Sound Effects</span>
-                        <Switch checked={soundEnabled} onCheckedChange={setSoundEnabled} />
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <span className="text-sm">Voices</span>
-                        <Switch checked={voicesEnabled} onCheckedChange={setVoicesEnabled} />
-                      </div>
-                    </div>
-                    <div className="w-full md:w-60">
-                      <Select value={selectedVoice} onValueChange={setSelectedVoice}>
-                        <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
-                          <SelectValue placeholder="Select voice" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-gray-800 border-gray-600 text-white">
-                          <SelectItem value="brittany">Brittany Voice</SelectItem>
-                          <SelectItem value="grandpa">Grandpa Voice</SelectItem>
-                          <SelectItem value="matt">Matt Voice</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
                 </CardContent>
               </Card>
             </div>

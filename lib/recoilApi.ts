@@ -17,10 +17,10 @@ export interface RecoilApiPayload {
   hipfire?: boolean
   /** Hotkey for hipfire when enabled */
   hipfire_key?: number
-  /** Enable alternate FOV mode */
-  alternate_fov?: boolean
-  /** Hotkey for alternate FOV when enabled */
-  alternate_fov_key?: number
+  /** Enable zoom mode */
+  zoom?: boolean
+  /** Hotkey for zoom when enabled */
+  zoom_key?: number
   /** Optional map of weapon names to key codes */
   weapon_hotkeys?: Record<string, number>
   /** Optional map of scope names to key codes */
@@ -31,6 +31,10 @@ export interface RecoilApiPayload {
   auto_detection?: boolean
   /** Whether the script should be enabled */
   script_on?: boolean
+  /** Hotkey to toggle script on/off */
+  script_toggle_key?: number
+  /** Hotkey to toggle auto detection */
+  auto_detection_toggle_key?: number
   /** Amount of randomness to apply */
   randomness?: number
   /** Whether the backend should persist the configuration */
