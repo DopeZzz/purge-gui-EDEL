@@ -38,6 +38,8 @@ import {
   Loader2,
   Keyboard,
   Download,
+  Palette,
+  Volume2,
 } from "lucide-react"
 import {
   submitConfiguration,
@@ -92,6 +94,12 @@ export default function DashboardPage() {
   const [aimKey, setAimKey] = useState(codeToKeyName(2))
   const [configLoaded, setConfigLoaded] = useState(false)
 
+  // Audio and theme states
+  const [soundEnabled, setSoundEnabled] = useState(true)
+  const [voicesEnabled, setVoicesEnabled] = useState(true)
+  const [selectedVoice, setSelectedVoice] = useState("brittany")
+  const [theme, setTheme] = useState("default")
+
   const playToggleSound = useCallback(async (on: boolean) => {
     try {
       const AudioCtx =
@@ -113,6 +121,20 @@ export default function DashboardPage() {
       console.error('Failed to play toggle sound', err)
     }
   }, [])
+
+  const THEME_OPTIONS: Record<string, string[]> = {
+    default: ['from-slate-900', 'via-blue-900', 'to-slate-800'],
+    emerald: ['from-slate-900', 'via-green-900', 'to-slate-800'],
+    sunset: ['from-slate-900', 'via-orange-900', 'to-slate-800'],
+    cherry: ['from-slate-900', 'via-red-900', 'to-slate-800'],
+    violet: ['from-slate-900', 'via-purple-900', 'to-slate-800'],
+  }
+
+  useEffect(() => {
+    const all = Object.values(THEME_OPTIONS).flat()
+    document.body.classList.remove(...all)
+    document.body.classList.add(...THEME_OPTIONS[theme])
+  }, [theme])
 
 
   // Load saved configuration on initial mount
@@ -407,7 +429,7 @@ export default function DashboardPage() {
                   checked={scriptEnabled}
                   onCheckedChange={(checked) => {
                     setScriptEnabled(checked)
-                    playToggleSound(checked)
+                    if (soundEnabled) playToggleSound(checked)
                   }}
                   className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-red-500/80"
                 />
@@ -861,6 +883,65 @@ export default function DashboardPage() {
                       />
                     </div>
                   )}
+                </CardContent>
+              </Card>
+              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
+                <CardHeader>
+                  <CardTitle className="text-green-400 flex items-center">
+                    <Palette className="w-5 h-5 mr-2" />
+                    Theme Selector
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <Select value={theme} onValueChange={setTheme}>
+                    <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
+                      <SelectValue placeholder="Select theme" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-gray-800 border-gray-600 text-white">
+                      <SelectItem value="default">Default</SelectItem>
+                      <SelectItem value="emerald">Emerald</SelectItem>
+                      <SelectItem value="sunset">Sunset</SelectItem>
+                      <SelectItem value="cherry">Cherry</SelectItem>
+                      <SelectItem value="violet">Violet</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-gray-500">Choose dashboard colors</p>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="mt-6">
+              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 md:col-span-3">
+                <CardHeader>
+                  <CardTitle className="text-green-400 flex items-center">
+                    <Volume2 className="w-5 h-5 mr-2" />
+                    Audio Settings
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-sm">Sound Effects</span>
+                        <Switch checked={soundEnabled} onCheckedChange={setSoundEnabled} />
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-sm">Voices</span>
+                        <Switch checked={voicesEnabled} onCheckedChange={setVoicesEnabled} />
+                      </div>
+                    </div>
+                    <div className="w-full md:w-60">
+                      <Select value={selectedVoice} onValueChange={setSelectedVoice}>
+                        <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
+                          <SelectValue placeholder="Select voice" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-gray-800 border-gray-600 text-white">
+                          <SelectItem value="brittany">Brittany Voice</SelectItem>
+                          <SelectItem value="grandpa">Grandpa Voice</SelectItem>
+                          <SelectItem value="matt">Matt Voice</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
