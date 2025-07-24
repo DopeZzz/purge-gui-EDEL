@@ -148,12 +148,15 @@ export default function DashboardPage() {
     const fileName = weaponFileMap[weaponName] || "None"
     const audioPath = `/voices/${selectedVoice.toLowerCase()}/${fileName}.mp3`
     
-    // Crear y reproducir audio
-    audio.volume = 0.5 // Volumen al 50%
-    audio.play().catch(error => {
-      console.error(`Error creating audio for ${weaponName} (${audioPath}):`, error)
-    })
-  }
+    // Crear y reproducir audio ----------------- ⬇️ pega esto
+    try {
+      const audio = new Audio(audioPath)
+      audio.volume = 0.5          // volumen al 50 %
+      await audio.play()
+    } catch (err) {
+      console.error(`Could not play voice for ${weaponName} (${audioPath}):`, err)
+    }
+
   const [hipfireKey, setHipfireKey] = useState("")
   const [zoom, setZoom] = useState(false)
   const [zoomKey, setZoomKey] = useState("")
