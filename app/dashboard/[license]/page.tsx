@@ -483,673 +483,643 @@ export default function DashboardPage() {
   handleSendConfiguration,
 ]);
 
-return ( 
+return (
 <div className="min-h-screen bg-background">
-<div className="container mx-auto p-8">
-  <Tabs value={activeTab} onValueChange={setActiveTab}> 
-    <TabsContent value="controls" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Target className="w-5 h-5 mr-2" />
-                    Aim Settings
-                    <Badge variant="outline" className="ml-auto text-xs border-green-400/50 text-green-400/80">
-                      Precision
-                    </Badge>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Sensitivity</span>
-                      <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-                        {sensitivity[0].toFixed(2)}
-                      </Badge>
-                    </div>
-                    <Slider
-                      value={sensitivity}
-                      onValueChange={setSensitivity}
-                      min={0.1}
-                      max={2.0}
-                      step={0.01}
-                      className="w-full"
-                    />
-                    <p className="text-xs text-gray-500">Mouse sensitivity multiplier</p>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Scope Sensitivity</span>
-                      <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-                        {scopeSensitivity[0].toFixed(2)}
-                      </Badge>
-                    </div>
-                    <Slider
-                      value={scopeSensitivity}
-                      onValueChange={setScopeSensitivity}
-                      min={0.1}
-                      max={2.0}
-                      step={0.01}
-                      className="w-full"
-                    />
-                    <p className="text-xs text-gray-500">Sensitivity when scoped</p>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Settings className="w-5 h-5 mr-2" />
-                    General Settings
-                    <Badge variant="outline" className="ml-auto text-xs border-green-400/50 text-green-400/80">
-                      Core
-                    </Badge>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">FOV</span>
-                      <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-                        {fov[0]}°
-                      </Badge>
-                    </div>
-                    <Slider value={fov} onValueChange={setFov} min={60} max={90} step={0.1} className="w-full" />
-                    <p className="text-xs text-gray-500">Field of view setting</p>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Randomness</span>
-                      <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-                        {randomness[0]}%
-                      </Badge>
-                    </div>
-                    <Slider value={randomness} onValueChange={setRandomness} max={100} step={1} className="w-full" />
-                    <p className="text-xs text-gray-500">Adds natural variation</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-          <TabsContent value="equipment" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Target className="w-5 h-5 mr-2" />
-                    Weapon
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Select value={selectedWeapon} onValueChange={setSelectedWeapon}>
-                    <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
-                      <SelectValue placeholder="Choose weapon" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-600 max-h-60 text-white">
-                      {WEAPON_NAMES_API.map((weapon, idx) => (
-                        <SelectItem
-                          key={weapon}
-                          value={weapon}
-                          className="text-white focus:bg-gray-700 focus:text-white"
-                        >
-                          {WEAPON_DISPLAY_NAMES[idx]}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <p className="text-xs text-gray-500 mt-2">Primary weapon selection</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-blue-400 flex items-center">
-                    <Eye className="w-5 h-5 mr-2" />
-                    Scope
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Select value={selectedScope} onValueChange={setSelectedScope}>
-                    <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
-                      <SelectValue placeholder="Choose scope" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-600 text-white">
-                      {SCOPE_OPTIONS.map((option) => (
-                        <SelectItem
-                          key={option.value}
-                          value={option.value}
-                          className="text-white focus:bg-gray-700 focus:text-white"
-                        >
-                          {option.display}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <p className="text-xs text-gray-500 mt-2">Optic attachment</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-purple-400 flex items-center">
-                    <Zap className="w-5 h-5 mr-2" />
-                    Barrel
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Select value={selectedBarrel} onValueChange={setSelectedBarrel}>
-                    <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
-                      <SelectValue placeholder="Choose barrel" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-600 text-white">
-                      {BARREL_OPTIONS.map((option) => (
-                        <SelectItem
-                          key={option.value}
-                          value={option.value}
-                          className="text-white focus:bg-gray-700 focus:text-white"
-                        >
-                          {option.display}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <p className="text-xs text-gray-500 mt-2">Barrel attachment</p>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-          <TabsContent value="keybinds" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Gamepad2 className="w-5 h-5 mr-2" />
-                    Crouch Key
-                  </CardTitle>
-                  <HotkeySelector
-                    value={crouchKey}
-                    onValueChange={setCrouchKey}
-                    placeholder="Click to set crouch key"
-                  />
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-xs text-gray-500">Select the key you use to crouch in game</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Target className="w-5 h-5 mr-2" />
-                    Aim Key
-                  </CardTitle>
-                  <HotkeySelector
-                    value={aimKey}
-                    onValueChange={setAimKey}
-                    placeholder="Click to set aim key"
-                  />
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-xs text-gray-500">Select the key you use to aim in game</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Power className="w-5 h-5 mr-2" />
-                    Script ON / OFF
-                  </CardTitle>
-                  <HotkeySelector
-                    value={scriptToggleKey}
-                    onValueChange={setScriptToggleKey}
-                    placeholder="Set toggle key"
-                  />
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-xs text-gray-500">Select the key to turn the script on or off</p>
-                </CardContent>
-              </Card>
-              {autodetectAllowed && (
-                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
-                    <CardTitle className="text-green-400 flex items-center">
-                      <Radar className="w-5 h-5 mr-2" />
-                      Auto Detect
-                    </CardTitle>
-                    <HotkeySelector
-                      value={autoDetectToggleKey}
-                      onValueChange={setAutoDetectToggleKey}
-                      placeholder="Set toggle key"
-                    />
-                  </CardHeader>
-                 <CardContent className="pt-0">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white text-base">Voice Volume</span>
-                        <span className="text-gray-400 text-sm">{voiceVolume[0]}</span>
-                      </div>
-                  
-                      <Slider
-                        value={voiceVolume}
-                        onValueChange={setVoiceVolume}
-                        max={100}
-                        min={0}
-                        step={1}
-                        className="w-full"
-                      />
-                      
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-white text-base">Voice Volume</span>
-                          <span className="text-gray-400 text-sm">{50}</span>
-                        </div>
-                        <Slider
-                          value={[50]}
-                          onValueChange={() => {}}
-                          max={100}
-                          min={0}
-                          step={1}
-                          className="w-full"
-                        />
-                      </div>
-                  
-                      <p className="text-xs text-gray-500">
-                        Select the key to enable or disable auto detection
-                      </p>
-                    </div>
-                  </CardContent>
+  <div className="container mx-auto p-8">
+    {/* Header */}
+    <div className="text-center mb-12">
+      <div className="flex justify-center mb-6">
+        <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-20 w-auto" />
+      </div>
+      <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+        Purge 2.0
+      </h1>
+      <p className="text-gray-400 mb-6">Rust Cloud Scripting - License: <span className="text-green-400 font-semibold">{licenseKey}</span></p>
+      
+      {/* API Connection Status */}
+      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border">
+        {apiConnectionStatus === "pending" ? (
+          <>
+            <Loader2 className="w-4 h-4 animate-spin text-yellow-400" />
+            <span className="text-yellow-400 font-medium">API Connection: Checking...</span>
+          </>
+        ) : apiConnectionStatus === "connected" ? (
+          <>
+            <Wifi className="w-4 h-4 text-green-400" />
+            <span className="text-green-400 font-medium">API Connection: Active & Connected</span>
+          </>
+        ) : (
+          <>
+            <WifiOff className="w-4 h-4 text-red-400" />
+            <span className="text-red-400 font-medium">API Connection: Disconnected</span>
+          </>
+        )}
+      </div>
 
-                </Card>
-              )}
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 md:col-span-2">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Keyboard className="w-5 h-5 mr-2" />
-                    Weapon Binds
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-12">
-                    {WEAPON_NAMES_API.map((weapon, idx) => (
-                      <div key={weapon} className="flex items-center justify-between space-x-2">
-                        <span>{WEAPON_DISPLAY_NAMES[idx]}</span>
-                        <HotkeySelector
-                          value={weaponHotkeys[weapon] || ""}
-                          onValueChange={(k) =>
-                            setWeaponHotkeys((p) => ({ ...p, [weapon]: k }))
-                          }
-                          placeholder="Set hotkey"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Keyboard className="w-5 h-5 mr-2" />
-                    Scope Binds
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  {SCOPE_OPTIONS.map((opt) => (
-                    <div key={opt.value} className="flex items-center justify-between space-x-2">
-                      <span>{opt.display}</span>
-                      <HotkeySelector
-                        value={scopeHotkeys[opt.value] || ""}
-                        onValueChange={(k) =>
-                          setScopeHotkeys((p) => ({ ...p, [opt.value]: k }))
-                        }
-                        placeholder="Set hotkey"
-                      />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Keyboard className="w-5 h-5 mr-2" />
-                    Barrel Binds
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  {BARREL_OPTIONS.map((opt) => (
-                    <div key={opt.value} className="flex items-center justify-between space-x-2">
-                      <span>{opt.display}</span>
-                      <HotkeySelector
-                        value={barrelHotkeys[opt.value] || ""}
-                        onValueChange={(k) =>
-                          setBarrelHotkeys((p) => ({ ...p, [opt.value]: k }))
-                        }
-                        placeholder="Set hotkey"
-                      />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-          {autodetectAllowed && (
-            <TabsContent value="autodetect" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Left Column */}
-                <div className="space-y-8">
-                  {/* Detection Accuracy Card */}
-                  <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
-                        <Radar className="w-6 h-6 text-green-400" />
-                        Detection Accuracy
-                      </CardTitle>
-                      <p className="text-gray-400 text-sm">Adjust detection sensitivity</p>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-gray-300 text-sm">
-                        Higher values increase accuracy but may reduce performance.
-                      </p>
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-white font-medium">Accuracy</span>
-                          <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-                            {(detectionAccuracy[0] * 100).toFixed(0)}%
-                          </Badge>
-                        </div>
-                        <Slider
-                          value={detectionAccuracy}
-                          onValueChange={setDetectionAccuracy}
-                          min={0.1}
-                          max={1.0}
-                          step={0.01}
-                          className="w-full"
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
+      {/* Action Buttons */}
+      <div className="flex justify-center gap-4 mt-6">
+        <Button
+          variant="outline"
+          className="border-green-400/50 text-green-400 hover:bg-green-400/10"
+          onClick={() => window.open('/docs', '_blank')}
+        >
+          <HelpCircle className="w-4 h-4 mr-2" />
+          How to use?
+        </Button>
+        <Button
+          className="bg-green-400 hover:bg-green-500 text-black"
+          onClick={() => window.open(`/dashboard/${licenseKey}/download`, '_blank')}
+        >
+          <Download className="w-4 h-4 mr-2" />
+          Download
+        </Button>
+      </div>
+    </div>
 
-                  {/* Hipfire Card */}
-                  <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
-                        <Target className="w-6 h-6 text-green-400" />
-                        Hipfire
-                      </CardTitle>
-                      <p className="text-gray-400 text-sm">Enable Hipfire</p>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-gray-300 text-sm">
-                        Activate to fire from the hip and cursor check.
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-medium">Enable Hipfire</span>
-                        <Switch
-                          checked={hipfire}
-                          onCheckedChange={setHipfire}
-                          className="data-[state=checked]:bg-green-500"
-                        />
-                      </div>
-                      {hipfire && (
-                        <div className="space-y-3 pt-2 border-t border-gray-700/50">
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-300 text-sm">Hipfire Key</span>
-                            <HotkeySelector
-                              value={hipfireKey}
-                              onValueChange={setHipfireKey}
-                              placeholder="Set key"
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
+    {/* Status Cards */}
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+      <Card className="bg-gray-900/50 border-gray-700/50 text-center">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-center mb-2">
+            <Power className="w-5 h-5 text-green-400 mr-2" />
+            <span className="text-sm font-medium">Script ON / OFF</span>
+          </div>
+          <Switch
+            checked={scriptEnabled}
+            onCheckedChange={handleScriptEnabledChange}
+            className="data-[state=checked]:bg-green-500"
+          />
+        </CardContent>
+      </Card>
 
-                  {/* Audio Settings Card */}
-                  <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
-                        <Volume2 className="w-6 h-6 text-green-400" />
-                        Audio Settings
-                      </CardTitle>
-                      <p className="text-gray-400 text-sm">Sound Effects</p>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-gray-300 text-sm">
-                        Play sound on toggle
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-medium">Sound Effects</span>
-                        <Switch
-                          checked={soundEffects}
-                          onCheckedChange={setSoundEffects}
-                          className="data-[state=checked]:bg-green-500"
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
+      <Card className="bg-gray-900/50 border-gray-700/50 text-center">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-center mb-2">
+            <Radar className="w-5 h-5 text-blue-400 mr-2" />
+            <span className="text-sm font-medium">Auto Detection</span>
+          </div>
+          <Switch
+            checked={autoDetection}
+            onCheckedChange={setAutoDetection}
+            disabled={!autodetectAllowed}
+            className="data-[state=checked]:bg-blue-500"
+          />
+        </CardContent>
+      </Card>
+
+      <Card className="bg-gray-900/50 border-gray-700/50 text-center">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-center mb-2">
+            <Target className="w-5 h-5 text-green-400 mr-2" />
+            <span className="text-xs font-medium">Weapon Selected</span>
+          </div>
+          <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30 text-xs">
+            {getDisplayWeapon(selectedWeapon)}
+          </Badge>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-gray-900/50 border-gray-700/50 text-center">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-center mb-2">
+            <Eye className="w-5 h-5 text-blue-400 mr-2" />
+            <span className="text-xs font-medium">Scope Selected</span>
+          </div>
+          <Badge variant="secondary" className="text-blue-400 bg-blue-900/50 border-blue-400/30 text-xs">
+            {getDisplayScope(selectedScope)}
+          </Badge>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-gray-900/50 border-gray-700/50 text-center">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-center mb-2">
+            <Zap className="w-5 h-5 text-purple-400 mr-2" />
+            <span className="text-xs font-medium">Barrel Selected</span>
+          </div>
+          <Badge variant="secondary" className="text-purple-400 bg-purple-900/50 border-purple-400/30 text-xs">
+            {getDisplayBarrel(selectedBarrel)}
+          </Badge>
+        </CardContent>
+      </Card>
+    </div>
+
+    <Tabs value={activeTab} onValueChange={setActiveTab}>
+      <TabsList className="grid w-full grid-cols-5 bg-gray-900/50 border-gray-700/50">
+        <TabsTrigger value="controls" className="flex items-center gap-2">
+          <Settings className="w-4 h-4" />
+          Settings
+        </TabsTrigger>
+        <TabsTrigger value="equipment" className="flex items-center gap-2">
+          <Crosshair className="w-4 h-4" />
+          Selections
+        </TabsTrigger>
+        <TabsTrigger value="keybinds" className="flex items-center gap-2">
+          <Keyboard className="w-4 h-4" />
+          Keybinds
+        </TabsTrigger>
+        {autodetectAllowed && (
+          <TabsTrigger value="autodetect" className="flex items-center gap-2">
+            <Radar className="w-4 h-4" />
+            Autodetect
+          </TabsTrigger>
+        )}
+        <TabsTrigger value="miscellaneous" className="flex items-center gap-2">
+          <Wrench className="w-4 h-4" />
+          Miscellaneous
+        </TabsTrigger>
+      </TabsList>
+
+      <TabsContent value="controls" className="mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-green-400 flex items-center">
+                <Target className="w-5 h-5 mr-2" />
+                Aim Settings
+                <Badge variant="outline" className="ml-auto text-xs border-green-400/50 text-green-400/80">
+                  Precision
+                </Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium">Sensitivity</span>
+                  <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                    {sensitivity[0].toFixed(2)}
+                  </Badge>
                 </div>
-
-                {/* Right Column */}
-                <div className="space-y-8">
-                  {/* Zoom Card */}
-                  <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
-                        <ZoomIn className="w-6 h-6 text-green-400" />
-                        Zoom
-                      </CardTitle>
-                      <p className="text-gray-400 text-sm">Enable Zoom</p>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-gray-300 text-sm">
-                        To activate the Zoom assign a hotkey.
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-medium">Enable Zoom</span>
-                        <Switch
-                          checked={zoom}
-                          onCheckedChange={setZoom}
-                          className="data-[state=checked]:bg-green-500"
-                        />
-                      </div>
-                      {zoom && (
-                        <div className="space-y-3 pt-2 border-t border-gray-700/50">
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-300 text-sm">Zoom Key</span>
-                            <HotkeySelector
-                              value={zoomKey}
-                              onValueChange={setZoomKey}
-                              placeholder="Set key"
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-
-                  {/* Theme Selector Card */}
-                  <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
-                        <Palette className="w-6 h-6 text-green-400" />
-                        Theme Selector
-                      </CardTitle>
-                      <p className="text-sm font-medium text-white">Select a theme to customize the interface.</p>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-gray-300 text-sm">
-                        Your choice will apply immediately.
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-medium">Theme</span>
-                        <Select value={selectedTheme} onValueChange={setSelectedTheme}>
-                          <SelectTrigger className="w-32 bg-gray-800 border-gray-600 text-white">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent className="bg-gray-800 border-gray-600">
-                            <SelectItem value="default" className="text-white hover:bg-gray-700">Default</SelectItem>
-                            <SelectItem value="dark" className="text-white hover:bg-gray-700">Dark</SelectItem>
-                            <SelectItem value="blue" className="text-white hover:bg-gray-700">Blue</SelectItem>
-                            <SelectItem value="green" className="text-white hover:bg-gray-700">Green</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Slider
+                  value={sensitivity}
+                  onValueChange={setSensitivity}
+                  min={0.1}
+                  max={2.0}
+                  step={0.01}
+                  className="w-full"
+                />
+                <p className="text-xs text-gray-500">Mouse sensitivity multiplier</p>
               </div>
-            </TabsContent>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium">Scope Sensitivity</span>
+                  <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                    {scopeSensitivity[0].toFixed(2)}
+                  </Badge>
+                </div>
+                <Slider
+                  value={scopeSensitivity}
+                  onValueChange={setScopeSensitivity}
+                  min={0.1}
+                  max={2.0}
+                  step={0.01}
+                  className="w-full"
+                />
+                <p className="text-xs text-gray-500">Sensitivity when scoped</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-green-400 flex items-center">
+                <Settings className="w-5 h-5 mr-2" />
+                General Settings
+                <Badge variant="outline" className="ml-auto text-xs border-green-400/50 text-green-400/80">
+                  Core
+                </Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium">FOV</span>
+                  <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                    {fov[0]}°
+                  </Badge>
+                </div>
+                <Slider value={fov} onValueChange={setFov} min={60} max={90} step={0.1} className="w-full" />
+                <p className="text-xs text-gray-500">Field of view setting</p>
+              </div>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium">Randomness</span>
+                  <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                    {randomness[0]}%
+                  </Badge>
+                </div>
+                <Slider value={randomness} onValueChange={setRandomness} max={100} step={1} className="w-full" />
+                <p className="text-xs text-gray-500">Adds natural variation</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </TabsContent>
+      <TabsContent value="equipment" className="mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-green-400 flex items-center">
+                <Target className="w-5 h-5 mr-2" />
+                Weapon
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Select value={selectedWeapon} onValueChange={setSelectedWeapon}>
+                <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
+                  <SelectValue placeholder="Choose weapon" />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-600 max-h-60 text-white">
+                  {WEAPON_NAMES_API.map((weapon, idx) => (
+                    <SelectItem
+                      key={weapon}
+                      value={weapon}
+                      className="text-white focus:bg-gray-700 focus:text-white"
+                    >
+                      {WEAPON_DISPLAY_NAMES[idx]}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-gray-500 mt-2">Primary weapon selection</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-blue-400 flex items-center">
+                <Eye className="w-5 h-5 mr-2" />
+                Scope
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Select value={selectedScope} onValueChange={setSelectedScope}>
+                <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
+                  <SelectValue placeholder="Choose scope" />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-600 text-white">
+                  {SCOPE_OPTIONS.map((option) => (
+                    <SelectItem
+                      key={option.value}
+                      value={option.value}
+                      className="text-white focus:bg-gray-700 focus:text-white"
+                    >
+                      {option.display}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-gray-500 mt-2">Optic attachment</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-purple-400 flex items-center">
+                <Zap className="w-5 h-5 mr-2" />
+                Barrel
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Select value={selectedBarrel} onValueChange={setSelectedBarrel}>
+                <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
+                  <SelectValue placeholder="Choose barrel" />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-600 text-white">
+                  {BARREL_OPTIONS.map((option) => (
+                    <SelectItem
+                      key={option.value}
+                      value={option.value}
+                      className="text-white focus:bg-gray-700 focus:text-white"
+                    >
+                      {option.display}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-gray-500 mt-2">Barrel attachment</p>
+            </CardContent>
+          </Card>
+        </div>
+      </TabsContent>
+      <TabsContent value="keybinds" className="mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
+              <CardTitle className="text-green-400 flex items-center">
+                <Gamepad2 className="w-5 h-5 mr-2" />
+                Crouch Key
+              </CardTitle>
+              <HotkeySelector
+                value={crouchKey}
+                onValueChange={setCrouchKey}
+                placeholder="Click to set crouch key"
+              />
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-xs text-gray-500">Select the key you use to crouch in game</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
+              <CardTitle className="text-green-400 flex items-center">
+                <Target className="w-5 h-5 mr-2" />
+                Aim Key
+              </CardTitle>
+              <HotkeySelector
+                value={aimKey}
+                onValueChange={setAimKey}
+                placeholder="Click to set aim key"
+              />
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-xs text-gray-500">Select the key you use to aim in game</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
+              <CardTitle className="text-green-400 flex items-center">
+                <Power className="w-5 h-5 mr-2" />
+                Script ON / OFF
+              </CardTitle>
+              <HotkeySelector
+                value={scriptToggleKey}
+                onValueChange={setScriptToggleKey}
+                placeholder="Set toggle key"
+              />
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-xs text-gray-500">Select the key to turn the script on or off</p>
+            </CardContent>
+          </Card>
+          {autodetectAllowed && (
+            <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
+                <CardTitle className="text-green-400 flex items-center">
+                  <Radar className="w-5 h-5 mr-2" />
+                  Auto Detect
+                </CardTitle>
+                <HotkeySelector
+                  value={autoDetectToggleKey}
+                  onValueChange={setAutoDetectToggleKey}
+                  placeholder="Set toggle key"
+                />
+              </CardHeader>
+              <CardContent className="pt-0">
+                <p className="text-xs text-gray-500">
+                  Select the key to enable or disable auto detection
+                </p>
+              </CardContent>
+            </Card>
           )}
-          <TabsContent value="miscellaneous" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Target className="w-5 h-5 mr-2" />
-                    Hipfire
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-white">Enable Hipfire</p>
-                      <p className="text-xs text-gray-500">Activate to fire from the hip and cursor check.</p>
-                    </div>
-                    <Switch
-                      checked={hipfire}
-                      onCheckedChange={setHipfire}
-                      className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 md:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-green-400 flex items-center">
+                <Keyboard className="w-5 h-5 mr-2" />
+                Weapon Binds
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-12">
+                {WEAPON_NAMES_API.map((weapon, idx) => (
+                  <div key={weapon} className="flex items-center justify-between space-x-2">
+                    <span>{WEAPON_DISPLAY_NAMES[idx]}</span>
+                    <HotkeySelector
+                      value={weaponHotkeys[weapon] || ""}
+                      onValueChange={(k) =>
+                        setWeaponHotkeys((p) => ({ ...p, [weapon]: k }))
+                      }
+                      placeholder="Set hotkey"
                     />
                   </div>
-                  {hipfire && (
-                    <div className="space-y-2">
-                      <HotkeySelector value={hipfireKey} onValueChange={setHipfireKey} placeholder="Set hotkey" />
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-green-400 flex items-center">
+                <Keyboard className="w-5 h-5 mr-2" />
+                Scope Binds
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              {SCOPE_OPTIONS.map((opt) => (
+                <div key={opt.value} className="flex items-center justify-between space-x-2">
+                  <span>{opt.display}</span>
+                  <HotkeySelector
+                    value={scopeHotkeys[opt.value] || ""}
+                    onValueChange={(k) =>
+                      setScopeHotkeys((p) => ({ ...p, [opt.value]: k }))
+                    }
+                    placeholder="Set hotkey"
+                  />
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-green-400 flex items-center">
+                <Keyboard className="w-5 h-5 mr-2" />
+                Barrel Binds
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              {BARREL_OPTIONS.map((opt) => (
+                <div key={opt.value} className="flex items-center justify-between space-x-2">
+                  <span>{opt.display}</span>
+                  <HotkeySelector
+                    value={barrelHotkeys[opt.value] || ""}
+                    onValueChange={(k) =>
+                      setBarrelHotkeys((p) => ({ ...p, [opt.value]: k }))
+                    }
+                    placeholder="Set hotkey"
+                  />
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
+      </TabsContent>
+      {autodetectAllowed && (
+        <TabsContent value="autodetect" className="mt-6">
+          <div className="grid grid-cols-1 gap-8">
+            {/* Detection Accuracy Card */}
+            <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm max-w-2xl mx-auto">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
+                  <Radar className="w-6 h-6 text-green-400" />
+                  Detection Accuracy
+                </CardTitle>
+                <p className="text-gray-400 text-sm">Adjust detection sensitivity</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-gray-300 text-sm">
+                  Higher values increase accuracy but may reduce performance.
+                </p>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-white font-medium">Accuracy</span>
+                    <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                      {(detectionAccuracy[0] * 100).toFixed(0)}%
+                    </Badge>
+                  </div>
+                  <Slider
+                    value={detectionAccuracy}
+                    onValueChange={setDetectionAccuracy}
+                    min={0.1}
+                    max={1.0}
+                    step={0.01}
+                    className="w-full"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+      )}
+      <TabsContent value="miscellaneous" className="mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
+            <CardHeader>
+              <CardTitle className="text-green-400 flex items-center">
+                <Target className="w-5 h-5 mr-2" />
+                Hipfire
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-white">Enable Hipfire</p>
+                  <p className="text-xs text-gray-500">Activate to fire from the hip and cursor check.</p>
+                </div>
+                <Switch
+                  checked={hipfire}
+                  onCheckedChange={setHipfire}
+                  className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                />
+              </div>
+              {hipfire && (
+                <div className="space-y-2">
+                  <HotkeySelector value={hipfireKey} onValueChange={setHipfireKey} placeholder="Set hotkey" />
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
+            <CardHeader>
+              <CardTitle className="text-green-400 flex items-center">
+                <Eye className="w-5 h-5 mr-2" />
+                Zoom
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-white">Enable Zoom</p>
+                  <p className="text-xs text-gray-500">To activate the Zoom assign a hotkey.</p>
+                </div>
+                <Switch
+                  checked={zoom}
+                  onCheckedChange={setZoom}
+                  className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                />
+              </div>
+              {zoom && (
+                <div className="space-y-2">
+                  <HotkeySelector
+                    value={zoomKey}
+                    onValueChange={setZoomKey}
+                    placeholder="Set hotkey"
+                  />
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
+            <CardHeader>
+              <CardTitle className="text-green-400 flex items-center">
+                <Palette className="w-5 h-5 mr-2" />
+                Theme Selector
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-sm font-medium text-white">Select a theme to customize the interface.</p>
+              <p className="text-xs text-gray-500">Your choice will apply immediately.</p>
+              <Select value={selectedTheme} onValueChange={setSelectedTheme}>
+                <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-9">
+                  <SelectValue placeholder="Choose theme" />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-600 text-white">
+                  {themeOptions.map((t) => (
+                    <SelectItem
+                      key={t.value}
+                      value={t.value}
+                      className="text-white focus:bg-gray-700 focus:text-white"
+                    >
+                      {t.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
+            <CardHeader>
+              <CardTitle className="text-green-400 flex items-center">
+                <Volume2 className="w-5 h-5 mr-2" />
+                Audio Settings
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-white">Sound Effects</p>
+                  <p className="text-xs text-gray-500">Play sound on toggle</p>
+                </div>
+                <Switch
+                  checked={soundEnabled}
+                  onCheckedChange={setSoundEnabled}
+                  className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-white">Voice Feedback</p>
+                  <p className="text-xs text-gray-500">Enable voice announcements</p>
+                </div>
+                <Switch
+                  checked={voicesEnabled}
+                  onCheckedChange={setVoicesEnabled}
+                  className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                />
+              </div>
+              {voicesEnabled && (
+                <div className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-white">Voice Volume</span>
+                      <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                        {voiceVolume[0]}%
+                      </Badge>
                     </div>
-                  )}
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Eye className="w-5 h-5 mr-2" />
-                    Zoom
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-white">Enable Zoom</p>
-                      <p className="text-xs text-gray-500">To activate the Zoom assign a hotkey.</p>
-                    </div>
-                    <Switch
-                      checked={zoom}
-                      onCheckedChange={setZoom}
-                      className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                    <Slider
+                      value={voiceVolume}
+                      onValueChange={setVoiceVolume}
+                      min={0}
+                      max={100}
+                      step={1}
+                      className="w-full"
                     />
                   </div>
-                  {zoom && (
-                    <div className="space-y-2">
-                      <HotkeySelector
-                        value={zoomKey}
-                        onValueChange={setZoomKey}
-                        placeholder="Set hotkey"
-                      />
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Palette className="w-5 h-5 mr-2" />
-                    Theme Selector
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm font-medium text-white">Select a theme to customize the interface.</p>
-                  <p className="text-xs text-gray-500">Your choice will apply immediately.</p>
-                  <Select value={selectedTheme} onValueChange={setSelectedTheme}>
-                    <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-9">
-                      <SelectValue placeholder="Choose theme" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-600 text-white">
-                      {themeOptions.map((t) => (
-                        <SelectItem
-                          key={t.value}
-                          value={t.value}
-                          className="text-white focus:bg-gray-700 focus:text-white"
-                        >
-                          {t.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Volume2 className="w-5 h-5 mr-2" />
-                    Audio Settings
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-white">Sound Effects</p>
-                      <p className="text-xs text-gray-500">Play sound on toggle</p>
-                    </div>
-                    <Switch
-                      checked={soundEnabled}
-                      onCheckedChange={setSoundEnabled}
-                      className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-white">Voice Feedback</p>
-                      <p className="text-xs text-gray-500">Enable voice announcements</p>
-                    </div>
-                    <Switch
-                      checked={voicesEnabled}
-                      onCheckedChange={setVoicesEnabled}
-                      className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
-                    />
-                  </div>
-                   <div className="mb-4">
-                     <h4 className="text-base font-medium text-gray-400 mb-1">Sound Effects</h4>
-                     <p className="text-sm text-gray-300 mb-4">Play sound on toggle</p>
-                   </div>
-
-{voicesEnabled && (
-  <div className="space-y-4">
-    <div className="space-y-3">
-      <div className="flex justify-between items-center">
-        <span className="text-sm font-medium text-white">Voice Volume</span>
-        <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-          {voiceVolume[0]}%
-        </Badge>
-      </div>
-
-      {/* ── Slider para elegir el volumen ── */}
-      <Slider
-        value={voiceVolume}
-        onValueChange={setVoiceVolume}
-        min={0}
-        max={100}
-        step={1}
-        className="w-full"
-      />
-    </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </TabsContent>
+    </Tabs>
   </div>
-)}
-
-                  
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-        </Tabs>
-      </div>
-    </div>
-  );
+</div>
+);
 }
