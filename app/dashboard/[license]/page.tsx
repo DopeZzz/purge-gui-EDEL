@@ -1248,37 +1248,31 @@ export default function DashboardPage() {
                      <h4 className="text-base font-medium text-gray-400 mb-1">Sound Effects</h4>
                      <p className="text-sm text-gray-300 mb-4">Play sound on toggle</p>
                    </div>
-                  {voicesEnabled && (
-                    <div className="space-y-4">
-                      <div>
-                        <label className="text-sm font-medium text-white">Voice Selection</label>
-                        <Select value={selectedVoice} onValueChange={setSelectedVoice}>
-                          <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-9 mt-1">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent className="bg-gray-800 border-gray-600 text-white">
-                            {voiceOptions.map((voice) => (
-                              <SelectItem
-                                key={voice}
-                                value={voice}
-                                className="text-white focus:bg-gray-700 focus:text-white"
-                              >
-                                {voice}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
-                        <div className="flex justify-between items-center mb-2">
-                          <label className="text-sm font-medium text-white">Voice Volume</label>
-                          <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-                            {voiceVolume[0]}%
-                          </Badge>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+
+{voicesEnabled && (
+  <div className="space-y-4">
+    <div className="space-y-3">
+      <div className="flex justify-between items-center">
+        <span className="text-sm font-medium text-white">Voice Volume</span>
+        <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+          {voiceVolume[0]}%
+        </Badge>
+      </div>
+
+      {/* ── Slider para elegir el volumen ── */}
+      <Slider
+        value={voiceVolume}
+        onValueChange={setVoiceVolume}
+        min={0}
+        max={100}
+        step={1}
+        className="w-full"
+      />
+    </div>
+  </div>
+)}
+
+                  
                 </CardContent>
               </Card>
             </div>
