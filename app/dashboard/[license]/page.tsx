@@ -1193,7 +1193,7 @@ export default function DashboardPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-xs text-gray-500">Select a theme to customize the interface.</p>
+                  <p className="text-sm font-medium text-white">Select a theme to customize the interface.</p>
                   <p className="text-xs text-gray-500">Your choice will apply immediately.</p>
                   <Select value={selectedTheme} onValueChange={setSelectedTheme}>
                     <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-9">
