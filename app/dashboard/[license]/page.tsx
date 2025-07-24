@@ -1322,9 +1322,9 @@ Barrel
                         onChange={(e) => setSelectedVoice(e.target.value)}
                         className="bg-gray-800 border border-gray-600 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                       >
-                        <option value="john">John</option>
-                        <option value="britney">Britney</option>
-                        <option value="granpa">Granpa</option>
+                        <option value="John">John</option>
+                        <option value="Brittney">Brittney</option>
+                        <option value="Grandpa">Grandpa</option>
                       </select>
                     </div>
                     <p className="text-xs text-gray-400">
@@ -1342,4 +1342,4 @@ Barrel
   </div>
 </div>
 );
-} 
+}
