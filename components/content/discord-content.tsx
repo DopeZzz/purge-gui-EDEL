@@ -13,7 +13,7 @@ export function DiscordContent() {
         </h1>
         <p className="text-gray-300 text-lg">
           Join our active community for instant support, updates, feature requests, and to connect with other Purge 2.0
-          users worldwide.
+          users.
         </p>
       </div>
 
@@ -22,16 +22,15 @@ export function DiscordContent() {
           <div className="w-16 h-16 bg-[#5865F2] rounded-full flex items-center justify-center mx-auto mb-6">
             <MessageCircle className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-2xl font-semibold text-white mb-4">Main Discord Server</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">Public Discord Server</h2>
           <p className="text-gray-300 mb-6 text-base">
-            Primary community hub with general support, discussions, announcements, and community events. Perfect for
-            new users and general questions.
+            Primary community hub with general support, discussions, announcements, and community events. 
           </p>
           <Button
             className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-3 font-semibold w-full text-base"
-            onClick={() => window.open("https://discord.gg/purge2-main", "_blank")}
+            onClick={() => window.open("https://discord.gg/BZCA4fNceS", "_blank")}
           >
-            Join Main Server
+            Join Public Server
           </Button>
         </div>
 
@@ -39,16 +38,16 @@ export function DiscordContent() {
           <div className="w-16 h-16 bg-[#00ff88] rounded-full flex items-center justify-center mx-auto mb-6">
             <Shield className="w-8 h-8 text-black" />
           </div>
-          <h2 className="text-2xl font-semibold text-white mb-4">VIP Discord Server</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">Private Discord Server</h2>
           <p className="text-gray-300 mb-6 text-base">
             Exclusive server for premium users with priority support, beta features, advanced configurations, and direct
             developer access.
           </p>
           <Button
             className="bg-[#00ff88] hover:bg-[#00cc6a] text-black px-8 py-3 font-semibold w-full text-base"
-            onClick={() => window.open("https://discord.gg/purge2-vip", "_blank")}
+            onClick={() => window.open("https://discord.gg/hJKKdbBFDE", "_blank")}
           >
-            Join VIP Server
+            Join Private Server
           </Button>
         </div>
       </div>
@@ -144,25 +143,25 @@ export function DiscordContent() {
       <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
         <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-3">
           <Shield className="w-6 h-6 text-[#00ff88]" />
-          Server Rules & Guidelines
+          Discord Rules
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <ul className="space-y-3 text-gray-300">
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white text-base">Respectful Communication:</strong>
+                <strong className="text-white text-base">No Spamming:</strong>
                 <p className="text-sm text-gray-400 mt-1">
-                  Be respectful to all community members and maintain a positive environment
+                  Avoid flooding channels with messages, emojis, or tags.
                 </p>
               </div>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white text-base">No Spam Policy:</strong>
+                <strong className="text-white text-base">Use Appropriate Channels:</strong>
                 <p className="text-sm text-gray-400 mt-1">
-                  Avoid spam, excessive self-promotion, or repetitive messages
+                  Stick to the intended topic of each channel.
                 </p>
               </div>
             </li>
@@ -171,18 +170,18 @@ export function DiscordContent() {
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white text-base">Channel Guidelines:</strong>
+                <strong className="text-white text-base">No NSFW Content:</strong>
                 <p className="text-sm text-gray-400 mt-1">
-                  Keep discussions relevant to their respective channels and topics
+                  Do not share inappropriate or adult content.
                 </p>
               </div>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white text-base">Content Restrictions:</strong>
+                <strong className="text-white text-base">Respect Others:</strong>
                 <p className="text-sm text-gray-400 mt-1">
-                  No sharing of competing products or unauthorized third-party tools
+                  Harassment, hate speech, and toxic behavior will not be tolerated.
                 </p>
               </div>
             </li>
