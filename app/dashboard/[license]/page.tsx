@@ -126,9 +126,9 @@ export default function DashboardPage() {
     
     // Mapeo de nombres de armas del sistema a nombres de archivos
     const weaponFileMap: Record<string, string> = {
-      "Assault Rifle": "Assault Rifle",
+      "Assault Rifle": "Assault Riffle", // Note: matches the actual file name with "Riffle"
       "Custom SMG": "Custom SMG", 
-      "HighCaliber Revolver": "Highcaliber Revolver",
+      "HighCaliber Revolver": "Highcaliber Revolver", // Note: no space in "Highcaliber"
       "HMLMG": "HMLMG",
       "LR-300": "LR-300",
       "M249": "M249",
@@ -137,8 +137,8 @@ export default function DashboardPage() {
       "MP5A4": "MP5A4",
       "Python": "Python",
       "Revolver": "Revolver",
-      "SemiAutomatic Rifle": "Semiautomatic Rifle", 
-      "SemiAutomatic Pistol": "Semiautomatic Pistol",
+      "SemiAutomatic Rifle": "Semiautomatic Rifle", // Note: no capital A in "automatic"
+      "SemiAutomatic Pistol": "Semiautomatic Pistol", // Note: no capital A in "automatic"
       "SKS": "SKS",
       "Handmade SMG": "Handmade SMG",
       "Thompson": "Thompson",
@@ -149,10 +149,10 @@ export default function DashboardPage() {
     const audioPath = `/voices/${selectedVoice.toLowerCase()}/${fileName}.mp3`
     
     // Crear y reproducir audio
-    const audio = new Audio(audioPath)
+        console.error(`Could not play voice for ${weaponName} (${audioPath}):`, error)
     audio.volume = 0.5 // Volumen al 50%
     audio.play().catch(error => {
-      console.warn(`Could not play voice for ${weaponName}:`, error)
+      console.error(`Error creating audio for ${weaponName} (${audioPath}):`, error)
     })
   }
   const [hipfireKey, setHipfireKey] = useState("")
