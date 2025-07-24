@@ -149,7 +149,7 @@ export default function DashboardPage() {
     const audioPath = `/voices/${selectedVoice.toLowerCase()}/${fileName}.mp3`
     
     // Crear y reproducir audio
-        console.error(`Could not play voice for ${weaponName} (${audioPath}):`, error)
+      console.error(`Could not play voice for ${weaponName} (${audioPath}):`, error)
     audio.volume = 0.5 // Volumen al 50%
     audio.play().catch(error => {
       console.error(`Error creating audio for ${weaponName} (${audioPath}):`, error)
