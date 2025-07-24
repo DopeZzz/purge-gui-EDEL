@@ -76,55 +76,6 @@ export function ConfigureContent() {
             </ul>
           </div>
 
-          <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
-            <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-3">
-              <Settings className="w-6 h-6 text-[#00ff88]" />
-              Advanced Configuration
-            </h2>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-3">
-                <span className="text-[#00ff88] mt-1">•</span>
-                <div>
-                  <strong className="text-white text-base">Profile Management:</strong>
-                  <p className="text-sm mt-1">
-                    Create multiple configuration profiles for different game modes. Use "Competitive" profile for
-                    ranked matches with lower randomness, and "Casual" profile for regular gameplay with higher
-                    variation.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#00ff88] mt-1">•</span>
-                <div>
-                  <strong className="text-white text-base">Backup Settings:</strong>
-                  <p className="text-sm mt-1">
-                    Regularly backup your configuration files to avoid losing custom settings. Export your profiles
-                    before major updates and store them in a safe location for easy restoration.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#00ff88] mt-1">•</span>
-                <div>
-                  <strong className="text-white text-base">Custom Weapon Profiles:</strong>
-                  <p className="text-sm mt-1">
-                    Fine-tune individual weapon settings beyond the default profiles. Adjust recoil compensation, aim
-                    smoothness, and trigger delays for each weapon type to match your playstyle perfectly.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#00ff88] mt-1">•</span>
-                <div>
-                  <strong className="text-white text-base">Hotkey Customization:</strong>
-                  <p className="text-sm mt-1">
-                    Set up custom hotkeys for quick profile switching, temporary disable functions, and emergency panic
-                    modes. Assign keys that don't conflict with your game bindings for seamless operation.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
         </div>
 
         <div className="space-y-6 order-1 xl:order-2">
@@ -206,30 +157,6 @@ export function ConfigureContent() {
             </ul>
           </div>
 
-          <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
-            <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-3">
-              <Keyboard className="w-6 h-6 text-[#00ff88]" />
-              Keybind Configuration
-            </h2>
-            <div className="grid grid-cols-1 gap-4 text-gray-300">
-              <div className="flex justify-between items-center p-3 bg-[#2a3284]/20 rounded-lg">
-                <span className="text-base">Toggle Script On/Off:</span>
-                <code className="bg-[#2a3284]/40 px-3 py-2 rounded text-[#00ff88] font-mono">F1</code>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-[#2a3284]/20 rounded-lg">
-                <span className="text-base">Aim Assistance Key:</span>
-                <code className="bg-[#2a3284]/40 px-3 py-2 rounded text-[#00ff88] font-mono">Right Mouse</code>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-[#2a3284]/20 rounded-lg">
-                <span className="text-base">Settings Menu:</span>
-                <code className="bg-[#2a3284]/40 px-3 py-2 rounded text-[#00ff88] font-mono">Insert</code>
-              </div>
-              <div className="flex justify-between items-center p-3 bg-[#2a3284]/20 rounded-lg">
-                <span className="text-base">Emergency Panic Key:</span>
-                <code className="bg-[#2a3284]/40 px-3 py-2 rounded text-[#00ff88] font-mono">F4</code>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
