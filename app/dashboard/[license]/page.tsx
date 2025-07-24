@@ -68,13 +68,6 @@ export default function DashboardPage() {
     }
   }, [])
 
-  // Reproducir voz cuando cambia el arma seleccionada
-  useEffect(() => {
-    if (selectedWeapon && selectedWeapon !== "__NONE__") {
-      playWeaponVoice(selectedWeapon)
-    }
-  }, [selectedWeapon, selectedVoice])
-
   const autodetectAllowed = useMemo(() => {
     if (!licenseType) return true
     return !['WEEK', 'TRIAL', 'MONTH', 'LIFETIME'].includes(
@@ -222,6 +215,13 @@ export default function DashboardPage() {
   const [voiceVolume, setVoiceVolume] = useState([100])
   const [soundEffects, setSoundEffects] = useState(true)
 
+  // Reproducir voz cuando cambia el arma seleccionada
+  useEffect(() => {
+    if (selectedWeapon && selectedWeapon !== "__NONE__") {
+      playWeaponVoice(selectedWeapon)
+    }
+  }, [selectedWeapon, selectedVoice])
+  
   const applyTheme = useCallback(
     (themeValue: string) => {
       const theme = themeOptions.find((th) => th.value === themeValue)
