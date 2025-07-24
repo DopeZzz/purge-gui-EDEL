@@ -959,44 +959,6 @@ export default function DashboardPage() {
                         }
                         placeholder="Set hotkey"
                       />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Keyboard className="w-5 h-5 mr-2" />
-                    Barrel Binds
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  {BARREL_OPTIONS.map((opt) => (
-                    <div key={opt.value} className="flex items-center justify-between space-x-2">
-                      <span>{opt.display}</span>
-                      <HotkeySelector
-                        value={barrelHotkeys[opt.value] || ""}
-                        onValueChange={(k) =>
-                          setBarrelHotkeys((p) => ({ ...p, [opt.value]: k }))
-                        }
-                        placeholder="Set hotkey"
-                      />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-          {autodetectAllowed && (
-            <TabsContent value="autodetect" className="mt-6">
-              <div className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {/* Left Column */}
-                  <div className="space-y-8">
-                    {/* Hipfire Card */}
-                    <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
-                      <CardHeader className="pb-4">
-                        <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
                           <Target className="w-6 h-6 text-green-400" />
                           Hipfire
                         </CardTitle>
