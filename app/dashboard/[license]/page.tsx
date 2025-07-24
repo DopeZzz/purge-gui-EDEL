@@ -554,9 +554,12 @@ return (
       <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
         Purge 2.0
       </h1>
-      <p className="text-gray-400 mb-6">Rust Cloud Scripting - License: <span className="text-green-400 font-semibold">{licenseKey}</span></p>
-              <span style={{ color: `hsl(var(--accent))` }} className="font-semibold">{licenseKey}</span></p>
-      
+      <p className="text-gray-400 mb-6">
+        Rust Cloud Scripting – License:&nbsp;
+        <span style={{ color: `hsl(var(--accent))` }} className="font-semibold">
+          {licenseKey}
+        </span>
+      </p>      
       {/* API Connection Status */}
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border">
         {apiConnectionStatus === "pending" ? (
@@ -1237,14 +1240,6 @@ return (
                           backgroundColor: `hsl(var(--accent) / 0.15)`,
                           borderColor: `hsl(var(--accent) / 0.3)`
                         }}
-                      >
-                        variant="secondary"
-                        style={{
-                          color: `hsl(var(--accent))`,
-                          backgroundColor: `hsl(var(--accent) / 0.15)`,
-                          borderColor: `hsl(var(--accent) / 0.3)`
-                        }}
-                      >
                         {voiceVolume[0]}%
                       </Badge>
                     </div>
