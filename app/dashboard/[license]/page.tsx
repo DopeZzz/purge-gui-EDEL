@@ -569,7 +569,6 @@ return (
           </>
         ) : apiConnectionStatus === "connected" ? (
           <>
-            <Wifi className="w-4 h-4 text-green-400" />
             <Wifi className="w-4 h-4" style={{ color: `hsl(var(--accent))` }} />
             <span style={{ color: `hsl(var(--accent))` }} className="font-medium">API Connection: Active & Connected</span>
           </>
@@ -627,14 +626,14 @@ return (
       <Card className="bg-gray-900/50 border-gray-700/50 text-center">
         <CardContent className="p-4">
           <div className="flex items-center justify-center mb-2">
-            <Radar className="w-5 h-5 text-blue-400 mr-2" />
+            <Radar className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
             <span className="text-sm font-medium">Auto Detection</span>
           </div>
           <Switch
             checked={autoDetection}
             onCheckedChange={setAutoDetection}
             disabled={!autodetectAllowed}
-            className="data-[state=checked]:bg-blue-500"
+            style={{ backgroundColor: autoDetection ? `hsl(var(--accent))` : undefined }}
           />
         </CardContent>
       </Card>
@@ -662,10 +661,15 @@ return (
       <Card className="bg-gray-900/50 border-gray-700/50 text-center">
         <CardContent className="p-4">
           <div className="flex items-center justify-center mb-2">
-            <Eye className="w-5 h-5 text-blue-400 mr-2" />
+            <Eye className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
             <span className="text-xs font-medium">Scope Selected</span>
           </div>
-          <Badge variant="secondary" className="text-blue-400 bg-blue-900/50 border-blue-400/30 text-xs">
+          <Badge variant="secondary"
+        style={{ color: `hsl(var(--accent))`,
+                 backgroundColor: `hsl(var(--accent) / 0.15)`,
+                 borderColor: `hsl(var(--accent) / 0.3)` }}
+        className="text-xs">
+
             {getDisplayScope(selectedScope)}
           </Badge>
         </CardContent>
@@ -674,10 +678,14 @@ return (
       <Card className="bg-gray-900/50 border-gray-700/50 text-center">
         <CardContent className="p-4">
           <div className="flex items-center justify-center mb-2">
-            <Zap className="w-5 h-5 text-purple-400 mr-2" />
+            <Zap className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
             <span className="text-xs font-medium">Barrel Selected</span>
           </div>
-          <Badge variant="secondary" className="text-purple-400 bg-purple-900/50 border-purple-400/30 text-xs">
+        <Badge variant="secondary"
+                style={{ color: `hsl(var(--accent))`,
+                         backgroundColor: `hsl(var(--accent) / 0.15)`,
+                         borderColor: `hsl(var(--accent) / 0.3)` }}
+                className="text-xs">
             {getDisplayBarrel(selectedBarrel)}
           </Badge>
         </CardContent>
