@@ -878,24 +878,28 @@ export default function DashboardPage() {
                       placeholder="Set toggle key"
                     />
                   </CardHeader>
-                  <CardContent className="pt-0">
-                    </div>
-
+                 <CardContent className="pt-0">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <span className="text-white text-base">Voice Volume</span>
-                        <span className="text-gray-400 text-sm">50</span>
+                        <span className="text-gray-400 text-sm">{voiceVolume[0]}</span>
                       </div>
+                  
                       <Slider
-                        value={[50]}
-                        onValueChange={() => {}}
+                        value={voiceVolume}
+                        onValueChange={setVoiceVolume}
                         max={100}
                         min={0}
                         step={1}
                         className="w-full"
                       />
-                    <p className="text-xs text-gray-500">Select the key to enable or disable auto detection</p>
+                  
+                      <p className="text-xs text-gray-500">
+                        Select the key to enable or disable auto detection
+                      </p>
+                    </div>
                   </CardContent>
+
                 </Card>
               )}
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 md:col-span-2">
