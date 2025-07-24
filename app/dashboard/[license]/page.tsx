@@ -476,7 +476,12 @@ export default function DashboardPage() {
     hipfireKey,
     zoom,
     zoomKey,
-            )}
+      scriptToggleKey,
+  autoDetectToggleKey,
+  autoDetection,
+  scriptEnabled,
+  handleSendConfiguration,
+])
             <TabsTrigger
               value="miscellaneous"
               className="data-[state=active]:bg-green-500 data-[state=active]:text-white transition-all duration-200"
