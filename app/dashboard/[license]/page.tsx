@@ -99,7 +99,6 @@ export default function DashboardPage() {
 
   // Script/Feature states (no longer control connection badge)
   const [autoDetection, setAutoDetection] = useState(true)
-  const [selectedVoice, setSelectedVoice] = useState("john")
   const [scriptEnabled, setScriptEnabled] = useState(false)
 
   // Configuration states
