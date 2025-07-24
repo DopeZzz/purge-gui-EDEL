@@ -1279,6 +1279,7 @@ Barrel
                 />
               </div>
               {voicesEnabled && (
+              <>
                 <div className="space-y-4">
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
@@ -1331,6 +1332,7 @@ Barrel
                     </p>
                   </div>
                 </div>
+                </>
               )}
             </CardContent>
           </Card>
