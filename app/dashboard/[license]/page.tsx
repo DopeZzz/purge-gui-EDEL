@@ -482,7 +482,10 @@ export default function DashboardPage() {
   scriptEnabled,
   handleSendConfiguration,
 ]);
-          <TabsContent value="controls" className="mt-6">
+
+return ( 
+  <Tabs value={activeTab} onValueChange={setActiveTab}> 
+    <TabsContent value="controls" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <CardHeader className="pb-4">
@@ -1146,5 +1149,5 @@ export default function DashboardPage() {
         </Tabs>
       </div>
     </div>
-  )
+  );
 }
