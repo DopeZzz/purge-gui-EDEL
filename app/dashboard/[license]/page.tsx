@@ -1068,7 +1068,7 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
             </div>
-            <div className="grid grid-cols-1 mt-6">
+            <div className="grid grid-cols-1 mt-6 md:w-1/2 mx-auto">
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-green-400 flex items-center">
