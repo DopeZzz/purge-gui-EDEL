@@ -121,7 +121,7 @@ export default function DashboardPage() {
   const [hipfire, setHipfire] = useState(false)
 
   // Función para reproducir audio de voz
-  const playWeaponVoice = (weaponName: string) => {
+  const playWeaponVoice = async (weaponName: string) => {
     if (!selectedVoice || weaponName === "__NONE__") return
     
     // Mapeo de nombres de armas del sistema a nombres de archivos
@@ -156,7 +156,7 @@ export default function DashboardPage() {
     } catch (err) {
       console.error(`Could not play voice for ${weaponName} (${audioPath}):`, err)
     }
-
+}
   const [hipfireKey, setHipfireKey] = useState("")
   const [zoom, setZoom] = useState(false)
   const [zoomKey, setZoomKey] = useState("")
