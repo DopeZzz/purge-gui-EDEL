@@ -476,7 +476,6 @@ export default function DashboardPage() {
     hipfireKey,
     zoom,
     zoomKey,
-              </TabsTrigger>
             )}
             <TabsTrigger
               value="miscellaneous"
