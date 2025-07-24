@@ -133,11 +133,41 @@ export default function DashboardPage() {
   const [configLoaded, setConfigLoaded] = useState(false)
 
   const themeOptions = [
-    { value: "default", label: "Default", primary: "142 76% 36%", secondary: "203 39% 20%" },
-    { value: "sunset", label: "Sunset", primary: "14 90% 50%", secondary: "30 90% 40%" },
-    { value: "ocean", label: "Ocean", primary: "198 90% 50%", secondary: "171 80% 40%" },
-    { value: "amethyst", label: "Amethyst", primary: "262 52% 47%", secondary: "292 60% 40%" },
-    { value: "mono", label: "Mono", primary: "0 0% 50%", secondary: "0 0% 30%" },
+    { 
+      value: "default", 
+      label: "Default", 
+      primary: "142 76% 36%", 
+      secondary: "203 39% 20%", 
+      accent: "142 76% 46%" 
+    },
+    { 
+      value: "sunset", 
+      label: "Sunset", 
+      primary: "14 90% 50%", 
+      secondary: "30 90% 40%", 
+      accent: "45 100% 60%" 
+    },
+    { 
+      value: "ocean", 
+      label: "Ocean", 
+      primary: "198 90% 50%", 
+      secondary: "171 80% 40%", 
+      accent: "180 100% 50%" 
+    },
+    { 
+      value: "amethyst", 
+      label: "Amethyst", 
+      primary: "262 52% 47%", 
+      secondary: "292 60% 40%", 
+      accent: "320 70% 60%" 
+    },
+    { 
+      value: "mono", 
+      label: "Mono", 
+      primary: "0 0% 50%", 
+      secondary: "0 0% 30%", 
+      accent: "0 0% 70%" 
+    },
   ] as const
   const [selectedTheme, setSelectedTheme] = useState<string>(themeOptions[0].value)
   const [backgroundGradient, setBackgroundGradient] = useState<string>("")
@@ -155,27 +185,28 @@ export default function DashboardPage() {
       if (theme) {
         document.documentElement.style.setProperty("--primary", theme.primary)
         document.documentElement.style.setProperty("--secondary", theme.secondary)
+        document.documentElement.style.setProperty("--accent", theme.accent)
         
-        // Set background gradients for each theme
+        // Set smooth background gradients for each theme with multiple color stops
         let gradient = ""
         switch (themeValue) {
           case "default":
-            gradient = "linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%)"
+            gradient = "linear-gradient(135deg, #0f172a 0%, #1e293b 15%, #334155 30%, #475569 45%, #334155 60%, #1e293b 75%, #0f172a 90%, #0f172a 100%)"
             break
           case "sunset":
-            gradient = "linear-gradient(135deg, #451a03 0%, #7c2d12 25%, #ea580c 15%, #7c2d12 75%, #451a03 100%)"
+            gradient = "linear-gradient(135deg, #451a03 0%, #7c2d12 15%, #ea580c 25%, #fb923c 40%, #ea580c 55%, #7c2d12 70%, #92400e 85%, #451a03 100%)"
             break
           case "ocean":
-            gradient = "linear-gradient(135deg, #0c4a6e 0%, #0369a1 25%, #0ea5e9 15%, #0369a1 75%, #0c4a6e 100%)"
+            gradient = "linear-gradient(135deg, #0c4a6e 0%, #0369a1 15%, #0ea5e9 25%, #38bdf8 40%, #0ea5e9 55%, #0369a1 70%, #075985 85%, #0c4a6e 100%)"
             break
           case "amethyst":
-            gradient = "linear-gradient(135deg, #581c87 0%, #7c3aed 25%, #a855f7 15%, #7c3aed 75%, #581c87 100%)"
+            gradient = "linear-gradient(135deg, #581c87 0%, #7c3aed 15%, #a855f7 25%, #c084fc 40%, #a855f7 55%, #7c3aed 70%, #6d28d9 85%, #581c87 100%)"
             break
           case "mono":
-            gradient = "linear-gradient(135deg, #1f2937 0%, #374151 25%, #6b7280 15%, #374151 75%, #1f2937 100%)"
+            gradient = "linear-gradient(135deg, #1f2937 0%, #374151 15%, #4b5563 25%, #6b7280 40%, #4b5563 55%, #374151 70%, #1f2937 85%, #111827 100%)"
             break
           default:
-            gradient = "linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%)"
+            gradient = "linear-gradient(135deg, #0f172a 0%, #1e293b 15%, #334155 30%, #475569 45%, #334155 60%, #1e293b 75%, #0f172a 90%, #0f172a 100%)"
         }
         setBackgroundGradient(gradient)
       }
