@@ -984,7 +984,7 @@ export default function DashboardPage() {
             </TabsContent>
           )}
           <TabsContent value="miscellaneous" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
                 <CardHeader>
                   <CardTitle className="text-green-400 flex items-center">
@@ -1041,34 +1041,6 @@ export default function DashboardPage() {
                   )}
                 </CardContent>
               </Card>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
-                <CardHeader>
-                  <CardTitle className="text-green-400 flex items-center">
-                    <Palette className="w-5 h-5 mr-2" />
-                    Theme Selector
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <Select value={selectedTheme} onValueChange={setSelectedTheme}>
-                    <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-9">
-                      <SelectValue placeholder="Choose theme" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-600 text-white">
-                      {themeOptions.map((t) => (
-                        <SelectItem
-                          key={t.value}
-                          value={t.value}
-                          className="text-white focus:bg-gray-700 focus:text-white"
-                        >
-                          {t.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </CardContent>
-              </Card>
-            </div>
-            <div className="grid grid-cols-1 mt-6 md:w-1/2 mx-auto">
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-green-400 flex items-center">
@@ -1077,7 +1049,7 @@ export default function DashboardPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-between gap-4 w-full">
                     <div>
                       <p className="text-sm font-medium text-white">Sound Effects</p>
                       <p className="text-xs text-gray-500">Play sound on toggle</p>
@@ -1088,7 +1060,7 @@ export default function DashboardPage() {
                       className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
                     />
                   </div>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-between gap-4 w-full">
                     <div>
                       <p className="text-sm font-medium text-white">Weapon Voices</p>
                       <p className="text-xs text-gray-500">Speak toggle state</p>
@@ -1116,7 +1088,7 @@ export default function DashboardPage() {
                         ))}
                       </SelectContent>
                     </Select>
-                    <div className="flex items-center gap-2 flex-1">
+                    <div className="flex items-center gap-2 w-1/2">
                       <span className="text-sm text-gray-300 whitespace-nowrap">Volume</span>
                       <Slider
                         value={voiceVolume}
@@ -1128,6 +1100,35 @@ export default function DashboardPage() {
                       />
                     </div>
                   </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
+                <CardHeader>
+                  <CardTitle className="text-green-400 flex items-center">
+                    <Palette className="w-5 h-5 mr-2" />
+                    Theme Selector
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-xs text-gray-500">Select a theme to customize the interface.</p>
+                  <p className="text-xs text-gray-500">Your choice will apply immediately.</p>
+                  <Select value={selectedTheme} onValueChange={setSelectedTheme}>
+                    <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-9">
+                      <SelectValue placeholder="Choose theme" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-gray-800 border-gray-600 text-white">
+                      {themeOptions.map((t) => (
+                        <SelectItem
+                          key={t.value}
+                          value={t.value}
+                          className="text-white focus:bg-gray-700 focus:text-white"
+                        >
+                          {t.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </CardContent>
               </Card>
             </div>
