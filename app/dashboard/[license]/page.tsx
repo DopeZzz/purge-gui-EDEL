@@ -1099,7 +1099,7 @@ export default function DashboardPage() {
                           <Palette className="w-6 h-6 text-green-400" />
                           Theme Selector
                         </CardTitle>
-                        <p className="text-gray-400 text-sm">Select a theme to customize the interface.</p>
+                        <p className="text-sm font-medium text-white">Select a theme to customize the interface.</p>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <p className="text-gray-300 text-sm">
