@@ -984,7 +984,7 @@ export default function DashboardPage() {
             </TabsContent>
           )}
           <TabsContent value="miscellaneous" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
                 <CardHeader>
                   <CardTitle className="text-green-400 flex items-center">
@@ -1048,7 +1048,9 @@ export default function DashboardPage() {
                     Theme Selector
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-2">
+                <CardContent className="space-y-4">
+                  <p className="text-xs text-gray-500">Select a theme to customize the interface.</p>
+                  <p className="text-xs text-gray-500">Your choice will apply immediately.</p>
                   <Select value={selectedTheme} onValueChange={setSelectedTheme}>
                     <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-9">
                       <SelectValue placeholder="Choose theme" />
@@ -1067,8 +1069,11 @@ export default function DashboardPage() {
                   </Select>
                 </CardContent>
               </Card>
+
+            
             </div>
             <div className="grid grid-cols-1 mt-6 md:w-1/2">
+
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-green-400 flex items-center">
