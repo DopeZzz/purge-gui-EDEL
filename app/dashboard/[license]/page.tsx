@@ -37,6 +37,7 @@ import {
   WifiOff,
   Loader2,
   Keyboard,
+  Palette,
   Power,
   Download,
   Palette,
