@@ -191,7 +191,7 @@ export default function DashboardPage() {
         let gradient = ""
         switch (themeValue) {
           case "default":
-            gradient = "linear-gradient(135deg, #0f172a 0%, #1e293b 15%, #334155 30%, #475569 45%, #334155 60%, #1e293b 75%, #0f172a 90%, #0f172a 100%)"
+            gradient = "linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #1e3a8a 50%, #1e293b 75%, #0f172a 100%)"
             break
           case "sunset":
             gradient = "linear-gradient(135deg, #451a03 0%, #7c2d12 15%, #ea580c 25%, #fb923c 40%, #ea580c 55%, #7c2d12 70%, #92400e 85%, #451a03 100%)"
