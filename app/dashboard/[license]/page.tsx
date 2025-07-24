@@ -555,6 +555,7 @@ return (
         Purge 2.0
       </h1>
       <p className="text-gray-400 mb-6">Rust Cloud Scripting - License: <span className="text-green-400 font-semibold">{licenseKey}</span></p>
+              <span style={{ color: `hsl(var(--accent))` }} className="font-semibold">{licenseKey}</span></p>
       
       {/* API Connection Status */}
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border">
@@ -566,7 +567,8 @@ return (
         ) : apiConnectionStatus === "connected" ? (
           <>
             <Wifi className="w-4 h-4 text-green-400" />
-            <span className="text-green-400 font-medium">API Connection: Active & Connected</span>
+            <Wifi className="w-4 h-4" style={{ color: `hsl(var(--accent))` }} />
+            <span style={{ color: `hsl(var(--accent))` }} className="font-medium">API Connection: Active & Connected</span>
           </>
         ) : (
           <>
@@ -580,14 +582,19 @@ return (
       <div className="flex justify-center gap-4 mt-6">
         <Button
           variant="outline"
-          className="border-green-400/50 text-green-400 hover:bg-green-400/10"
+          style={{ 
+            borderColor: `hsl(var(--accent) / 0.5)`, 
+            color: `hsl(var(--accent))`,
+          }}
+          className="hover:opacity-80"
           onClick={() => window.open('/docs', '_blank')}
         >
           <HelpCircle className="w-4 h-4 mr-2" />
           How to use?
         </Button>
         <Button
-          className="bg-green-400 hover:bg-green-500 text-black"
+          style={{ backgroundColor: `hsl(var(--accent))` }}
+          className="hover:opacity-90 text-black"
           onClick={() => window.open(`/dashboard/${licenseKey}/download`, '_blank')}
         >
           <Download className="w-4 h-4 mr-2" />
@@ -601,13 +608,15 @@ return (
       <Card className="bg-gray-900/50 border-gray-700/50 text-center">
         <CardContent className="p-4">
           <div className="flex items-center justify-center mb-2">
-            <Power className="w-5 h-5 text-green-400 mr-2" />
+            <Power className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
             <span className="text-sm font-medium">Script ON / OFF</span>
           </div>
           <Switch
             checked={scriptEnabled}
             onCheckedChange={handleScriptEnabledChange}
-            className="data-[state=checked]:bg-green-500"
+            style={{
+              backgroundColor: scriptEnabled ? `hsl(var(--accent))` : undefined
+            }}
           />
         </CardContent>
       </Card>
@@ -630,10 +639,18 @@ return (
       <Card className="bg-gray-900/50 border-gray-700/50 text-center">
         <CardContent className="p-4">
           <div className="flex items-center justify-center mb-2">
-            <Target className="w-5 h-5 text-green-400 mr-2" />
+            <Target className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
             <span className="text-xs font-medium">Weapon Selected</span>
           </div>
-          <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30 text-xs">
+          <Badge 
+            variant="secondary" 
+            style={{
+              color: `hsl(var(--accent))`,
+              backgroundColor: `hsl(var(--accent) / 0.15)`,
+              borderColor: `hsl(var(--accent) / 0.3)`
+            }}
+            className="text-xs"
+          >
             {getDisplayWeapon(selectedWeapon)}
           </Badge>
         </CardContent>
@@ -694,10 +711,17 @@ return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader className="pb-4">
-              <CardTitle className="text-green-400 flex items-center">
-                <Target className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Target className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Aim Settings
-                <Badge variant="outline" className="ml-auto text-xs border-green-400/50 text-green-400/80">
+                <Badge 
+                  variant="outline" 
+                  style={{
+                    borderColor: `hsl(var(--accent) / 0.5)`,
+                    color: `hsl(var(--accent) / 0.8)`
+                  }}
+                  className="ml-auto text-xs"
+                >
                   Precision
                 </Badge>
               </CardTitle>
@@ -706,7 +730,14 @@ return (
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">Sensitivity</span>
-                  <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                  <Badge 
+                    variant="secondary"
+                    style={{
+                      color: `hsl(var(--accent))`,
+                      backgroundColor: `hsl(var(--accent) / 0.15)`,
+                      borderColor: `hsl(var(--accent) / 0.3)`
+                    }}
+                  >
                     {sensitivity[0].toFixed(2)}
                   </Badge>
                 </div>
@@ -723,7 +754,14 @@ return (
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">Scope Sensitivity</span>
-                  <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                  <Badge 
+                    variant="secondary"
+                    style={{
+                      color: `hsl(var(--accent))`,
+                      backgroundColor: `hsl(var(--accent) / 0.15)`,
+                      borderColor: `hsl(var(--accent) / 0.3)`
+                    }}
+                  >
                     {scopeSensitivity[0].toFixed(2)}
                   </Badge>
                 </div>
@@ -741,10 +779,17 @@ return (
           </Card>
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader className="pb-4">
-              <CardTitle className="text-green-400 flex items-center">
-                <Settings className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Settings className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 General Settings
-                <Badge variant="outline" className="ml-auto text-xs border-green-400/50 text-green-400/80">
+                <Badge 
+                  variant="outline"
+                  style={{
+                    borderColor: `hsl(var(--accent) / 0.5)`,
+                    color: `hsl(var(--accent) / 0.8)`
+                  }}
+                  className="ml-auto text-xs"
+                >
                   Core
                 </Badge>
               </CardTitle>
@@ -753,7 +798,14 @@ return (
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">FOV</span>
-                  <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                  <Badge 
+                    variant="secondary"
+                    style={{
+                      color: `hsl(var(--accent))`,
+                      backgroundColor: `hsl(var(--accent) / 0.15)`,
+                      borderColor: `hsl(var(--accent) / 0.3)`
+                    }}
+                  >
                     {fov[0]}°
                   </Badge>
                 </div>
@@ -763,7 +815,14 @@ return (
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">Randomness</span>
-                  <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                  <Badge 
+                    variant="secondary"
+                    style={{
+                      color: `hsl(var(--accent))`,
+                      backgroundColor: `hsl(var(--accent) / 0.15)`,
+                      borderColor: `hsl(var(--accent) / 0.3)`
+                    }}
+                  >
                     {randomness[0]}%
                   </Badge>
                 </div>
@@ -778,8 +837,8 @@ return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Target className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Target className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Weapon
               </CardTitle>
             </CardHeader>
@@ -863,8 +922,8 @@ return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
-              <CardTitle className="text-green-400 flex items-center">
-                <Gamepad2 className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Gamepad2 className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Crouch Key
               </CardTitle>
               <HotkeySelector
@@ -879,8 +938,8 @@ return (
           </Card>
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
-              <CardTitle className="text-green-400 flex items-center">
-                <Target className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Target className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Aim Key
               </CardTitle>
               <HotkeySelector
@@ -895,8 +954,8 @@ return (
           </Card>
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
-              <CardTitle className="text-green-400 flex items-center">
-                <Power className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Power className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Script ON / OFF
               </CardTitle>
               <HotkeySelector
@@ -912,8 +971,8 @@ return (
           {autodetectAllowed && (
             <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
-                <CardTitle className="text-green-400 flex items-center">
-                  <Radar className="w-5 h-5 mr-2" />
+                <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                  <Radar className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                   Auto Detect
                 </CardTitle>
                 <HotkeySelector
@@ -931,8 +990,8 @@ return (
           )}
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 md:col-span-2">
             <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Keyboard className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Keyboard className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Weapon Binds
               </CardTitle>
             </CardHeader>
@@ -955,8 +1014,8 @@ return (
           </Card>
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Keyboard className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Keyboard className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Scope Binds
               </CardTitle>
             </CardHeader>
@@ -977,8 +1036,8 @@ return (
           </Card>
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Keyboard className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Keyboard className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Barrel Binds
               </CardTitle>
             </CardHeader>
@@ -1005,8 +1064,8 @@ return (
             {/* Detection Accuracy Card */}
             <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm max-w-2xl mx-auto">
               <CardHeader className="pb-4">
-                <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
-                  <Radar className="w-6 h-6 text-green-400" />
+                <CardTitle className="text-xl font-bold text-white flex items-center gap-3" style={{ color: `hsl(var(--accent))` }}>
+                  <Radar className="w-6 h-6" style={{ color: `hsl(var(--accent))` }} />
                   Detection Accuracy
                 </CardTitle>
                 <p className="text-gray-400 text-sm">Adjust detection sensitivity</p>
@@ -1040,8 +1099,8 @@ return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
             <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Target className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Target className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Hipfire
               </CardTitle>
             </CardHeader>
@@ -1054,7 +1113,10 @@ return (
                 <Switch
                   checked={hipfire}
                   onCheckedChange={setHipfire}
-                  className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                  style={{
+                    backgroundColor: hipfire ? `hsl(var(--accent) / 0.8)` : undefined
+                  }}
+                  className="data-[state=unchecked]:bg-gray-600"
                 />
               </div>
               {hipfire && (
@@ -1066,8 +1128,8 @@ return (
           </Card>
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
             <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Eye className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Eye className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Zoom
               </CardTitle>
             </CardHeader>
@@ -1080,7 +1142,10 @@ return (
                 <Switch
                   checked={zoom}
                   onCheckedChange={setZoom}
-                  className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                  style={{
+                    backgroundColor: zoom ? `hsl(var(--accent) / 0.8)` : undefined
+                  }}
+                  className="data-[state=unchecked]:bg-gray-600"
                 />
               </div>
               {zoom && (
@@ -1097,8 +1162,8 @@ return (
 
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
             <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Palette className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Palette className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Theme Selector
               </CardTitle>
             </CardHeader>
@@ -1126,8 +1191,8 @@ return (
 
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
             <CardHeader>
-              <CardTitle className="text-green-400 flex items-center">
-                <Volume2 className="w-5 h-5 mr-2" />
+              <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+                <Volume2 className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Audio Settings
               </CardTitle>
             </CardHeader>
@@ -1140,7 +1205,10 @@ return (
                 <Switch
                   checked={soundEnabled}
                   onCheckedChange={setSoundEnabled}
-                  className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                  style={{
+                    backgroundColor: soundEnabled ? `hsl(var(--accent) / 0.8)` : undefined
+                  }}
+                  className="data-[state=unchecked]:bg-gray-600"
                 />
               </div>
               <div className="flex items-center justify-between">
@@ -1151,7 +1219,10 @@ return (
                 <Switch
                   checked={voicesEnabled}
                   onCheckedChange={setVoicesEnabled}
-                  className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
+                  style={{
+                    backgroundColor: voicesEnabled ? `hsl(var(--accent) / 0.8)` : undefined
+                  }}
+                  className="data-[state=unchecked]:bg-gray-600"
                 />
               </div>
               {voicesEnabled && (
@@ -1159,7 +1230,21 @@ return (
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-white">Voice Volume</span>
-                      <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                      <Badge 
+                        variant="secondary"
+                        style={{
+                          color: `hsl(var(--accent))`,
+                          backgroundColor: `hsl(var(--accent) / 0.15)`,
+                          borderColor: `hsl(var(--accent) / 0.3)`
+                        }}
+                      >
+                        variant="secondary"
+                        style={{
+                          color: `hsl(var(--accent))`,
+                          backgroundColor: `hsl(var(--accent) / 0.15)`,
+                          borderColor: `hsl(var(--accent) / 0.3)`
+                        }}
+                      >
                         {voiceVolume[0]}%
                       </Badge>
                     </div>
