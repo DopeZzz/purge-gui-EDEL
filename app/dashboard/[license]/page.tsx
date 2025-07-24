@@ -893,6 +893,21 @@ export default function DashboardPage() {
                         step={1}
                         className="w-full"
                       />
+                      
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-white text-base">Voice Volume</span>
+                          <span className="text-gray-400 text-sm">{50}</span>
+                        </div>
+                        <Slider
+                          value={[50]}
+                          onValueChange={() => {}}
+                          max={100}
+                          min={0}
+                          step={1}
+                          className="w-full"
+                        />
+                      </div>
                   
                       <p className="text-xs text-gray-500">
                         Select the key to enable or disable auto detection
