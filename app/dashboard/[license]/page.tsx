@@ -484,6 +484,8 @@ export default function DashboardPage() {
 ]);
 
 return ( 
+<div className="min-h-screen bg-background">
+<div className="container mx-auto p-8">
   <Tabs value={activeTab} onValueChange={setActiveTab}> 
     <TabsContent value="controls" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
