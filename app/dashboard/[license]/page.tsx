@@ -1242,18 +1242,9 @@ export default function DashboardPage() {
                             {voiceVolume[0]}%
                           </Badge>
                         </div>
-                       <span className="text-white font-medium">Enable Sound Effects</span>
-                          max={100}
-                          step={1}
-                          className="w-full"
-                        />
                       </div>
                     </div>
                   )}
-                       <span className="text-white font-medium">Voice Feedback</span>
-              <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
-                    </SelectContent>
-                  </Select>
                 </CardContent>
               </Card>
             </div>
