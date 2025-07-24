@@ -140,6 +140,7 @@ export default function DashboardPage() {
     { value: "mono", label: "Mono", primary: "0 0% 50%", secondary: "0 0% 30%" },
   ] as const
   const [selectedTheme, setSelectedTheme] = useState<string>(themeOptions[0].value)
+  const [backgroundGradient, setBackgroundGradient] = useState<string>("")
 
   const voiceOptions = ["Brittany Voice", "Grandpa Voice", "Matt Voice"] as const
   const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0])
@@ -150,13 +151,36 @@ export default function DashboardPage() {
 
   const applyTheme = useCallback(
     (themeValue: string) => {
-      const t = themeOptions.find((th) => th.value === themeValue)
-      if (t) {
-        document.documentElement.style.setProperty("--primary", t.primary)
-        document.documentElement.style.setProperty("--secondary", t.secondary)
+      const theme = themeOptions.find((th) => th.value === themeValue)
+      if (theme) {
+        document.documentElement.style.setProperty("--primary", theme.primary)
+        document.documentElement.style.setProperty("--secondary", theme.secondary)
+        
+        // Set background gradients for each theme
+        let gradient = ""
+        switch (themeValue) {
+          case "default":
+            gradient = "linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%)"
+            break
+          case "sunset":
+            gradient = "linear-gradient(135deg, #451a03 0%, #7c2d12 25%, #ea580c 15%, #7c2d12 75%, #451a03 100%)"
+            break
+          case "ocean":
+            gradient = "linear-gradient(135deg, #0c4a6e 0%, #0369a1 25%, #0ea5e9 15%, #0369a1 75%, #0c4a6e 100%)"
+            break
+          case "amethyst":
+            gradient = "linear-gradient(135deg, #581c87 0%, #7c3aed 25%, #a855f7 15%, #7c3aed 75%, #581c87 100%)"
+            break
+          case "mono":
+            gradient = "linear-gradient(135deg, #1f2937 0%, #374151 25%, #6b7280 15%, #374151 75%, #1f2937 100%)"
+            break
+          default:
+            gradient = "linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%)"
+        }
+        setBackgroundGradient(gradient)
       }
     },
-    [themeOptions],
+    [themeOptions]
   )
 
   useEffect(() => {
@@ -484,7 +508,12 @@ export default function DashboardPage() {
 ]);
 
 return (
-<div className="min-h-screen bg-background">
+<div 
+  className="min-h-screen transition-all duration-500" 
+  style={{ 
+    background: backgroundGradient || "linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%)" 
+  }}
+>
   <div className="container mx-auto p-8">
     {/* Header */}
     <div className="text-center mb-12">
