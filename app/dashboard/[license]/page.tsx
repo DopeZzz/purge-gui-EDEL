@@ -875,8 +875,7 @@ return (
           </Card>
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader>
-              <CardTitle className="text-blue-400 flex items-center">
-                <Eye className="w-5 h-5 mr-2" />
+             <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>+   <Eye className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                 Scope
               </CardTitle>
             </CardHeader>
@@ -902,9 +901,9 @@ return (
           </Card>
           <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
             <CardHeader>
-              <CardTitle className="text-purple-400 flex items-center">
-                <Zap className="w-5 h-5 mr-2" />
-                Barrel
+ <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
+   <Zap className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
+Barrel
               </CardTitle>
             </CardHeader>
             <CardContent>
