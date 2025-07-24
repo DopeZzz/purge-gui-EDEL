@@ -487,21 +487,20 @@ export default function DashboardPage() {
     if (apiConnectionStatus === "connected") return "text-green-400 border-green-400"
     if (apiConnectionStatus === "pending") return "text-yellow-400 border-yellow-400"
     return "text-red-400 border-red-400"
-  }
+  };
 
   const getStatusText = () => {
     if (apiConnectionStatus === "connected") return "Active & Connected"
     if (apiConnectionStatus === "pending") return "Checking..."
     return "Disconnected"
-  }
+  };
 
   const getStatusIcon = () => {
     if (apiConnectionStatus === "connected") return <Wifi className="w-4 h-4 mr-2" />
     if (apiConnectionStatus === "pending") return <Loader2 className="w-4 h-4 mr-2 animate-spin" />
     return <WifiOff className="w-4 h-4 mr-2" />
-  }
-
-
+  };
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white p-6">
       <div className="max-w-7xl mx-auto">
