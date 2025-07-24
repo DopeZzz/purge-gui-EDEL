@@ -2,15 +2,18 @@
 
 import { Play, ExternalLink } from "lucide-react"
 
-export function YouTubeEmbed() {
-  const videoId = "gtFegSY36es"
-  const title = "Video Tutorial"
+interface YouTubeEmbedProps {
+  videoId: string
+  title: string
+}
+
+export function YouTubeEmbed({ videoId, title }: YouTubeEmbedProps) {
 
   return (
     <div className="bg-[#141b3c]/80 rounded-lg p-4 border border-[#2a3284]/40">
       <div className="flex items-center gap-2 mb-3">
         <Play className="w-4 h-4 text-[#00ff88]" />
-        <h3 className="text-white text-sm font-medium">Video Tutorial</h3>
+        <h3 className="text-white text-sm font-medium">{title}</h3>
       </div>
       <div className="aspect-video rounded-md overflow-hidden bg-black mb-3">
         <iframe
