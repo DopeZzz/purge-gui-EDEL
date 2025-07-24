@@ -1240,7 +1240,7 @@ return (
                           backgroundColor: `hsl(var(--accent) / 0.15)`,
                           borderColor: `hsl(var(--accent) / 0.3)`
                         }}
-                      
+                      >
                         {voiceVolume[0]}%
                       </Badge>
                     </div>
