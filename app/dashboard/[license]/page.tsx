@@ -950,37 +950,95 @@ export default function DashboardPage() {
                   ))}
                 </CardContent>
               </Card>
-            </div>
-          </TabsContent>
-          {autodetectAllowed && (
-            <TabsContent value="autodetect" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <CardHeader>
-                    <CardTitle className="text-green-400 flex items-center">
-                      <Radar className="w-5 h-5 mr-2" />
-                      Detection Accuracy
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Accuracy</span>
-                      <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-                        {detectionAccuracy[0].toFixed(1)}
-                      </Badge>
-                    </div>
-                    <Slider
-                      value={detectionAccuracy}
-                      onValueChange={setDetectionAccuracy}
-                      min={0.1}
-                      max={0.9}
-                      step={0.1}
+            <div className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Left Column */}
+                <div className="space-y-8">
+                  {/* Hipfire Card */}
+                  <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
+                        <Target className="w-6 h-6 text-green-400" />
+                        Hipfire
+                      </CardTitle>
+                      <p className="text-gray-400 text-sm">Enable Hipfire</p>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <p className="text-gray-300 text-sm">
+                        Activate to fire from the hip and cursor check.
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-white font-medium">Enable Hipfire</span>
+                        <Switch
+                          checked={hipfire}
+                          onCheckedChange={setHipfire}
+                          className="data-[state=checked]:bg-green-500"
+                        />
+                      </div>
+                      {hipfire && (
+                        <div className="space-y-3 pt-2 border-t border-gray-700/50">
+                          <div className="flex items-center justify-between">
+                            <span className="text-gray-300 text-sm">Hipfire Key</span>
+                            <HotkeySelector
+                              value={codeToKeyName(hipfireKey)}
+                              onValueChange={(key) => setHipfireKey(keyNameToCode(key) || 0)}
+                  {/* Audio Settings Card */}
+                  <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
+                        <Volume2 className="w-6 h-6 text-green-400" />
+                        Audio Settings
+                      </CardTitle>
+                      <p className="text-gray-400 text-sm">Sound Effects</p>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <p className="text-gray-300 text-sm">
+                        Play sound on toggle
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-white font-medium">Sound Effects</span>
+                        <Switch
+                          checked={soundEffects}
+                          onCheckedChange={setSoundEffects}
+                          className="data-[state=checked]:bg-green-500"
+                        />
+                {/* Right Column */}
+                <div className="space-y-8">
+                  {/* Zoom Card */}
+                  <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
+                        <ZoomIn className="w-6 h-6 text-green-400" />
+                        Zoom
+                      </CardTitle>
+                      <p className="text-gray-400 text-sm">Enable Zoom</p>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <p className="text-gray-300 text-sm">
+                        To activate the Zoom assign a hotkey.
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-white font-medium">Enable Zoom</span>
+                        <Switch
+                          checked={zoom}
+                          onCheckedChange={setZoom}
+                          className="data-[state=checked]:bg-green-500"
+                        />
+                      </div>
+                      {zoom && (
+                        <div className="space-y-3 pt-2 border-t border-gray-700/50">
+                          <div className="flex items-center justify-between">
+                            <span className="text-gray-300 text-sm">Zoom Key</span>
+                            <HotkeySelector
+                              value={codeToKeyName(zoomKey)}
+                              onValueChange={(key) => setZoomKey(keyNameToCode(key) || 0)}
+                              placeholder="Set key"
+                            />
+                          </div>
                       className="w-full"
-                    />
-                    <p className="text-xs text-gray-500">Detection precision level</p>
-                  </CardContent>
-                </Card>
-              </div>
+                      )}
+                    </CardContent>
+                  </Card>
             </TabsContent>
           )}
           <TabsContent value="miscellaneous" className="mt-6">
@@ -1083,60 +1141,37 @@ export default function DashboardPage() {
                     Audio Settings
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between gap-4 w-full">
-                    <div>
-                      <p className="text-sm font-medium text-white">Sound Effects</p>
-                      <p className="text-xs text-gray-500">Play sound on toggle</p>
-                    </div>
-                    <Switch
-                      checked={soundEnabled}
-                      onCheckedChange={setSoundEnabled}
-                      className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between gap-4 w-full">
-                    <div>
-                      <p className="text-sm font-medium text-white">Weapon Voices</p>
-                      <p className="text-xs text-gray-500">Speak toggle state</p>
-                    </div>
-                    <Switch
-                      checked={voicesEnabled}
-                      onCheckedChange={setVoicesEnabled}
-                      className="data-[state=checked]:bg-green-500/80 data-[state=unchecked]:bg-gray-600"
-                    />
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Select value={selectedVoice} onValueChange={setSelectedVoice} className="w-1/2">
-                      <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-9">
-                        <SelectValue placeholder="Choose voice" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-gray-800 border-gray-600 text-white">
-                        {voiceOptions.map((v) => (
-                          <SelectItem
-                            key={v}
-                            value={v}
-                            className="text-white focus:bg-gray-700 focus:text-white"
-                          >
-                            {v}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <div className="flex items-center gap-2 w-1/2">
-                      <span className="text-sm text-gray-300 whitespace-nowrap">Volume</span>
-                      <Slider
-                        value={voiceVolume}
-                        onValueChange={setVoiceVolume}
-                        min={0}
-                        max={100}
-                        step={1}
-                        className="flex-1"
-                      />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  {/* Theme Selector Card */}
+                  <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
+                        <Palette className="w-6 h-6 text-green-400" />
+                        Theme Selector
+                      </CardTitle>
+                      <p className="text-gray-400 text-sm">Select a theme to customize the interface.</p>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <p className="text-gray-300 text-sm">
+                        Your choice will apply immediately.
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-white font-medium">Theme</span>
+                        <Select value={selectedTheme} onValueChange={setSelectedTheme}>
+                          <SelectTrigger className="w-32 bg-gray-800 border-gray-600 text-white">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent className="bg-gray-800 border-gray-600">
+                            <SelectItem value="default" className="text-white hover:bg-gray-700">Default</SelectItem>
+                            <SelectItem value="dark" className="text-white hover:bg-gray-700">Dark</SelectItem>
+                            <SelectItem value="blue" className="text-white hover:bg-gray-700">Blue</SelectItem>
+                            <SelectItem value="green" className="text-white hover:bg-gray-700">Green</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
 
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
                 <CardHeader>
