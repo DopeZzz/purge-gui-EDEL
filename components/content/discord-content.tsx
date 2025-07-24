@@ -56,6 +56,47 @@ export function DiscordContent() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
           <div className="flex items-center gap-3 mb-4">
+            <HelpCircle className="w-6 h-6 text-[#00ff88]" />
+            <h3 className="text-xl font-semibold text-white">Support Services</h3>
+          </div>
+          <ul className="space-y-3 text-gray-300">
+            <li className="flex items-start gap-3">
+              <span className="text-[#00ff88] mt-1">•</span>
+              <div>
+                <strong className="text-white text-base">24/7 Technical Support:</strong>
+                <p className="text-sm text-gray-400 mt-1">
+                  Round-the-clock assistance from our experienced support team
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#00ff88] mt-1">•</span>
+              <div>
+                <strong className="text-white text-base">Installation Assistance:</strong>
+                <p className="text-sm text-gray-400 mt-1">Step-by-step help with installation and initial setup</p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#00ff88] mt-1">•</span>
+              <div>
+                <strong className="text-white text-base">Configuration Help:</strong>
+                <p className="text-sm text-gray-400 mt-1">
+                  Personalized settings optimization for your playstyle and hardware
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#00ff88] mt-1">•</span>
+              <div>
+                <strong className="text-white text-base">Troubleshooting Guides:</strong>
+                <p className="text-sm text-gray-400 mt-1">Comprehensive guides and solutions for common issues</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
+          <div className="flex items-center gap-3 mb-4">
             <Users className="w-6 h-6 text-[#00ff88]" />
             <h3 className="text-xl font-semibold text-white">Community Features</h3>
           </div>
@@ -94,47 +135,6 @@ export function DiscordContent() {
                 <p className="text-sm text-gray-400 mt-1">
                   Participate in community events, tournaments, and giveaways
                 </p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
-          <div className="flex items-center gap-3 mb-4">
-            <HelpCircle className="w-6 h-6 text-[#00ff88]" />
-            <h3 className="text-xl font-semibold text-white">Support Services</h3>
-          </div>
-          <ul className="space-y-3 text-gray-300">
-            <li className="flex items-start gap-3">
-              <span className="text-[#00ff88] mt-1">•</span>
-              <div>
-                <strong className="text-white text-base">24/7 Technical Support:</strong>
-                <p className="text-sm text-gray-400 mt-1">
-                  Round-the-clock assistance from our experienced support team
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#00ff88] mt-1">•</span>
-              <div>
-                <strong className="text-white text-base">Installation Assistance:</strong>
-                <p className="text-sm text-gray-400 mt-1">Step-by-step help with installation and initial setup</p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#00ff88] mt-1">•</span>
-              <div>
-                <strong className="text-white text-base">Configuration Help:</strong>
-                <p className="text-sm text-gray-400 mt-1">
-                  Personalized settings optimization for your playstyle and hardware
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#00ff88] mt-1">•</span>
-              <div>
-                <strong className="text-white text-base">Troubleshooting Guides:</strong>
-                <p className="text-sm text-gray-400 mt-1">Comprehensive guides and solutions for common issues</p>
               </div>
             </li>
           </ul>
