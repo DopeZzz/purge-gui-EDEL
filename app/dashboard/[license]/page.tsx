@@ -68,6 +68,13 @@ export default function DashboardPage() {
     }
   }, [])
 
+  // Reproducir voz cuando cambia el arma seleccionada
+  useEffect(() => {
+    if (selectedWeapon && selectedWeapon !== "__NONE__") {
+      playWeaponVoice(selectedWeapon)
+    }
+  }, [selectedWeapon, selectedVoice])
+
   const autodetectAllowed = useMemo(() => {
     if (!licenseType) return true
     return !['WEEK', 'TRIAL', 'MONTH', 'LIFETIME'].includes(
@@ -92,6 +99,7 @@ export default function DashboardPage() {
 
   // Script/Feature states (no longer control connection badge)
   const [autoDetection, setAutoDetection] = useState(true)
+  const [selectedVoice, setSelectedVoice] = useState("john")
   const [scriptEnabled, setScriptEnabled] = useState(false)
 
   // Configuration states
@@ -119,6 +127,42 @@ export default function DashboardPage() {
   // Misc states from original code
   const [detectionAccuracy, setDetectionAccuracy] = useState([0.8])
   const [hipfire, setHipfire] = useState(false)
+
+  // Función para reproducir audio de voz
+  const playWeaponVoice = (weaponName: string) => {
+    if (!selectedVoice || weaponName === "__NONE__") return
+    
+    // Mapeo de nombres de armas del sistema a nombres de archivos
+    const weaponFileMap: Record<string, string> = {
+      "Assault Rifle": "Assault Rifle",
+      "Custom SMG": "Custom SMG", 
+      "HighCaliber Revolver": "Highcaliber Revolver",
+      "HMLMG": "HMLMG",
+      "LR-300": "LR-300",
+      "M249": "M249",
+      "M39 Rifle": "M39 Rifle",
+      "M92 Pistol": "M92 Pistol",
+      "MP5A4": "MP5A4",
+      "Python": "Python",
+      "Revolver": "Revolver",
+      "SemiAutomatic Rifle": "Semiautomatic Rifle", 
+      "SemiAutomatic Pistol": "Semiautomatic Pistol",
+      "SKS": "SKS",
+      "Handmade SMG": "Handmade SMG",
+      "Thompson": "Thompson",
+      "__NONE__": "None"
+    }
+
+    const fileName = weaponFileMap[weaponName] || "None"
+    const audioPath = `/voices/${selectedVoice.toLowerCase()}/${fileName}.mp3`
+    
+    // Crear y reproducir audio
+    const audio = new Audio(audioPath)
+    audio.volume = 0.5 // Volumen al 50%
+    audio.play().catch(error => {
+      console.warn(`Could not play voice for ${weaponName}:`, error)
+    })
+  }
   const [hipfireKey, setHipfireKey] = useState("")
   const [zoom, setZoom] = useState(false)
   const [zoomKey, setZoomKey] = useState("")
@@ -1259,6 +1303,33 @@ Barrel
                       step={1}
                       className="w-full"
                     />
+                  </div>
+                </div>
+                
+                {/* Voice Selector */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                    <span style={{ color: 'var(--theme-accent)' }}>🎵</span>
+                    Voice Selection
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <label className="text-sm text-gray-300">
+                        Weapon Voice
+                      </label>
+                      <select
+                        value={selectedVoice}
+                        onChange={(e) => setSelectedVoice(e.target.value)}
+                        className="bg-gray-800 border border-gray-600 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                      >
+                        <option value="john">John</option>
+                        <option value="britney">Britney</option>
+                        <option value="granpa">Granpa</option>
+                      </select>
+                    </div>
+                    <p className="text-xs text-gray-400">
+                      Voice that announces weapon names when selected
+                    </p>
                   </div>
                 </div>
               )}
