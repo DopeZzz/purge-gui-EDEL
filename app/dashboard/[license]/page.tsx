@@ -751,7 +751,9 @@ return (
           <Crosshair className="w-4 h-4" />
           Selections
         </TabsTrigger>
-        <TabsTrigger value="keybinds" className="flex items-center gap-2">
+        <TabsTrigger value="keybinds" className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors
+           data-[state=active]:bg-[hsl(var(--accent)/0.25)]
+           data-[state=active]:text-white">
           <Keyboard className="w-4 h-4" />
           Keybinds
         </TabsTrigger>
