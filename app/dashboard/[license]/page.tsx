@@ -33,7 +33,7 @@ import {
   Crosshair,
   Radar,
   VolumeX,
-  LogOut
+  LogOut,
   Wifi,
   WifiOff,
   Loader2,
