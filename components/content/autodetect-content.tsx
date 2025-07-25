@@ -61,7 +61,7 @@ export function AutodetectContent() {
             Autodetect Configuration
           </h2>
           <ul className="space-y-3 text-gray-300">
-            <li className="flex items-start gap-3">
+            <li className="flex items-start gap-3"> 
               <span className="text-[#00ff88] mt-1">•</span>
               <div className="flex-1">
                 <strong className="text-white">Detection Accuracy:</strong>
