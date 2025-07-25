@@ -739,15 +739,13 @@ return (
 
     <Tabs value={activeTab} onValueChange={setActiveTab}>
       <TabsList className="grid w-full grid-cols-5 bg-gray-900/50 border-gray-700/50">
-        <TabsTrigger value="controls" className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors
-           data-[state=active]:bg-[hsl(var(--accent)/0.25)]
-           data-[state=active]:text-white">
+        <TabsTrigger value="controls" className="flex items-center gap-2 justify-center px-5 py-2 my-1 rounded-lg transition-colors
+data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white">
           <Settings className="w-4 h-4" />
           Settings
         </TabsTrigger>
-        <TabsTrigger value="equipment" className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors
-           data-[state=active]:bg-[hsl(var(--accent)/0.25)]
-           data-[state=active]:text-white">
+        <TabsTrigger value="equipment" className="flex items-center gap-2 justify-center px-5 py-2 my-1 rounded-lg transition-colors
+data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white">
           <Crosshair className="w-4 h-4" />
           Selections
         </TabsTrigger>
