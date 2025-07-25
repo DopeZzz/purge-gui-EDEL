@@ -63,14 +63,14 @@ export default function RootLayout({
       root.style.setProperty('--primary', th.primary);
       root.style.setProperty('--secondary', th.secondary);
       root.style.setProperty('--accent', th.accent);
-      document.body.style.background = th.gradient;
+      root.style.setProperty('--background-gradient', th.gradient);
     }
   } catch (e) {}
 })();`,
           }}
         />
       </head>
-      <body className={`${inter.className} bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800`}>
+      <body className={inter.className} style={{ background: "var(--background-gradient)" }}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
