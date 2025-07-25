@@ -1,13 +1,9 @@
 "use client"
 
-import { useState } from "react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Target, Info, CheckCircle, Settings, Zap, Eye } from "lucide-react"
-import { Slider } from "@/components/ui/slider"
-import { Label } from "@/components/ui/label"
 
 export function AutodetectContent() {
-  const [detectionAccuracy, setDetectionAccuracy] = useState(0.8)
   return (
     <div>
       <div className="mb-8">
@@ -63,6 +59,7 @@ export function AutodetectContent() {
           <ul className="space-y-3 text-gray-300">
             <li className="flex items-start gap-3"> 
               <span className="text-[#00ff88] mt-1">•</span>
+<<<<<<< HEAD
               <div className="flex-1">
                 <strong className="text-white">Detection Accuracy:</strong> 
                 <p className="text-sm mt-1 mb-3">
@@ -83,6 +80,16 @@ export function AutodetectContent() {
                     className="w-full"
                   />
                 </div>
+=======
+              <div>
+                <strong className="text-white">Detection Speed:</strong> Managed entirely by the cloud. Weapon recognition is triggered automatically and typically completes within 1 to 4 seconds after switching. No manual input is needed.
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#00ff88] mt-1">•</span>
+              <div>
+                <strong className="text-white">Detection Accuracy:</strong> Defines the confidence threshold required to confirm a weapon change. A value of 0.8 is recommended for optimal balance between speed and accuracy.
+>>>>>>> parent of 9a59fd5 (Updated autodetect-content.tsx)
               </div>
             </li>
             <li className="flex items-start gap-3">
