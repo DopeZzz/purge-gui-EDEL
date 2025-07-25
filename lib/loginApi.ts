@@ -1,6 +1,8 @@
 export interface AuthApiResult {
   success: boolean
   license?: string
+  licenseType?: string
+  expiresAt?: string
   token?: string
   config?: any
   error?: string
