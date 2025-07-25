@@ -27,6 +27,14 @@ const notifications = [
     type: 'success', 
     timestamp: '2024-12-16T15:20:00Z',
     priority: 'low'
+  },
+    {
+    id: '4',
+    title: 'New Feature Available',
+    message: 'Voice notifications are now available! Choose your favorite voice in the Miscellaneous section.',
+    type: 'error', 
+    timestamp: '2024-12-15T15:20:00Z',
+    priority: 'low'
   }
 ]
 
