@@ -223,22 +223,35 @@ export default function DashboardPage() {
     { value: "grandpa", label: "Grandpa" },
     { value: "john", label: "John" },
   ] as const
-  const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0].value)
+  const [selectedVoice, setSelectedVoice] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("selectedVoice")
+        if (saved && voiceOptions.some((v) => v.value === saved)) {
+          return saved
+        }
+      } catch (_) {
+        /* ignore */
+      }
+    }
+    return voiceOptions[0].value
+  })
   const [soundEnabled, setSoundEnabled] = useState(true)
-  const [voicesEnabled, setVoicesEnabled] = useState(false)
+  const [voicesEnabled, setVoicesEnabled] = useState(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const stored = localStorage.getItem("voicesEnabled")
+        if (stored !== null) {
+          return stored === "true"
+        }
+      } catch (_) {
+        /* ignore */
+      }
+    }
+    return false
+  })
   const [soundEffects, setSoundEffects] = useState(true)
 
-  // Load saved voice selection from localStorage
-  useEffect(() => {
-    try {
-      const savedVoice = localStorage.getItem("selectedVoice")
-      if (savedVoice && voiceOptions.some((v) => v.value === savedVoice)) {
-        setSelectedVoice(savedVoice)
-      }
-    } catch (_) {
-      /* ignore */
-    }
-  }, [])
 
   useEffect(() => {
     try {
@@ -248,17 +261,6 @@ export default function DashboardPage() {
     }
   }, [selectedVoice])
 
-  // Persistir estado de voz activada en localStorage
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("voicesEnabled")
-      if (stored !== null) {
-        setVoicesEnabled(stored === "true")
-      }
-    } catch (_) {
-      /* ignore */
-    }
-  }, [])
 
   useEffect(() => {
     try {
@@ -849,7 +851,7 @@ export default function DashboardPage() {
             {autodetectAllowed && (
               <TabsTrigger
                 value="autodetect"
-                className="txt w-full h-full flex items-center justify-center gap-2 px-4 rounded-lg transition-colors data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white"
+                className="txt h-full flex items-center justify-center gap-2 px-4 rounded-lg transition-colors data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white"
               >
                 <Radar className="w-4 h-4" />
                 Autodetect
@@ -1125,7 +1127,7 @@ export default function DashboardPage() {
               </Card>
               {autodetectAllowed && (
                 <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2">
                     <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
                       <Radar className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                       Auto Detect
