@@ -603,7 +603,7 @@ return (
         </h1>
       </div>
       <p className="text-gray-400 mb-6">
-        Rust Cloud Scripting – License:&nbsp;
+
         <span style={{ color: `hsl(var(--accent))` }} className="font-semibold">
           {licenseKey}
         </span>
