@@ -1,6 +1,3 @@
-Quiero que el gradiente de colores sea diferente en el theme selector y que el color central abarque mas espacio. Esto hazlo para todos los temas que se pueden elegir. Dime exactamente qué lineas debo cambiar y por cuales:
-
-app/dashboard/[license]/page.tsx
 "use client"
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react"
