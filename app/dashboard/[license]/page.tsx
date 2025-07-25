@@ -25,6 +25,7 @@ import { useToast } from "@/hooks/use-toast"
 import { useRealtimeUpdates } from "@/hooks/use-realtime-updates"
 import {
   HelpCircle,
+import { NotificationsDropdown } from "@/components/notifications-dropdown"
   Settings,
   Target,
   Gamepad2,
