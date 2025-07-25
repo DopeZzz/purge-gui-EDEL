@@ -57,30 +57,8 @@ export function AutodetectContent() {
             Autodetect Configuration
           </h2>
           <ul className="space-y-3 text-gray-300">
-            <li className="flex items-start gap-3"> 
+            <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
-<<<<<<< HEAD
-              <div className="flex-1">
-                <strong className="text-white">Detection Accuracy:</strong> 
-                <p className="text-sm mt-1 mb-3">
-                  Define el umbral de confianza requerido para confirmar un cambio de arma.
-                  Un valor de <span className="font-semibold text-[#00ff88]">0.8</span> es recomendado para un balance óptimo entre velocidad y precisión.
-                </p>
-                <div className="flex items-center gap-4">
-                  <Label htmlFor="detection-accuracy-slider" className="text-white text-sm min-w-[60px]">
-                    Value: <span className="font-semibold">{detectionAccuracy.toFixed(1)}</span>
-                  </Label>
-                  <Slider
-                    id="detection-accuracy-slider"
-                    min={0.1}
-                    max={0.9}
-                    step={0.1}
-                    value={[detectionAccuracy]}
-                    onValueChange={(val) => setDetectionAccuracy(val[0])}
-                    className="w-full"
-                  />
-                </div>
-=======
               <div>
                 <strong className="text-white">Detection Speed:</strong> Managed entirely by the cloud. Weapon recognition is triggered automatically and typically completes within 1 to 4 seconds after switching. No manual input is needed.
               </div>
@@ -89,7 +67,6 @@ export function AutodetectContent() {
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
                 <strong className="text-white">Detection Accuracy:</strong> Defines the confidence threshold required to confirm a weapon change. A value of 0.8 is recommended for optimal balance between speed and accuracy.
->>>>>>> parent of 9a59fd5 (Updated autodetect-content.tsx)
               </div>
             </li>
             <li className="flex items-start gap-3">
