@@ -224,7 +224,7 @@ export default function DashboardPage() {
     { value: "grandpa",  label: "Grandpa" },
     { value: "john",     label: "John"    },
   ] as const
-  const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0])
+  const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0].value)
   const [soundEnabled, setSoundEnabled] = useState(true)
   const [voicesEnabled, setVoicesEnabled] = useState(false)
   const [voiceVolume, setVoiceVolume] = useState([100])
@@ -297,7 +297,7 @@ export default function DashboardPage() {
         const utter = new SpeechSynthesisUtterance(isOn ? "On" : "Off")
         const match = speechSynthesis
           .getVoices()
-          .find((v) => v.name.toLowerCase().includes(selectedVoice.split(" ")[0].toLowerCase()))
+          const match = speechSynthesis.getVoices() .find(v => v.name.toLowerCase().includes(selectedVoice));
         if (match) utter.voice = match
         utter.volume = voiceVolume[0] / 100
         speechSynthesis.speak(utter)
@@ -1390,7 +1390,7 @@ Barrel
                           {v.label}
                         </option>
                       ))}
-                    </div>
+                    </select>
                     <p className="text-xs text-gray-400">
                       Voice that announces weapon names when selected
                     </p>
