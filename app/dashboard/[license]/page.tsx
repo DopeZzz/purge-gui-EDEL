@@ -155,7 +155,7 @@ export default function DashboardPage() {
     }
 
     const fileName = weaponFileMap[weaponName] || "None"
-    const audioPath = `/voices/${selectedVoice.toLowerCase()}/${fileName}.mp3`
+    const audioPath = `/voices/${selectedVoice}/${fileName}.mp3`
     
     // Crear y reproducir audio ----------------- ⬇️ pega esto
     try {
@@ -219,7 +219,11 @@ export default function DashboardPage() {
   const [selectedTheme, setSelectedTheme] = useState<string>(themeOptions[0].value)
   const [backgroundGradient, setBackgroundGradient] = useState<string>("")
 
-  const voiceOptions = ["Brittany Voice", "Grandpa Voice", "Matt Voice"] as const
+  const voiceOptions = [
+    { value: "britney",  label: "Britney" },
+    { value: "grandpa",  label: "Grandpa" },
+    { value: "john",     label: "John"    },
+  ] as const
   const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0])
   const [soundEnabled, setSoundEnabled] = useState(true)
   const [voicesEnabled, setVoicesEnabled] = useState(false)
@@ -1381,10 +1385,11 @@ Barrel
                         onChange={(e) => setSelectedVoice(e.target.value)}
                         className="bg-gray-800 border border-gray-600 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                       >
-                        <option value="john">John</option>
-                        <option value="britney">Britney</option>
-                        <option value="granpa">Granpa</option>
-                      </select>
+                      {voiceOptions.map(v => (
+                        <option key={v.value} value={v.value}>
+                          {v.label}
+                        </option>
+                      ))}
                     </div>
                     <p className="text-xs text-gray-400">
                       Voice that announces weapon names when selected
