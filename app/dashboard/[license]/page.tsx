@@ -663,6 +663,14 @@ return (
           Download
         </Button>
         <NotificationsDropdown />
+        <button
+  onClick={handleLogout}
+  className="p-2 rounded-full text-gray-300 hover:text-red-400 hover:bg-white/10 transition-colors"
+  title="Logout"
+>
+  <LogOut className="w-5 h-5" />
+</button>
+
       </div>
     </div>
 
