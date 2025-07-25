@@ -44,6 +44,7 @@ import {
   Volume2,
   Mic,
   ZoomIn,
+  Wrench,
 } from "lucide-react"
 import { NotificationsDropdown } from "@/components/notifications-dropdown"
 import {
