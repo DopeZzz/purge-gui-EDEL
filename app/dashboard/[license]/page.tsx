@@ -229,12 +229,16 @@ export default function DashboardPage() {
   const [voiceVolume, setVoiceVolume] = useState([100])
   const [soundEffects, setSoundEffects] = useState(true)
 
-  // Reproducir voz cuando cambia el arma seleccionada
+  // Reproducir voz cuando cambia el arma seleccionada si la opción está activada
   useEffect(() => {
-    if (selectedWeapon && selectedWeapon !== "__NONE__") {
+    if (
+      voicesEnabled &&
+      selectedWeapon &&
+      selectedWeapon !== "__NONE__"
+    ) {
       playWeaponVoice(selectedWeapon)
     }
-  }, [selectedWeapon])
+  }, [selectedWeapon, voicesEnabled])
 
   const applyTheme = useCallback(
     (themeValue: string) => {
