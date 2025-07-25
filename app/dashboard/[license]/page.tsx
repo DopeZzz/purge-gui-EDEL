@@ -1185,40 +1185,6 @@ export default function DashboardPage() {
             </TabsContent>
           )}
           <TabsContent value="miscellaneous" className="mt-6">
-              {/* Theme Selection */}
-              <div className="bg-gray-800/50 rounded-lg p-4">
-                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                  Theme Selection
-                </h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                  {[
-                    { id: 'dark', name: 'Dark Theme', color: 'bg-gray-800' },
-                    { id: 'blue', name: 'Blue Theme', color: 'bg-blue-600' },
-                    { id: 'green', name: 'Green Theme', color: 'bg-green-600' },
-                    { id: 'purple', name: 'Purple Theme', color: 'bg-purple-600' },
-                    { id: 'red', name: 'Red Theme', color: 'bg-red-600' },
-                    { id: 'orange', name: 'Orange Theme', color: 'bg-orange-600' }
-                  ].map((theme) => (
-                    <button
-                      key={theme.id}
-                      onClick={() => handleThemeChange(theme.id)}
-                      className={`p-3 rounded-lg border-2 transition-all duration-200 flex items-center gap-2 ${
-                        selectedTheme === theme.id
-                          ? 'border-green-500 bg-green-500/10'
-                          : 'border-gray-600 hover:border-gray-500 bg-gray-800/30'
-                      }`}
-                    >
-                      <div className={`w-4 h-4 rounded-full ${theme.color}`}></div>
-                      <span className="text-white text-sm font-medium">{theme.name}</span>
-                      {selectedTheme === theme.id && (
-                        <span className="text-green-400 ml-auto">✓</span>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 h-fit">
                 <CardHeader>

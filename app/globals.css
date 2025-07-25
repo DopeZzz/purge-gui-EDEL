@@ -37,63 +37,6 @@
   }
 }
 
-/* Theme variations */
-.dark-theme {
-  --primary-color: #10b981;
-  --secondary-color: #1f2937;
-  --accent-color: #374151;
-}
-
-.blue-theme {
-  --primary-color: #3b82f6;
-  --secondary-color: #1e40af;
-  --accent-color: #2563eb;
-}
-
-.blue-theme .bg-gradient-to-br {
-  background: linear-gradient(to bottom right, #1e3a8a, #1e40af, #1f2937) !important;
-}
-
-.green-theme {
-  --primary-color: #10b981;
-  --secondary-color: #065f46;
-  --accent-color: #047857;
-}
-
-.green-theme .bg-gradient-to-br {
-  background: linear-gradient(to bottom right, #064e3b, #047857, #1f2937) !important;
-}
-
-.purple-theme {
-  --primary-color: #8b5cf6;
-  --secondary-color: #6b21a8;
-  --accent-color: #7c3aed;
-}
-
-.purple-theme .bg-gradient-to-br {
-  background: linear-gradient(to bottom right, #581c87, #6b21a8, #1f2937) !important;
-}
-
-.red-theme {
-  --primary-color: #ef4444;
-  --secondary-color: #b91c1c;
-  --accent-color: #dc2626;
-}
-
-.red-theme .bg-gradient-to-br {
-  background: linear-gradient(to bottom right, #991b1b, #b91c1c, #1f2937) !important;
-}
-
-.orange-theme {
-  --primary-color: #f97316;
-  --secondary-color: #c2410c;
-  --accent-color: #ea580c;
-}
-
-.orange-theme .bg-gradient-to-br {
-  background: linear-gradient(to bottom right, #9a3412, #c2410c, #1f2937) !important;
-}
-
 /* Slider styles - Arreglados para funcionar correctamente */
 [data-radix-slider-root] {
   position: relative;
