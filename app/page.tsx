@@ -53,12 +53,12 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white flex items-center justify-center p-6">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="flex justify-center mb-6">
-            <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-20 w-auto" />
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-16 w-auto" />
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              Purge 2.0
+            </h1>
           </div>
-          <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-            Purge 2.0
-          </h1>
           <p className="text-gray-400 mb-4">Rust Cloud Scripting</p>
         </div>
 
