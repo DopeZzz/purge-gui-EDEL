@@ -33,33 +33,21 @@ export function AutodetectContent() {
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white">Real-time Scanning:</strong> Continuously monitors your equipped weapon
-                and automatically adjusts recoil patterns, sensitivity, and aim settings based on the detected weapon
-                type.
+                <strong className="text-white">AI Recognition:</strong> Utilizes advanced image recognition powered by AI to visually identify your equipped weapon in real time, regardless of skin, or viewmodel.
               </div>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white">Weapon Database:</strong> Contains over 50+ weapon profiles including all
-                assault rifles, SMGs, sniper rifles, and pistols with their specific recoil patterns and optimal
-                settings.
+                <strong className="text-white">Cloud-Based System:</strong> The detection system runs entirely in the cloud, offloading all processing to ensure zero performance loss on your PC while maintaining high accuracy.
               </div>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white">Instant Adaptation:</strong> Switches between weapon profiles in under
-                100ms, ensuring seamless transitions during combat situations.
+                <strong className="text-white">Full Weapon Support:</strong> Supports every weapon and skin in Rust, instantly applying the correct recoil pattern the moment you switch weapons, no manual input needed.
               </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#00ff88] mt-1">•</span>
-              <div>
-                <strong className="text-white">Smart Learning:</strong> Adapts to your playstyle over time, fine-tuning
-                settings based on your accuracy and performance metrics.
-              </div>
-            </li>
+            </li>         
           </ul>
         </div>
 
@@ -72,22 +60,19 @@ export function AutodetectContent() {
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white">Detection Speed:</strong> Adjust how quickly the system recognizes weapon
-                changes. Recommended: Fast (100ms) for competitive play, Normal (250ms) for casual gaming.
+                <strong className="text-white">Detection Speed:</strong> Managed entirely by the cloud. Weapon recognition is triggered automatically and typically completes within 1 to 4 seconds after switching. No manual input is needed.
               </div>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white">Confidence Threshold:</strong> Set the minimum confidence level (70-95%)
-                before applying weapon-specific settings. Higher values reduce false positives.
+                <strong className="text-white">Detection Accuracy:</strong> Defines the confidence threshold required to confirm a weapon change. A value of 0.8 is recommended for optimal balance between speed and accuracy.
               </div>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white">Fallback Mode:</strong> Choose what happens when weapon detection fails -
-                use default settings, maintain last known weapon, or disable assistance temporarily.
+                <strong className="text-white">Fallback Mode:</strong> If the system fails to detect a weapon, it will temporarily fall back to your last selected weapon. Autodetect reactivates only when a new weapon is equipped.
               </div>
             </li>
           </ul>

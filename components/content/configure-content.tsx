@@ -31,46 +31,36 @@ export function ConfigureContent() {
           <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
             <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-3">
               <Zap className="w-6 h-6 text-[#00ff88]" />
-              Performance Optimization
+              System Compatibility
             </h2>
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-start gap-3">
                 <span className="text-[#00ff88] mt-1">•</span>
                 <div>
-                  <strong className="text-white text-base">CPU Priority:</strong>
+                  <strong className="text-white text-base">Resolution:</strong>
                   <p className="text-sm mt-1">
-                    Set Purge 2.0 to high priority in Task Manager for better performance and reduced input lag during
-                    gameplay.
+                  No need to set your resolution manually, Purge 2.0 auto-adjusts and works with any screen size.
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-[#00ff88] mt-1">•</span>
                 <div>
-                  <strong className="text-white text-base">Memory Usage:</strong>
+                  <strong className="text-white text-base">DPI:</strong>
                   <p className="text-sm mt-1">
-                    Enable memory optimization mode if you have less than 16GB RAM to reduce system resource usage.
+                  Your mouse DPI is automatically detected. No configuration needed for proper recoil control.
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-[#00ff88] mt-1">•</span>
                 <div>
-                  <strong className="text-white text-base">Graphics Settings:</strong>
+                  <strong className="text-white text-base">Mouse:</strong>
                   <p className="text-sm mt-1">
-                    Disable Windows Game Mode and fullscreen optimizations for better compatibility and performance.
+                  Compatible with all mouse types and brands, no special hardware required.
                   </p>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#00ff88] mt-1">•</span>
-                <div>
-                  <strong className="text-white text-base">Network Optimization:</strong>
-                  <p className="text-sm mt-1">
-                    Use wired connection and disable background applications that may interfere with network stability.
-                  </p>
-                </div>
-              </li>
+              </li>           
             </ul>
           </div>
 
@@ -80,36 +70,34 @@ export function ConfigureContent() {
           <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
             <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-3">
               <Target className="w-6 h-6 text-[#00ff88]" />
-              Aim Settings Configuration
+              Script Configuration
             </h2>
             <ul className="space-y-4 text-gray-300">
               <li className="flex items-start gap-3">
                 <span className="text-[#00ff88] mt-1">•</span>
                 <div>
-                  <strong className="text-white text-base">Sensitivity Settings:</strong>
+                  <strong className="text-white text-base">Settings:</strong>
                   <p className="text-sm mt-1">
-                    Start with 0.5 and adjust based on your mouse DPI. Higher DPI users should use lower sensitivity
-                    values (0.3-0.4), while lower DPI users can use higher values (0.6-0.8).
+                  Open Rust, press F1, and type sens, ads, and fov. Copy the exact values into the script settings.
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-[#00ff88] mt-1">•</span>
                 <div>
-                  <strong className="text-white text-base">Scope Sensitivity:</strong>
+                  <strong className="text-white text-base">Randomness:</strong>
                   <p className="text-sm mt-1">
-                    Recommended value is 0.5 for most users. This controls aim assistance when using scoped weapons like
-                    the Bolt Action Rifle or L96. Lower values provide more precise control.
+                  Set to 0 for best precision. Increase slightly (up to 100) to add human-like randomness at the cost of accuracy.
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-[#00ff88] mt-1">•</span>
                 <div>
-                  <strong className="text-white text-base">Precision Mode:</strong>
+                  <strong className="text-white text-base">Activation & Weapon Selection:</strong>
                   <p className="text-sm mt-1">
-                    Enable for better accuracy at long range. This mode reduces sensitivity when aiming at distant
-                    targets and provides smoother tracking for sniper rifles.
+                  Make sure the script is switched ON to activate.
+                  Select your weapon and any attachments you're using, like scopes or barrels, to ensure proper recoil control.
                   </p>
                 </div>
               </li>
@@ -125,30 +113,27 @@ export function ConfigureContent() {
               <li className="flex items-start gap-3">
                 <span className="text-[#00ff88] mt-1">•</span>
                 <div>
+                  <strong className="text-white text-base">Sensitivity:</strong>
+                  <p className="text-sm mt-1">
+                    Set this to match your exact in-game sens value (check via F1 console). It directly affects recoil compensation precision.
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-[#00ff88] mt-1">•</span>
+                <div>
+                  <strong className="text-white text-base">Aim Sensitivity:</strong>
+                  <p className="text-sm mt-1">
+                  This must match your input.ads_sensitivity value in Rust. Accurate input here ensures the script adjusts recoil correctly when aiming down sights.
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-[#00ff88] mt-1">•</span>
+                <div>
                   <strong className="text-white text-base">Field of View (FOV):</strong>
                   <p className="text-sm mt-1">
-                    Set to 90° for optimal performance. This must match your in-game FOV setting exactly. Higher FOV
-                    values (100-110°) are supported but may reduce accuracy.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#00ff88] mt-1">•</span>
-                <div>
-                  <strong className="text-white text-base">Randomness Factor:</strong>
-                  <p className="text-sm mt-1">
-                    50% provides natural movement variation. Lower values (30-40%) for competitive play, higher values
-                    (60-70%) for casual gaming to appear more human-like.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#00ff88] mt-1">•</span>
-                <div>
-                  <strong className="text-white text-base">Auto Detection:</strong>
-                  <p className="text-sm mt-1">
-                    Enable for automatic weapon recognition. The system will automatically detect your equipped weapon
-                    and apply appropriate recoil patterns and settings.
+                  Enter your in-game graphics.fov value. Correct FOV is crucial for recoil patterns to behave consistently across all weapon types.
                   </p>
                 </div>
               </li>

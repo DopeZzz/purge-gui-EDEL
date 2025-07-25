@@ -809,7 +809,7 @@ return (
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Scope Sensitivity</span>
+                  <span className="text-sm font-medium">Aim Sensitivity</span>
                   <Badge 
                     variant="secondary"
                     style={{

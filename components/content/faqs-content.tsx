@@ -48,32 +48,27 @@ export function FaqsContent() {
     {
       question: "Is Purge 2.0 safe to use and undetectable?",
       answer:
-        "Yes, Purge 2.0 uses advanced anti-detection technology including kernel-level protection, memory encryption, and randomized execution patterns. Our system has been undetected for over 2 years with regular updates to stay ahead of anti-cheat systems. We use HWID spoofing and process hollowing techniques to ensure maximum safety for our users.",
-    },
-    {
-      question: "What games does Purge 2.0 support?",
-      answer:
-        "Purge 2.0 primarily supports Rust with full weapon detection and recoil compensation for all major weapons. We also have beta support for CS2, Valorant, and Apex Legends. Each game has specific features tailored to its mechanics, including weapon-specific recoil patterns, aim assistance, and trigger bot functionality with customizable settings.",
+        "Yes, Purge 2.0 uses cutting-edge anti-detection methods including unique builds, memory encryption, and randomized execution patterns. Our system has remained undetected for over 2 years, with frequent updates to stay ahead of anti-cheat technologies. These techniques ensure maximum safety for all users.",
     },
     {
       question: "How do I install Purge 2.0 if Windows Defender blocks it?",
       answer:
-        "This is normal behavior for security software when dealing with kernel-level applications. Add Purge 2.0 to your Windows Defender exclusions before installation. Go to Windows Security > Virus & threat protection > Exclusions > Add exclusion > Folder, then select your Purge 2.0 installation directory. Also disable real-time protection temporarily during the installation process.",
+        "This is a false positive caused by unsigned modules. To ensure proper installation, especially for the Module Connector, you must disable real-time protection and antivirus temporarily during setup. Once installed, you can safely turn your protection back on.",
     },
     {
-      question: "What should I do if Purge 2.0 stops working after a game update?",
+      question: "Will the script stop working after a game update?",
       answer:
-        "Game updates often change memory addresses and detection patterns, which can temporarily affect functionality. Check our Discord server for immediate updates and patches - we usually release compatibility updates within 2-6 hours of major game updates. Make sure to always use the latest version of Purge 2.0 and never use outdated versions as they may be detected by anti-cheat systems.",
+        "No, Purge 2.0 will continue working normally even right after a game update. There's no need to stop or pause its use. The only exception is if the update includes changes to weapons or recoil patterns—in that case, we’ll release a quick update. Otherwise, the script remains fully functional and undetected.",
     },
     {
       question: "How do I configure Purge 2.0 for the best performance?",
       answer:
-        "Start with our recommended settings: Sensitivity 0.5, FOV 90°, Randomness 50%, and enable autodetect for automatic weapon recognition. For competitive play, use lower randomness (30-40%) and faster detection speed. For casual gaming, higher randomness (60-70%) provides more natural movement patterns. Always test your settings in aim training servers before using them in actual matches.",
+        "You don’t need to change your playstyle or settings — just match your exact in-game configuration (sensitivity, ADS, and FOV) in the script. Purge 2.0 is designed to work perfectly with your personal setup. If you're not sure how to do it, visit the How to Configure It section for a quick guide.",
     },
     {
       question: "Can I get banned for using Purge 2.0?",
       answer:
-        "While Purge 2.0 is designed to be undetectable with our advanced anti-detection systems, there's always an inherent risk when using any third-party software in online games. We maintain a 99.8% undetection rate across all supported games, but we cannot guarantee 100% safety. Use at your own risk and avoid obvious cheating behaviors like impossible flick shots or perfect spray patterns. Play naturally and don't make it obvious to other players.",
+        "It’s extremely unlikely to be banned while using Purge 2.0. The script runs entirely in the cloud, meaning nothing is injected or executed on your PC — game anti-cheats have no access to it. The Module Connector is a unique build, adding an extra layer of protection and making detection nearly impossible. As always, play naturally and avoid drawing attention in-game.",
     },
   ]
 
