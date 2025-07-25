@@ -25,7 +25,6 @@ import { useToast } from "@/hooks/use-toast"
 import { useRealtimeUpdates } from "@/hooks/use-realtime-updates"
 import {
   HelpCircle,
-import { NotificationsDropdown } from "@/components/notifications-dropdown"
   Settings,
   Target,
   Gamepad2,
@@ -45,6 +44,7 @@ import { NotificationsDropdown } from "@/components/notifications-dropdown"
   Mic,
   ZoomIn,
 } from "lucide-react"
+import { NotificationsDropdown } from "@/components/notifications-dropdown"
 import {
   submitConfiguration,
   fetchDashboardConfig,
@@ -638,18 +638,21 @@ return (
 
       {/* Action Buttons */}
       <div className="flex justify-center gap-4 mt-6">
-        <Button
-          variant="outline"
-          style={{ 
-            borderColor: `hsl(var(--accent) / 0.5)`, 
-            color: `hsl(var(--accent))`,
-          }}
-          className="hover:bg-transparent hover:opacity-80 transition-colors"
-          onClick={() => window.open('/docs', '_blank')}
-        >
-          <HelpCircle className="w-4 h-4 mr-2" />
-          How to use?
-        </Button>
+        <div className="flex items-center gap-3">
+          <NotificationsDropdown />
+          <Button
+            variant="outline"
+            style={{ 
+              borderColor: `hsl(var(--accent) / 0.5)`, 
+              color: `hsl(var(--accent))`,
+            }}
+            className="hover:bg-transparent hover:opacity-80 transition-colors"
+            onClick={() => window.open('/docs', '_blank')}
+          >
+            <HelpCircle className="w-4 h-4 mr-2" />
+            How to use?
+          </Button>
+        </div>
         <Button
           style={{ backgroundColor: `hsl(var(--accent))` }}
           className="hover:opacity-90 text-black"
