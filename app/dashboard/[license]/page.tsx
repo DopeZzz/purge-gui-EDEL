@@ -605,10 +605,6 @@ export default function DashboardPage() {
 
 return (
 
-
-
-
-  
 <div className="min-h-screen transition-all duration-500" 
   style={{ 
     background: backgroundGradient || "linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%)" 
