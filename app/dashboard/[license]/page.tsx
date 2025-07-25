@@ -600,8 +600,7 @@ export default function DashboardPage() {
     autoDetectToggleKey,
     autoDetection,
     scriptEnabled,
-    handleSendConfiguration
-  ]);                // cierra array
+    handleSendConfiguration]);                // cierra array
 
 return (
   <div className="min-h-screen transition-all duration-500" 
