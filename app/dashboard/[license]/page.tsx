@@ -234,7 +234,7 @@ export default function DashboardPage() {
     if (selectedWeapon && selectedWeapon !== "__NONE__") {
       playWeaponVoice(selectedWeapon)
     }
-  }, [selectedWeapon, selectedVoice])
+  }, [selectedWeapon])
 
   const applyTheme = useCallback(
     (themeValue: string) => {
@@ -302,13 +302,6 @@ export default function DashboardPage() {
         } catch (_) {
           /* ignore */
         }
-      }
-      if (voicesEnabled) {
-        const utter = new SpeechSynthesisUtterance(isOn ? "On" : "Off")
-        const match = speechSynthesis.getVoices().find((v) => v.name.toLowerCase().includes(selectedVoice))
-        if (match) utter.voice = match
-        utter.volume = voiceVolume[0] / 100
-        speechSynthesis.speak(utter)
       }
     },
     [soundEnabled, voicesEnabled, selectedVoice, voiceVolume],
