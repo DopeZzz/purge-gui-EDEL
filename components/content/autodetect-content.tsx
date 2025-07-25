@@ -72,7 +72,7 @@ export function AutodetectContent() {
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white">Fallback Mode:</strong> If the system fails to detect a weapon, it will temporarily fall back to your last selected weapon. Autodetect reactivates only when a new weapon is equipped.
+                <strong className="text-white">Fallback Mode:</strong> If the system fails to detect a weapon, you’ll need to re-equip your current weapon to trigger autodetect again. Detection only activates when a new weapon is equipped.
               </div>
             </li>
           </ul>
