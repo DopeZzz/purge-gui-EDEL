@@ -39,7 +39,10 @@ export default function DownloadPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex items-center justify-center p-6 text-white">
+    <div
+      className="min-h-screen flex items-center justify-center p-6 text-white"
+      style={{ background: "var(--background-gradient)" }}
+    >
       <div className="text-center space-y-4">
         <Image src="/images/purge-logo.png" alt="PURGE Logo" width={80} height={80} className="mx-auto" />
         {error ? (

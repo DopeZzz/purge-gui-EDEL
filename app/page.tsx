@@ -50,7 +50,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white flex items-center justify-center p-6">
+    <div
+      className="min-h-screen text-white flex items-center justify-center p-6"
+      style={{ background: "var(--background-gradient)" }}
+    >
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-4 mb-6">

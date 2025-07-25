@@ -57,14 +57,13 @@ export default function RootLayout({
         gradient: 'linear-gradient(135deg, #1f2937 0%, #374151 18%, #4b5563 38%, #4b5563 62%, #374151 82%, #1f2937 100%)'
       }
     };
-    if (selected && themes[selected]) {
-      const th = themes[selected];
-      const root = document.documentElement;
-      root.style.setProperty('--primary', th.primary);
-      root.style.setProperty('--secondary', th.secondary);
-      root.style.setProperty('--accent', th.accent);
-      root.style.setProperty('--background-gradient', th.gradient);
-    }
+    const key = selected && themes[selected] ? selected : 'default';
+    const th = themes[key];
+    const root = document.documentElement;
+    root.style.setProperty('--primary', th.primary);
+    root.style.setProperty('--secondary', th.secondary);
+    root.style.setProperty('--accent', th.accent);
+    root.style.setProperty('--background-gradient', th.gradient);
   } catch (e) {}
 })();`,
           }}
