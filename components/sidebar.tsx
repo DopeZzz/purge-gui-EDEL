@@ -4,6 +4,7 @@ import { Settings, Download, MessageCircle, ArrowLeft, Target, HelpCircle } from
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { useRouter, useSearchParams } from "next/navigation"
 
 interface SidebarProps {
   activeTab: string
@@ -19,6 +20,10 @@ const tabs = [
 ]
 
 export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const license = searchParams.get("license")
+
   return (
     <div className="w-72 bg-[#141b3c] border-r border-[#2a3284]/30 h-full flex flex-col relative">
       {/* Header */}
@@ -28,7 +33,13 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
             variant="ghost"
             size="sm"
             className="text-gray-400 hover:text-white hover:bg-[#2a3284]/20 p-3 h-auto rounded-lg"
-            onClick={() => window.history.back()}
+            onClick={() => {
+              if (license) {
+                router.push(`/dashboard/${license}`)
+              } else {
+                router.push("/")
+              }
+            }}
           >
             <ArrowLeft className="w-6 h-6" />
           </Button>

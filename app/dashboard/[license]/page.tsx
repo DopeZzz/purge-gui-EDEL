@@ -226,7 +226,6 @@ export default function DashboardPage() {
   const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0].value)
   const [soundEnabled, setSoundEnabled] = useState(true)
   const [voicesEnabled, setVoicesEnabled] = useState(false)
-  const [voiceVolume, setVoiceVolume] = useState([100])
   const [soundEffects, setSoundEffects] = useState(true)
 
   // Persistir estado de voz activada en localStorage
@@ -328,7 +327,7 @@ export default function DashboardPage() {
         }
       }
     },
-    [soundEnabled, voicesEnabled, selectedVoice, voiceVolume],
+    [soundEnabled],
   )
 
   const handleScriptEnabledChange = useCallback(
@@ -690,7 +689,7 @@ export default function DashboardPage() {
                   color: `hsl(var(--accent))`,
                 }}
                 className="hover:bg-transparent hover:opacity-80 transition-colors bg-transparent"
-                onClick={() => window.open("/docs", "_blank")}
+                onClick={() => window.open(`/docs?license=${licenseKey}`, "_blank")}
               >
                 <HelpCircle className="w-4 h-4 mr-2" />
                 How to use?
@@ -1189,7 +1188,7 @@ export default function DashboardPage() {
             <TabsContent value="autodetect" className="mt-6">
               <div className="grid grid-cols-1 gap-8">
                 {/* Detection Accuracy Card */}
-                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm max-w-2xl mx-auto">
+                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
                   <CardHeader className="pb-4">
                     <CardTitle
                       className="text-xl font-bold text-white flex items-center gap-3"
@@ -1349,31 +1348,6 @@ export default function DashboardPage() {
                   </div>
                   {voicesEnabled && (
                     <>
-                      <div className="space-y-4">
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm font-medium text-white">Voice Volume</span>
-                            <Badge
-                              variant="secondary"
-                              style={{
-                                color: `hsl(var(--accent))`,
-                                backgroundColor: `hsl(var(--accent) / 0.15)`,
-                                borderColor: `hsl(var(--accent) / 0.3)`,
-                              }}
-                            >
-                              {voiceVolume[0]}%
-                            </Badge>
-                          </div>
-                          <Slider
-                            value={voiceVolume}
-                            onValueChange={setVoiceVolume}
-                            min={0}
-                            max={100}
-                            step={1}
-                            className="w-full"
-                          />
-                        </div>
-                      </div>
                       {/* Voice Selector */}
                       <div className="space-y-4">
                         <h3 className="text-lg font-semibold text-white flex items-center gap-2">

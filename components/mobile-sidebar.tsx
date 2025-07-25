@@ -5,6 +5,7 @@ import { Menu, X, Settings, Download, MessageCircle, ArrowLeft, Target, HelpCirc
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { useRouter, useSearchParams } from "next/navigation"
 
 interface MobileSidebarProps {
   activeTab: string
@@ -21,6 +22,9 @@ const tabs = [
 
 export function MobileSidebar({ activeTab, setActiveTab }: MobileSidebarProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const license = searchParams.get("license")
 
   return (
     <>
@@ -31,7 +35,13 @@ export function MobileSidebar({ activeTab, setActiveTab }: MobileSidebarProps) {
             variant="ghost"
             size="sm"
             className="text-gray-400 hover:text-white hover:bg-[#2a3284]/20 p-2 h-auto"
-            onClick={() => window.history.back()}
+            onClick={() => {
+              if (license) {
+                router.push(`/dashboard/${license}`)
+              } else {
+                router.push("/")
+              }
+            }}
           >
             <ArrowLeft className="w-5 h-5" />
           </Button>
