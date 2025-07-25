@@ -206,6 +206,18 @@ export default function DashboardPage() {
   const [selectedTheme, setSelectedTheme] = useState<string>(themeOptions[0].value)
   const [backgroundGradient, setBackgroundGradient] = useState<string>("")
 
+  // Load saved theme from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("selectedTheme")
+      if (saved && themeOptions.some((t) => t.value === saved)) {
+        setSelectedTheme(saved)
+      }
+    } catch (_) {
+      /* ignore */
+    }
+  }, [])
+
   const voiceOptions = [
     { value: "britney", label: "Britney" },
     { value: "grandpa", label: "Grandpa" },
@@ -267,6 +279,11 @@ export default function DashboardPage() {
 
   useEffect(() => {
     applyTheme(selectedTheme)
+    try {
+      localStorage.setItem("selectedTheme", selectedTheme)
+    } catch (_) {
+      /* ignore */
+    }
   }, [selectedTheme, applyTheme])
 
   const playToggleFeedback = useCallback(
