@@ -738,30 +738,31 @@ return (
     </div>
 
     <Tabs value={activeTab} onValueChange={setActiveTab}>
-      <TabsList className="grid w-full grid-cols-5 bg-gray-900/50 border-gray-700/50">
-        <TabsTrigger value="controls" className="flex items-center gap-2 justify-center px-5 py-2 my-1 rounded-lg transition-colors
+      <TabsList className="grid w-full grid-cols-5 place-items-center bg-gray-900/50 border-gray-700/50">
+        <TabsTrigger value="controls" className="flex items-center justify-center gap-2 px-5 py-2 my-1 rounded-lg self-center leading-none transition-colors
 data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white">
           <Settings className="w-4 h-4" />
           Settings
         </TabsTrigger>
-        <TabsTrigger value="equipment" className="flex items-center gap-2 justify-center px-5 py-2 my-1 rounded-lg transition-colors
+        <TabsTrigger value="equipment" className="flex items-center justify-center gap-2 px-5 py-2 my-1 rounded-lg self-center leading-none transition-colors
 data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white">
           <Crosshair className="w-4 h-4" />
           Selections
         </TabsTrigger>
-        <TabsTrigger value="keybinds" className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors
-           data-[state=active]:bg-[hsl(var(--accent)/0.25)]
-           data-[state=active]:text-white">
+        <TabsTrigger value="keybinds" className="flex items-center justify-center gap-2 px-5 py-2 my-1 rounded-lg self-center leading-none transition-colors
+data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white">
           <Keyboard className="w-4 h-4" />
           Keybinds
         </TabsTrigger>
         {autodetectAllowed && (
-          <TabsTrigger value="autodetect" className="flex items-center gap-2">
+          <TabsTrigger value="autodetect" className="flex items-center justify-center gap-2 px-5 py-2 my-1 rounded-lg self-center leading-none transition-colors
+data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white">
             <Radar className="w-4 h-4" />
             Autodetect
           </TabsTrigger>
         )}
-        <TabsTrigger value="miscellaneous" className="flex items-center gap-2">
+        <TabsTrigger value="miscellaneous" className="flex items-center justify-center gap-2 px-5 py-2 my-1 rounded-lg self-center leading-none transition-colors
+data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white">
           <Wrench className="w-4 h-4" />
           Miscellaneous
         </TabsTrigger>
