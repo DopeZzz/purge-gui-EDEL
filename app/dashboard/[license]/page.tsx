@@ -601,7 +601,7 @@ export default function DashboardPage() {
   autoDetection,
   scriptEnabled,
   handleSendConfiguration,
-]);               // cierra array
+]);                // cierra array
 
 return (
 <div 
