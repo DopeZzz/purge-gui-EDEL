@@ -2,39 +2,14 @@ import { NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'
 
-// Simulación de notificaciones - en producción esto vendría de una base de datos
+// Notificaciones
 const notifications = [
-  {
-    id: '1',
-    title: 'System Update',
-    message: 'Purge 2.0 has been updated with improved detection algorithms and better performance.',
-    type: 'info',
-    timestamp: '2024-12-17T10:00:00Z',
-    priority: 'high'
-  },
-  {
-    id: '2', 
-    title: 'Maintenance Notice',
-    message: 'Scheduled maintenance will occur tonight from 2 AM to 4 AM UTC. Service may be briefly interrupted.',
-    type: 'warning',
-    timestamp: '2024-12-17T08:30:00Z',
-    priority: 'medium'
-  },
-  {
-    id: '3',
-    title: 'New Feature Available',
-    message: 'Voice notifications are now available! Choose your favorite voice in the Miscellaneous section.',
+{
+    id: 'NEW PURGE 2.0 IS OUT1!',
+    message: 'Enjoy now the future of Purge No Recoil Scripting',
     type: 'success', 
-    timestamp: '2024-12-16T15:20:00Z',
-    priority: 'low'
-  },
-    {
-    id: '4',
-    title: 'New Feature Available',
-    message: 'Voice notifications are now available! Choose your favorite voice in the Miscellaneous section.',
-    type: 'error', 
-    timestamp: '2024-12-15T15:20:00Z',
-    priority: 'low'
+    timestamp: '2025-07-23T15:20:00Z',
+    priority: 'high'
   }
 ]
 
