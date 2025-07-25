@@ -47,6 +47,7 @@ import {
   Wrench,
 } from "lucide-react"
 import { NotificationsDropdown } from "@/components/notifications-dropdown"
+import { LogoutButton } from '@/components/logout-button'
 import {
   submitConfiguration,
   fetchDashboardConfig,
