@@ -579,7 +579,7 @@ export default function DashboardPage() {
         clearTimeout(debounceTimeoutRef.current)
       }
     }
-  ], [
+  }, [
     selectedWeapon,
     selectedScope,
     selectedBarrel,
