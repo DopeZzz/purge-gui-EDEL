@@ -8,11 +8,10 @@ export function LogoutButton() {
   const router = useRouter()
 
   const handleLogout = () => {
-    // Limpiar localStorage
+    // Limpiar solo datos de licencia
     localStorage.removeItem('licenseType')
     localStorage.removeItem('licenseExpiresAt')
-    localStorage.removeItem('readNotifications')
-    
+
     // Redirigir a la página de login
     router.push('/')
   }

@@ -229,6 +229,26 @@ export default function DashboardPage() {
   const [voiceVolume, setVoiceVolume] = useState([100])
   const [soundEffects, setSoundEffects] = useState(true)
 
+  // Persistir estado de voz activada en localStorage
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("voicesEnabled")
+      if (stored !== null) {
+        setVoicesEnabled(stored === "true")
+      }
+    } catch (_) {
+      /* ignore */
+    }
+  }, [])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("voicesEnabled", voicesEnabled.toString())
+    } catch (_) {
+      /* ignore */
+    }
+  }, [voicesEnabled])
+
   // Reproducir voz cuando cambia el arma seleccionada si la opción está activada
   useEffect(() => {
     if (
@@ -546,7 +566,12 @@ export default function DashboardPage() {
   )
 
   const handleLogout = () => {
-    localStorage.clear() // limpia preferencias
+    try {
+      localStorage.removeItem("licenseType")
+      localStorage.removeItem("licenseExpiresAt")
+    } catch (_) {
+      /* ignore */
+    }
     window.location.href = "/" // vuelve al login
   }
 
