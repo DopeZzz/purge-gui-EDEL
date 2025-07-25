@@ -228,6 +228,26 @@ export default function DashboardPage() {
   const [voicesEnabled, setVoicesEnabled] = useState(false)
   const [soundEffects, setSoundEffects] = useState(true)
 
+  // Load saved voice selection from localStorage
+  useEffect(() => {
+    try {
+      const savedVoice = localStorage.getItem("selectedVoice")
+      if (savedVoice && voiceOptions.some((v) => v.value === savedVoice)) {
+        setSelectedVoice(savedVoice)
+      }
+    } catch (_) {
+      /* ignore */
+    }
+  }, [])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("selectedVoice", selectedVoice)
+    } catch (_) {
+      /* ignore */
+    }
+  }, [selectedVoice])
+
   // Persistir estado de voz activada en localStorage
   useEffect(() => {
     try {
@@ -309,6 +329,7 @@ export default function DashboardPage() {
     }
   }, [selectedTheme, applyTheme])
 
+  // SOUND: Plays a short beep when the script is toggled on or off
   const playToggleFeedback = useCallback(
     (isOn: boolean) => {
       if (soundEnabled) {

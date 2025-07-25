@@ -1,10 +1,9 @@
 "use client"
 
-import { Settings, Download, MessageCircle, ArrowLeft, Target, HelpCircle } from "lucide-react"
+import { Settings, Download, MessageCircle, Target, HelpCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import { useRouter, useSearchParams } from "next/navigation"
 
 interface SidebarProps {
   activeTab: string
@@ -20,29 +19,12 @@ const tabs = [
 ]
 
 export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const license = searchParams.get("license")
 
   return (
     <div className="w-72 bg-[#141b3c] border-r border-[#2a3284]/30 h-full flex flex-col relative">
       {/* Header */}
       <div className="p-4 border-b border-[#2a3284]/30 bg-[#141b3c]">
         <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-gray-400 hover:text-white hover:bg-[#2a3284]/20 p-3 h-auto rounded-lg"
-            onClick={() => {
-              if (license) {
-                router.push(`/dashboard/${license}`)
-              } else {
-                router.push("/")
-              }
-            }}
-          >
-            <ArrowLeft className="w-6 h-6" />
-          </Button>
           <div className="flex items-center gap-3 flex-1">
             <div className="relative h-10 w-10 flex-shrink-0">
               <Image src="/purgewhite.png" alt="Purge Logo" fill className="object-contain" priority />
