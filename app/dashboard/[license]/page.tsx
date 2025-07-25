@@ -32,7 +32,8 @@ import {
   Eye,
   Crosshair,
   Radar,
-  Wrench,
+  VolumeX,
+  LogOut
   Wifi,
   WifiOff,
   Loader2,
