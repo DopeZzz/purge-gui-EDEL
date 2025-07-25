@@ -119,6 +119,12 @@ export default function DashboardPage() {
   // New API connection status state
   const [apiConnectionStatus, setApiConnectionStatus] = useState<ApiConnectionStatus>("pending")
 
+  const API_COLORS = {
+    connected:   "#22c55e",  // verde  (green‑500)
+    pending:     "#facc15",  // amarillo (yellow‑400)
+    disconnected:"#ef4444",  // rojo   (red‑500)
+  } as const
+  
   // Misc states from original code
   const [detectionAccuracy, setDetectionAccuracy] = useState([0.8])
   const [hipfire, setHipfire] = useState(false)
@@ -613,35 +619,57 @@ return (
           {licenseKey}
         </span>
       </p>      
-      {/* API Connection Status */}
-      <div
+{/* API Connection Status */}
+<div
   className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2"
-  style={{
-    borderColor:
-      apiConnectionStatus === "pending"
-        ? "#facc15"
-        : apiConnectionStatus === "connected"
-        ? "hsl(var(--accent))"
-        : "#f87171"
-  }}
+  style={{ borderColor: API_COLORS[apiConnectionStatus] }}
 >
-        {apiConnectionStatus === "pending" ? (
-          <>
-            <Loader2 className="w-4 h-4 animate-spin text-yellow-400" />
-            <span className="text-yellow-400 font-medium">API Connection: Checking...</span>
-          </>
-        ) : apiConnectionStatus === "connected" ? (
-          <>
-            <Wifi className="w-4 h-4" style={{ color: `hsl(var(--accent))` }} />
-            <span style={{ color: `hsl(var(--accent))` }} className="font-medium">API Connection: Active & Connected</span>
-          </>
-        ) : (
-          <>
-            <WifiOff className="w-4 h-4 text-red-400" />
-            <span className="text-red-400 font-medium">API Connection: Disconnected</span>
-          </>
-        )}
-      </div>
+  {apiConnectionStatus === "pending" && (
+    <>
+      <Loader2
+        className="w-4 h-4 animate-spin"
+        style={{ color: API_COLORS.pending }}
+      />
+      <span
+        style={{ color: API_COLORS.pending }}
+        className="font-medium"
+      >
+        API Connection: Checking…
+      </span>
+    </>
+  )}
+
+  {apiConnectionStatus === "connected" && (
+    <>
+      <Wifi
+        className="w-4 h-4"
+        style={{ color: API_COLORS.connected }}
+      />
+      <span
+        style={{ color: API_COLORS.connected }}
+        className="font-medium"
+      >
+        API Connection: Active & Connected
+      </span>
+    </>
+  )}
+
+  {apiConnectionStatus === "disconnected" && (
+    <>
+      <WifiOff
+        className="w-4 h-4"
+        style={{ color: API_COLORS.disconnected }}
+      />
+      <span
+        style={{ color: API_COLORS.disconnected }}
+        className="font-medium"
+      >
+        API Connection: Disconnected
+      </span>
+    </>
+  )}
+</div>
+
 
       {/* Action Buttons */}
       <div className="flex items-center gap-4">
