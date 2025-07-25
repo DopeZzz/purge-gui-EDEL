@@ -643,7 +643,7 @@ return (
             borderColor: `hsl(var(--accent) / 0.5)`, 
             color: `hsl(var(--accent))`,
           }}
-          className="hover:opacity-80"
+          className="hover:bg-transparent hover:opacity-80 transition-colors"
           onClick={() => window.open('/docs', '_blank')}
         >
           <HelpCircle className="w-4 h-4 mr-2" />
