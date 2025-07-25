@@ -90,25 +90,6 @@ export default function DashboardPage() {
     }
   }
 
-  // Calculate remaining days for temporary licenses
-  const calculateRemainingDays = (): number | null => {
-    if (!licenseExpiresAt || !['WEEK', 'MONTH'].includes(licenseType)) {
-      return null
-    }
-    
-    try {
-      const expiryDate = new Date(licenseExpiresAt)
-      const now = new Date()
-      const diffTime = expiryDate.getTime() - now.getTime()
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-      return Math.max(0, diffDays)
-    } catch {
-      return null
-    }
-  }
-
-  const remainingDays = calculateRemainingDays()
-
   // Script/Feature states (no longer control connection badge)
   const [autoDetection, setAutoDetection] = useState(true)
   const [scriptEnabled, setScriptEnabled] = useState(false)
@@ -170,7 +151,7 @@ export default function DashboardPage() {
     // Crear y reproducir audio ----------------- ⬇️ pega esto
     try {
       const audio = new Audio(audioPath)
-      audio.volume = 0.5          // volumen al 50 %
+      audio.volume = 0.5          // volumen al 50 %
       await audio.play()
     } catch (err) {
       console.error(`Could not play voice for ${weaponName} (${audioPath}):`, err)
