@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body className={`${inter.className} bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800`}>
         <ThemeProvider
           attribute="class"
