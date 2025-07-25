@@ -606,7 +606,7 @@ return (
         </span>
       </p>      
       {/* API Connection Status */}
-      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-4">
+      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2">
         {apiConnectionStatus === "pending" ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin text-yellow-400" />
