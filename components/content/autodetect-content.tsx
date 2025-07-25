@@ -64,7 +64,7 @@ export function AutodetectContent() {
             <li className="flex items-start gap-3"> 
               <span className="text-[#00ff88] mt-1">•</span>
               <div className="flex-1">
-                <strong className="text-white">Detection Accuracy:</strong>
+                <strong className="text-white">Detection Accuracy:</strong> 
                 <p className="text-sm mt-1 mb-3">
                   Define el umbral de confianza requerido para confirmar un cambio de arma.
                   Un valor de <span className="font-semibold text-[#00ff88]">0.8</span> es recomendado para un balance óptimo entre velocidad y precisión.
