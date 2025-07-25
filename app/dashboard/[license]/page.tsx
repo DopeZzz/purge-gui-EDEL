@@ -1183,18 +1183,18 @@ export default function DashboardPage() {
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
                         <span className="text-white font-medium">Accuracy</span>
-                        <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
-                          {(detectionAccuracy[0] * 100).toFixed(0)}%
-                        </Badge>
+                         <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                           {detectionAccuracy[0].toFixed(1)}
+                         </Badge>
                       </div>
-                      <Slider
-                        value={detectionAccuracy}
-                        onValueChange={setDetectionAccuracy}
-                        min={0.1}
-                        max={1.0}
-                        step={0.01}
-                        className="w-full"
-                      />
+                     <Slider
+                       value={detectionAccuracy}
+                       onValueChange={setDetectionAccuracy}
+                       min={0.1}
+                       max={0.9}
+                       step={0.1}
+                       className="w-full"
+                     />
                     </div>
                   </CardContent>
                 </Card>
