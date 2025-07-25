@@ -1,11 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, Settings, Download, MessageCircle, ArrowLeft, Target, HelpCircle } from "lucide-react"
+import { Menu, X, Settings, Download, MessageCircle, Target, HelpCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import { useRouter, useSearchParams } from "next/navigation"
 
 interface MobileSidebarProps {
   activeTab: string
@@ -22,29 +21,12 @@ const tabs = [
 
 export function MobileSidebar({ activeTab, setActiveTab }: MobileSidebarProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const license = searchParams.get("license")
 
   return (
     <>
       {/* Mobile Header */}
       <div className="lg:hidden bg-[#141b3c] border-b border-[#2a3284]/30 p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-gray-400 hover:text-white hover:bg-[#2a3284]/20 p-2 h-auto"
-            onClick={() => {
-              if (license) {
-                router.push(`/dashboard/${license}`)
-              } else {
-                router.push("/")
-              }
-            }}
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </Button>
           <div className="flex items-center gap-2">
             <div className="relative h-8 w-8">
               <Image src="/purgewhite.png" alt="Purge Logo" fill className="object-contain" priority />
