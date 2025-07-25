@@ -13,22 +13,20 @@ export function ConfigureContent() {
           How to Configure & Use
         </h1>
         <p className="text-gray-300 text-lg">
-          Configure Purge 2.0 settings for optimal performance and learn how to use it effectively in-game. Proper
-          configuration is essential for maximum effectiveness.
+          Configure Purge 2.0 settings for optimal performance and learn how to use it effectively in-game.
         </p>
       </div>
 
       <Alert className="mb-8 bg-blue-500/10 border-blue-500/20">
         <Info className="h-5 w-5 text-blue-400" />
         <AlertDescription className="text-blue-300 text-base">
-          <strong>Pro Tip:</strong> Take your time with configuration - proper setup ensures the best experience and
-          reduces detection risk!
+          <strong>Pro Tip:</strong> For the best results, make sure your in-game settings perfectly align with your script configuration.
         </AlertDescription>
       </Alert>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10">
         <div className="order-2 xl:order-1 space-y-6">
-          <YouTubeEmbed videoId="dQw4w9WgXcQ" title="Purge 2.0 Configuration & Usage Guide" />
+          <YouTubeEmbed videoId="" title="Purge 2.0 Configuration & Usage Guide" />
 
           <div className="bg-[#141b3c]/80 rounded-lg p-6 border border-[#2a3284]/40">
             <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-3">
@@ -163,20 +161,20 @@ export function ConfigureContent() {
       <div className="bg-[#141b3c]/80 rounded-lg p-8 border border-[#2a3284]/40 mb-8">
         <h2 className="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
           <Gamepad2 className="w-7 h-7 text-[#00ff88]" />
-          In-Game Usage Guide
+          Getting Started
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-xl font-semibold text-[#00ff88] mb-4">Getting Started</h3>
+            <h3 className="text-xl font-semibold text-[#00ff88] mb-4">Before Launching Rust</h3>
             <ol className="space-y-4 text-gray-300">
               <li className="flex items-start gap-3">
                 <span className="bg-[#00ff88] text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mt-0.5 flex-shrink-0">
                   1
                 </span>
                 <div>
-                  <span className="block text-base font-medium text-white">Launch Rust and Join Server</span>
+                  <span className="block text-base font-medium text-white">Close Steam and Check Unified Remote</span>
                   <span className="text-sm text-gray-400 mt-1">
-                    Make sure to join a server with good ping for optimal performance
+                  Ensure Unified Remote is running correctly and that Steam is fully closed before continuing
                   </span>
                 </div>
               </li>
@@ -185,9 +183,9 @@ export function ConfigureContent() {
                   2
                 </span>
                 <div>
-                  <span className="block text-base font-medium text-white">Activate Purge 2.0</span>
+                  <span className="block text-base font-medium text-white">Run Notepad++</span>
                   <span className="text-sm text-gray-400 mt-1">
-                    Press F1 to activate the system and wait for confirmation
+                  The connection module will open. Once your license is loaded, it should display “Connected” 
                   </span>
                 </div>
               </li>
@@ -196,9 +194,9 @@ export function ConfigureContent() {
                   3
                 </span>
                 <div>
-                  <span className="block text-base font-medium text-white">Verify Active Status</span>
+                  <span className="block text-base font-medium text-white">Verify API Connection in Dashboard</span>
                   <span className="text-sm text-gray-400 mt-1">
-                    Look for the green "Active" indicator in the top-left corner
+                  Open the dashboard and confirm that the API connection is active by checking the status indicator
                   </span>
                 </div>
               </li>
@@ -207,52 +205,50 @@ export function ConfigureContent() {
                   4
                 </span>
                 <div>
-                  <span className="block text-base font-medium text-white">Equip Weapon and Play</span>
+                  <span className="block text-base font-medium text-white">Open Steam</span>
                   <span className="text-sm text-gray-400 mt-1">
-                    The system will automatically detect your weapon and apply settings
+                  Start Steam and launch Rust and apply the necessary configuration
                   </span>
                 </div>
               </li>
             </ol>
           </div>
           <div>
-            <h3 className="text-xl font-semibold text-[#00ff88] mb-4">Weapon-Specific Tips</h3>
+            <h3 className="text-xl font-semibold text-[#00ff88] mb-4">In-Game Usage Guide</h3>
             <ul className="space-y-4 text-gray-300">
               <li className="flex items-start gap-3">
                 <Target className="w-5 h-5 text-[#00ff88] mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong className="text-white text-base">AK-47 Assault Rifle:</strong>
+                  <strong className="text-white text-base">Launch Rust and Join Server</strong>
                   <p className="text-sm text-gray-400 mt-1">
-                    Use controlled burst fire for best results. The recoil pattern is aggressive but predictable with
-                    proper compensation.
+                  Join a training server with targets to test the script right away, with access to all available weapons
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Target className="w-5 h-5 text-[#00ff88] mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong className="text-white text-base">M249 Machine Gun:</strong>
+                  <strong className="text-white text-base">Match Your Settings</strong>
                   <p className="text-sm text-gray-400 mt-1">
-                    Excellent for long-range engagements with high damage output. Best used from cover or elevated
-                    positions.
+                  Press F1 in-game to open the console and copy your exact sens, ads, and fov values into the script
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Target className="w-5 h-5 text-[#00ff88] mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong className="text-white text-base">Bolt Action Rifle:</strong>
+                  <strong className="text-white text-base">Activate Purge 2.0</strong>
                   <p className="text-sm text-gray-400 mt-1">
-                    One-shot headshot potential at any range. Perfect for long-distance eliminations and area denial.
+                  Enable the script from the dashboard by switching it to ON
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Target className="w-5 h-5 text-[#00ff88] mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong className="text-white text-base">Auto Detection System:</strong>
+                  <strong className="text-white text-base">Equip Weapon and Play</strong>
                   <p className="text-sm text-gray-400 mt-1">
-                    Automatically recognizes equipped weapons and applies optimal settings for each weapon type.
+                  Once everything is set up, equip a weapon, test the script, and start playing
                   </p>
                 </div>
               </li>

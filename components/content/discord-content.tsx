@@ -24,7 +24,7 @@ export function DiscordContent() {
           </div>
           <h2 className="text-2xl font-semibold text-white mb-4">Public Discord Server</h2>
           <p className="text-gray-300 mb-6 text-base">
-            Primary community hub with general support, discussions, announcements, and community events. 
+            Primary community hub with general support, announcements, and all essential information.
           </p>
           <Button
             className="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-3 font-semibold w-full text-base"
@@ -40,8 +40,7 @@ export function DiscordContent() {
           </div>
           <h2 className="text-2xl font-semibold text-white mb-4">Private Discord Server</h2>
           <p className="text-gray-300 mb-6 text-base">
-            Exclusive server for premium users with priority support, beta features, advanced configurations, and direct
-            developer access.
+            Exclusive server for Purge users with priority support, beta features, advanced configurations, and detailed script information.
           </p>
           <Button
             className="bg-[#00ff88] hover:bg-[#00cc6a] text-black px-8 py-3 font-semibold w-full text-base"
@@ -87,8 +86,8 @@ export function DiscordContent() {
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white text-base">Troubleshooting Guides:</strong>
-                <p className="text-sm text-gray-400 mt-1">Comprehensive guides and solutions for common issues</p>
+                <strong className="text-white text-base">Troubleshooting Solutions:</strong>
+                <p className="text-sm text-gray-400 mt-1">We actively work with users to resolve any technical or usage problems</p>
               </div>
             </li>
           </ul>
@@ -105,7 +104,7 @@ export function DiscordContent() {
               <div>
                 <strong className="text-white text-base">Active Community:</strong>
                 <p className="text-sm text-gray-400 mt-1">
-                  Over 5,000+ active members sharing tips, strategies, and gameplay clips
+                  Over 1,200+ active members sharing tips, configs, and gameplay clips
                 </p>
               </div>
             </li>
@@ -130,9 +129,9 @@ export function DiscordContent() {
             <li className="flex items-start gap-3">
               <span className="text-[#00ff88] mt-1">•</span>
               <div>
-                <strong className="text-white text-base">Weekly Events:</strong>
+                <strong className="text-white text-base">Community Events:</strong>
                 <p className="text-sm text-gray-400 mt-1">
-                  Participate in community events, tournaments, and giveaways
+                  Participate in community events and giveaways
                 </p>
               </div>
             </li>

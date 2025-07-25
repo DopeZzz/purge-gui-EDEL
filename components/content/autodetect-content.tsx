@@ -12,16 +12,14 @@ export function AutodetectContent() {
           Autodetect System
         </h1>
         <p className="text-gray-300 text-lg">
-          Learn how Purge 2.0's advanced autodetect system automatically recognizes weapons and optimizes settings for
-          maximum performance.
+        Learn how Purge 2.0's advanced autodetect system automatically recognizes weapons for maximum performance.
         </p>
       </div>
 
       <Alert className="mb-8 bg-blue-500/10 border-blue-500/20">
         <Info className="h-4 w-4 text-blue-400" />
         <AlertDescription className="text-blue-300">
-          <strong>Pro Tip:</strong> The autodetect system works best when you allow it to scan your inventory for a few
-          seconds after switching weapons.
+          <strong>Premium Feature:</strong> The autodetect system uses cloud-based image recognition and is available only to premium users.
         </AlertDescription>
       </Alert>
 
