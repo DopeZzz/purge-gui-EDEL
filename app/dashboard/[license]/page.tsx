@@ -604,7 +604,7 @@ return (
       <div className="flex items-center gap-3">
         <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-14 w-auto" />
         <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-          Purge 2.0
+          Purge 2.0
         </h1>
       </div>
       <p className="text-gray-400 self-center">
@@ -1373,4 +1373,4 @@ Barrel
   </div>
 </div>
 );
-} 
+}
