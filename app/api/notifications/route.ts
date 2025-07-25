@@ -5,7 +5,8 @@ export const dynamic = 'force-dynamic'
 // Notificaciones
 const notifications = [
 {
-    id: 'NEW PURGE 2.0 IS OUT1!',
+    id: '1',
+    title: 'NEW PURGE 2.0 IS OUT!',
     message: 'Enjoy now the future of Purge No Recoil Scripting',
     type: 'success', 
     timestamp: '2025-07-23T15:20:00Z',
