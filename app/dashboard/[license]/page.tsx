@@ -595,13 +595,13 @@ return (
 >
   <div className="container mx-auto p-8">
     {/* Header */}
-    <div className="text-center mb-12">
-      <div className="flex justify-center mb-6">
-        <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-20 w-auto" />
+    <div className="flex items-center justify-between mb-12">
+      <div className="flex items-center gap-3">
+        <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-10 w-auto" />
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          Purge 2.0
+        </h1>
       </div>
-      <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-        Purge 2.0
-      </h1>
       <p className="text-gray-400 mb-6">
         Rust Cloud Scripting – License:&nbsp;
         <span style={{ color: `hsl(var(--accent))` }} className="font-semibold">
@@ -639,7 +639,7 @@ return (
       </div>
 
       {/* Action Buttons */}
-      <div className="flex justify-center gap-4 mt-6">
+      <div className="flex items-center gap-4">
         <div className="flex items-center gap-3">
           <Button
             variant="outline"
