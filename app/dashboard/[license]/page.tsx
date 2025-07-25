@@ -1084,7 +1084,7 @@ export default function DashboardPage() {
               <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2 w-full">
                   <CardTitle className="flex items-center" style={{ color: `hsl(var(--accent))` }}>
-                    <Gamepad2 className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
+                    <Keyboard className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
                     Crouch Key
                   </CardTitle>
                   <HotkeySelector
@@ -1224,8 +1224,8 @@ export default function DashboardPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-gray-300 text-sm">Higher values increase accuracy but may reduce performance.</p>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
+                    <div className="space-y-3 md:w-1/2">
+                      <div className="flex justify-between items-center w-full">
                         <span className="text-white font-medium">Accuracy</span>
                          <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
                            {detectionAccuracy[0].toFixed(1)}
@@ -1374,7 +1374,6 @@ export default function DashboardPage() {
                       {/* Voice Selector */}
                       <div className="space-y-4">
                         <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                          <span style={{ color: "var(--theme-accent)" }}>🎵</span>
                           Voice Selection
                         </h3>
                         <div className="space-y-3">
@@ -1383,7 +1382,7 @@ export default function DashboardPage() {
                             <select
                               value={selectedVoice}
                               onChange={(e) => setSelectedVoice(e.target.value)}
-                              className="bg-gray-800 border border-gray-600 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="bg-gray-800 border border-gray-600 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500 w-44"
                             >
                               {voiceOptions.map((v) => (
                                 <option key={v.value} value={v.value}>
