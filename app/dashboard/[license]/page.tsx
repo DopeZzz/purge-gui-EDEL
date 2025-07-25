@@ -639,7 +639,6 @@ return (
       {/* Action Buttons */}
       <div className="flex justify-center gap-4 mt-6">
         <div className="flex items-center gap-3">
-          <NotificationsDropdown />
           <Button
             variant="outline"
             style={{ 
@@ -661,6 +660,7 @@ return (
           <Download className="w-4 h-4 mr-2" />
           Download
         </Button>
+        <NotificationsDropdown />
       </div>
     </div>
 
