@@ -596,12 +596,12 @@ export default function DashboardPage() {
     hipfireKey,
     zoom,
     zoomKey,
-      scriptToggleKey,
-  autoDetectToggleKey,
-  autoDetection,
-  scriptEnabled,
-  handleSendConfiguration,
-]);                // cierra array
+    scriptToggleKey,
+    autoDetectToggleKey,
+    autoDetection,
+    scriptEnabled,
+    handleSendConfiguration
+  ]);                // cierra array
 
 return (
 <div 
