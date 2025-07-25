@@ -533,6 +533,11 @@ export default function DashboardPage() {
     ]
   )
 
+  const handleLogout = () => {
+    localStorage.clear()       // limpia preferencias
+    window.location.href = "/" // vuelve al login
+  }
+  
   useRealtimeUpdates(licenseKey, realtimeHandlers)
 
   const hasCheckedRef = useRef(false)
