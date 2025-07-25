@@ -295,9 +295,11 @@ export default function DashboardPage() {
       }
       if (voicesEnabled) {
         const utter = new SpeechSynthesisUtterance(isOn ? "On" : "Off")
+      
         const match = speechSynthesis
           .getVoices()
-          const match = speechSynthesis.getVoices() .find(v => v.name.toLowerCase().includes(selectedVoice));
+          .find(v => v.name.toLowerCase().includes(selectedVoice))
+      
         if (match) utter.voice = match
         utter.volume = voiceVolume[0] / 100
         speechSynthesis.speak(utter)
