@@ -734,7 +734,7 @@ export default function DashboardPage() {
     >
       <div className="container mx-auto p-8">
         {/* Header */}
-        <div className="flex items-center justify-center flex-wrap gap-8 mb-12">
+        <div className="flex items-center justify-between mb-12">
           <div className="flex items-center gap-4">
             <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-14 w-auto" />
             <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
