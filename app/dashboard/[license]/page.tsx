@@ -40,7 +40,6 @@ import {
   Download,
   Volume2,
   Wrench,
-  ArrowLeftCircle,
 } from "lucide-react"
 import { NotificationsDropdown } from "@/components/notifications-dropdown"
 import { submitConfiguration, fetchDashboardConfig } from "@/app/services/recoil-actions"
@@ -735,17 +734,8 @@ export default function DashboardPage() {
     >
       <div className="container mx-auto p-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center justify-center flex-wrap gap-6 mb-12">
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => window.open("https://google.com", "_blank")}
-              title="old version"
-              className={`p-1 rounded-full border border-accent hover:bg-accent/10 ${
-                selectedTheme === "default" || selectedTheme === "mono" ? "text-accent" : "text-white"
-              }`}
-            >
-              <ArrowLeftCircle className="w-5 h-5" />
-            </button>
             <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-14 w-auto" />
             <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Purge 2.0
@@ -772,11 +762,10 @@ export default function DashboardPage() {
             </span>
           </p>
           {/* API Connection Status */}
-          <div className="flex-1 flex justify-center">
-            <div
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 ${selectedTheme !== "default" ? "bg-black/50" : ""}`}
-              style={{ borderColor: API_COLORS[apiConnectionStatus] }}
-            >
+          <div
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 ${selectedTheme !== "default" ? "bg-black/50" : ""}`}
+            style={{ borderColor: API_COLORS[apiConnectionStatus] }}
+          >
               {apiConnectionStatus === "pending" && (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" style={{ color: API_COLORS.pending }} />
@@ -802,7 +791,6 @@ export default function DashboardPage() {
                 </>
               )}
             </div>
-          </div>
           {/* Action Buttons */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
