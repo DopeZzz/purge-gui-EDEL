@@ -101,6 +101,7 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("controls")
   const initialMountRef = useRef(true)
   const initialVoiceRef = useRef(true)
+  const initialVoiceChangeRef = useRef(true)
   const [isSendingDebounced, setIsSendingDebounced] = useState(false)
   const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -285,6 +286,21 @@ export default function DashboardPage() {
       playWeaponVoice(selectedWeapon)
     }
   }, [selectedWeapon, voicesEnabled])
+
+  // Reproducir voz cuando cambia la voz seleccionada
+  useEffect(() => {
+    if (initialVoiceChangeRef.current) {
+      initialVoiceChangeRef.current = false
+      return
+    }
+    if (
+      voicesEnabled &&
+      selectedWeapon &&
+      selectedWeapon !== "__NONE__"
+    ) {
+      playWeaponVoice(selectedWeapon)
+    }
+  }, [selectedVoice, voicesEnabled, selectedWeapon])
 
   const applyTheme = useCallback(
     (themeValue: string) => {
@@ -1218,7 +1234,7 @@ export default function DashboardPage() {
             <TabsContent value="autodetect" className="mt-6">
               <div className="grid grid-cols-1 gap-8">
                 {/* Detection Accuracy Card */}
-                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm md:w-1/2 mx-auto">
+                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm md:w-1/3">
                   <CardHeader className="pb-4">
                     <CardTitle
                       className="text-xl font-bold text-white flex items-center gap-3"

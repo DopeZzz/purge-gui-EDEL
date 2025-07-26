@@ -24,7 +24,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `(() => {
   try {
-    const selected = localStorage.getItem('selectedTheme');
     const themes = {
       default: {
         primary: '142 76% 36%',
@@ -57,9 +56,14 @@ export default function RootLayout({
         gradient: 'linear-gradient(135deg, #1f2937 0%, #374151 18%, #4b5563 38%, #4b5563 62%, #374151 82%, #1f2937 100%)'
       }
     };
-    const key = selected && themes[selected] ? selected : 'default';
-    const th = themes[key];
     const root = document.documentElement;
+    const path = window.location.pathname;
+    let key = 'default';
+    if (path.startsWith('/dashboard')) {
+      const selected = localStorage.getItem('selectedTheme');
+      if (selected && themes[selected]) key = selected;
+    }
+    const th = themes[key];
     root.style.setProperty('--primary', th.primary);
     root.style.setProperty('--secondary', th.secondary);
     root.style.setProperty('--accent', th.accent);
