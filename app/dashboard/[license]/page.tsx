@@ -253,6 +253,10 @@ export default function DashboardPage() {
     }
     return true
   })
+  const soundEnabledRef = useRef(soundEnabled)
+  useEffect(() => {
+    soundEnabledRef.current = soundEnabled
+  }, [soundEnabled])
   const [voicesEnabled, setVoicesEnabled] = useState(() => {
     if (typeof window !== "undefined") {
       try {
@@ -380,26 +384,23 @@ export default function DashboardPage() {
   }, [selectedTheme, applyTheme])
 
   // SOUND: Plays a short beep when the script is toggled on or off
-  const playToggleFeedback = useCallback(
-    (isOn: boolean) => {
-      if (soundEnabled) {
-        try {
-          const ctx = new (window.AudioContext || (window as any).webkitAudioContext)()
-          const osc = ctx.createOscillator()
-          const gain = ctx.createGain()
-          osc.type = "sine"
-          osc.frequency.value = isOn ? 480 : 220
-          osc.connect(gain)
-          gain.connect(ctx.destination)
-          osc.start()
-          osc.stop(ctx.currentTime + 0.15)
-        } catch (_) {
-          /* ignore */
-        }
+  const playToggleFeedback = useCallback((isOn: boolean) => {
+    if (soundEnabledRef.current) {
+      try {
+        const ctx = new (window.AudioContext || (window as any).webkitAudioContext)()
+        const osc = ctx.createOscillator()
+        const gain = ctx.createGain()
+        osc.type = "sine"
+        osc.frequency.value = isOn ? 480 : 220
+        osc.connect(gain)
+        gain.connect(ctx.destination)
+        osc.start()
+        osc.stop(ctx.currentTime + 0.15)
+      } catch (_) {
+        /* ignore */
       }
-    },
-    [soundEnabled],
-  )
+    }
+  }, [])
 
   const handleScriptEnabledChange = useCallback(
     (val: boolean, playSound = true) => {
