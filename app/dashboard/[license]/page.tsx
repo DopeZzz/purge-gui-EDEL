@@ -326,7 +326,7 @@ export default function DashboardPage() {
     ) {
       playWeaponVoice(selectedWeapon)
     }
-  }, [selectedVoice, voicesEnabled])
+  }, [selectedVoice])
 
   const applyTheme = useCallback(
     (themeValue: string) => {
@@ -388,7 +388,7 @@ export default function DashboardPage() {
           const osc = ctx.createOscillator()
           const gain = ctx.createGain()
           osc.type = "sine"
-          osc.frequency.value = isOn ? 550 : 220
+          osc.frequency.value = isOn ? 480 : 220
           osc.connect(gain)
           gain.connect(ctx.destination)
           osc.start()
@@ -762,12 +762,8 @@ export default function DashboardPage() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
               <Button
-                variant="outline"
-                style={{
-                  borderColor: `hsl(var(--accent) / 0.5)`,
-                  color: `hsl(var(--accent))`,
-                }}
-                className="hover:bg-transparent hover:opacity-80 transition-colors bg-transparent"
+                style={{ backgroundColor: `hsl(var(--accent))` }}
+                className="hover:opacity-90 text-black"
                 onClick={() => window.open(`/docs?license=${licenseKey}`, "_blank")}
               >
                 <HelpCircle className="w-4 h-4 mr-2" />
