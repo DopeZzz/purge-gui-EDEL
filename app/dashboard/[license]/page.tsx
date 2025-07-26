@@ -101,6 +101,7 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("controls")
   const initialMountRef = useRef(true)
   const initialVoiceRef = useRef(true)
+  const skipVoiceAfterConfigRef = useRef(true)
   const initialVoiceChangeRef = useRef(true)
   const initialScriptRef = useRef(true)
   const [isSendingDebounced, setIsSendingDebounced] = useState(false)
@@ -239,7 +240,19 @@ export default function DashboardPage() {
     }
     return voiceOptions[0].value
   })
-  const [soundEnabled, setSoundEnabled] = useState(true)
+  const [soundEnabled, setSoundEnabled] = useState(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const stored = localStorage.getItem("soundEnabled")
+        if (stored !== null) {
+          return stored === "true"
+        }
+      } catch (_) {
+        /* ignore */
+      }
+    }
+    return true
+  })
   const [voicesEnabled, setVoicesEnabled] = useState(() => {
     if (typeof window !== "undefined") {
       try {
@@ -254,6 +267,14 @@ export default function DashboardPage() {
     return false
   })
   const [soundEffects, setSoundEffects] = useState(true)
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("soundEnabled", soundEnabled.toString())
+    } catch (_) {
+      /* ignore */
+    }
+  }, [soundEnabled])
 
 
   useEffect(() => {
@@ -273,10 +294,15 @@ export default function DashboardPage() {
     }
   }, [voicesEnabled])
 
-  // Reproducir voz cuando cambia el arma seleccionada (ignorar la primera carga)
+  // Reproducir voz cuando cambia el arma seleccionada
   useEffect(() => {
+    if (!configLoaded) return
     if (initialVoiceRef.current) {
       initialVoiceRef.current = false
+      return
+    }
+    if (skipVoiceAfterConfigRef.current) {
+      skipVoiceAfterConfigRef.current = false
       return
     }
     if (
@@ -286,7 +312,7 @@ export default function DashboardPage() {
     ) {
       playWeaponVoice(selectedWeapon)
     }
-  }, [selectedWeapon, voicesEnabled])
+  }, [selectedWeapon, voicesEnabled, configLoaded])
 
   // Reproducir voz cuando cambia la voz seleccionada
   useEffect(() => {
