@@ -417,11 +417,13 @@ export default function DashboardPage() {
     const loadConfig = async () => {
       if (!licenseKey) {
         setConfigLoaded(true)
+        initialWeaponSelectRef.current = false
         return
       }
       const cfg = await fetchDashboardConfig(licenseKey)
       if (!cfg) {
         setConfigLoaded(true)
+        initialWeaponSelectRef.current = false
         return
       }
       if (cfg.weapon) setSelectedWeapon(cfg.weapon)
@@ -471,6 +473,7 @@ export default function DashboardPage() {
       if (typeof cfg.script_toggle_key === "number") setScriptToggleKey(codeToKeyName(cfg.script_toggle_key))
       if (typeof cfg.auto_detection_toggle_key === "number")
         setAutoDetectToggleKey(codeToKeyName(cfg.auto_detection_toggle_key))
+      initialWeaponSelectRef.current = false
       setConfigLoaded(true)
     }
     loadConfig()
