@@ -1318,7 +1318,14 @@ export default function DashboardPage() {
                     <div className="space-y-3 w-full">
                       <div className="flex justify-between items-center w-full">
                         <span className="text-white font-medium">Accuracy</span>
-                         <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
+                         <Badge
+                           variant="secondary"
+                           style={{
+                             color: `hsl(var(--accent))`,
+                             backgroundColor: `hsl(var(--accent) / 0.15)`,
+                             borderColor: `hsl(var(--accent) / 0.3)`,
+                           }}
+                         >
                            {detectionAccuracy[0].toFixed(1)}
                          </Badge>
                       </div>
