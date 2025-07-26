@@ -266,7 +266,6 @@ export default function DashboardPage() {
     }
     return false
   })
-  const [soundEffects, setSoundEffects] = useState(true)
 
   useEffect(() => {
     try {
@@ -403,13 +402,15 @@ export default function DashboardPage() {
   )
 
   const handleScriptEnabledChange = useCallback(
-    (val: boolean) => {
+    (val: boolean, playSound = true) => {
       setScriptEnabled(val)
       if (initialScriptRef.current) {
         initialScriptRef.current = false
         return
       }
-      playToggleFeedback(val)
+      if (playSound) {
+        playToggleFeedback(val)
+      }
     },
     [playToggleFeedback],
   )
@@ -468,7 +469,8 @@ export default function DashboardPage() {
       if (typeof cfg.zoom === "boolean") setZoom(cfg.zoom)
       if (typeof cfg.zoom_key === "number") setZoomKey(codeToKeyName(cfg.zoom_key))
       if (typeof cfg.auto_detection === "boolean") setAutoDetection(cfg.auto_detection)
-      if (typeof cfg.script_on === "boolean") handleScriptEnabledChange(cfg.script_on)
+      if (typeof cfg.script_on === "boolean")
+        handleScriptEnabledChange(cfg.script_on, false)
       if (typeof cfg.script_toggle_key === "number") setScriptToggleKey(codeToKeyName(cfg.script_toggle_key))
       if (typeof cfg.auto_detection_toggle_key === "number")
         setAutoDetectToggleKey(codeToKeyName(cfg.auto_detection_toggle_key))
@@ -625,7 +627,7 @@ export default function DashboardPage() {
       setSelectedScope,
       setSelectedBarrel,
       onProgramConnected: handleProgramConnected,
-      handleScriptEnabledChange,
+      setScriptEnabled: (v: boolean) => handleScriptEnabledChange(v, false),
       setAutoDetection,
       setHipfire,
     }),
