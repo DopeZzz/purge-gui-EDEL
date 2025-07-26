@@ -1242,7 +1242,7 @@ export default function DashboardPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-12">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 sm:gap-x-12">
                     {WEAPON_NAMES_API.map((weapon, idx) => (
                       <div key={weapon} className="flex items-center justify-between space-x-2">
                         <span>{WEAPON_DISPLAY_NAMES[idx]}</span>
