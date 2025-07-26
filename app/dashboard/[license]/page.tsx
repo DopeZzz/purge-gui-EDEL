@@ -749,7 +749,7 @@ export default function DashboardPage() {
           </p>
           {/* API Connection Status */}
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2"
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 ${selectedTheme !== "default" ? "bg-black/50" : ""}`}
             style={{ borderColor: API_COLORS[apiConnectionStatus] }}
           >
             {apiConnectionStatus === "pending" && (
@@ -908,7 +908,7 @@ export default function DashboardPage() {
               className="txt w-full h-full flex items-center justify-center gap-2 px-4 rounded-lg transition-colors data-[state=active]:bg-[hsl(var(--accent))] data-[state=active]:text-white"
             >
               <Crosshair className="w-4 h-4" />
-              Selections
+              Selection
             </TabsTrigger>
             <TabsTrigger
               value="keybinds"
@@ -1412,8 +1412,8 @@ export default function DashboardPage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-white">Sound Effects</p>
-                      <p className="text-xs text-gray-500">Play sound on toggle</p>
+                      <p className="text-sm font-medium text-white">Sound ON/OFF Effect</p>
+                      <p className="text-xs text-gray-500">Play sound on toggle the script</p>
                     </div>
                     <Switch
                       checked={soundEnabled}
@@ -1427,7 +1427,7 @@ export default function DashboardPage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-white">Voice Feedback</p>
-                      <p className="text-xs text-gray-500">Enable voice announcements</p>
+                      <p className="text-xs text-gray-500">Enable voice weapon announcements</p>
                     </div>
                     <Switch
                       checked={voicesEnabled}
