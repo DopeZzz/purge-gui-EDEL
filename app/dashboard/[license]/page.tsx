@@ -743,7 +743,7 @@ export default function DashboardPage() {
               Purge 2.0
             </h1>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <p
               className={`self-center ${
                 selectedTheme === "default" || selectedTheme === "mono"
