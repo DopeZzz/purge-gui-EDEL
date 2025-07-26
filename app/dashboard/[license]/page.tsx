@@ -40,7 +40,7 @@ import {
   Download,
   Volume2,
   Wrench,
-  ArrowLeftCircle,
+  ArrowLeft,
 } from "lucide-react"
 import { NotificationsDropdown } from "@/components/notifications-dropdown"
 import { submitConfiguration, fetchDashboardConfig } from "@/app/services/recoil-actions"
@@ -734,23 +734,21 @@ export default function DashboardPage() {
       }}
     >
       <div className="container relative mx-auto p-8">
+        <a
+          href="https://google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="old version"
+          className="absolute top-2 left-2 text-gray-400 hover:text-white"
+        >
+          <ArrowLeft className="w-4 h-4" />
+        </a>
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
           <div className="flex items-center gap-4">
             <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-14 w-auto" />
-            <h1 className="relative text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Purge <span className="relative">
-                2.0
-                <a
-                  href="https://google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="old version"
-                  className="absolute -top-6 left-1/2 -translate-x-1/2 text-gray-400 hover:text-white"
-                >
-                  <ArrowLeftCircle className="w-5 h-5" />
-                </a>
-              </span>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              Purge 2.0
             </h1>
           </div>
           <p
