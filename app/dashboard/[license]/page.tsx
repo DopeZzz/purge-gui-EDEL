@@ -40,7 +40,6 @@ import {
   Download,
   Volume2,
   Wrench,
-  ArrowLeft,
 } from "lucide-react"
 import { NotificationsDropdown } from "@/components/notifications-dropdown"
 import { submitConfiguration, fetchDashboardConfig } from "@/app/services/recoil-actions"
@@ -734,15 +733,7 @@ export default function DashboardPage() {
       }}
     >
       <div className="container relative mx-auto p-8">
-        <a
-          href="https://google.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="old version"
-          className="absolute top-2 left-2 text-gray-400 hover:text-white"
-        >
-          <ArrowLeft className="w-4 h-4" />
-        </a>
+        {/* Removed old version link */}
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
           <div className="flex items-center gap-4">
