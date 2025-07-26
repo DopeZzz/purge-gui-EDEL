@@ -805,11 +805,6 @@ export default function DashboardPage() {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-4">
               <Button
-                className="bg-green-600 hover:bg-green-700 text-white text-lg px-6 py-3"
-              >
-                Temporary
-              </Button>
-              <Button
                 className={`border border-accent bg-transparent hover:bg-accent/10 ${
                   selectedTheme === "default" || selectedTheme === "mono"
                     ? "text-accent"
