@@ -40,6 +40,7 @@ import {
   Download,
   Volume2,
   Wrench,
+  ArrowLeft,
 } from "lucide-react"
 import { NotificationsDropdown } from "@/components/notifications-dropdown"
 import { submitConfiguration, fetchDashboardConfig } from "@/app/services/recoil-actions"
@@ -795,6 +796,17 @@ export default function DashboardPage() {
           {/* Action Buttons */}
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-4">
+              <Button
+                className={`border border-accent bg-transparent hover:bg-accent/10 ${
+                  selectedTheme === "default" || selectedTheme === "mono"
+                    ? "text-accent"
+                    : "text-white"
+                }`}
+                onClick={() => window.open("https://google.com", "_blank")}
+                title="old version"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </Button>
               <Button
                 className={`border border-accent bg-transparent hover:bg-accent/10 ${
                   selectedTheme === "default" || selectedTheme === "mono"
