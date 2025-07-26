@@ -102,6 +102,7 @@ export default function DashboardPage() {
   const initialMountRef = useRef(true)
   const initialVoiceRef = useRef(true)
   const initialVoiceChangeRef = useRef(true)
+  const initialScriptRef = useRef(true)
   const [isSendingDebounced, setIsSendingDebounced] = useState(false)
   const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -300,7 +301,7 @@ export default function DashboardPage() {
     ) {
       playWeaponVoice(selectedWeapon)
     }
-  }, [selectedVoice, voicesEnabled, selectedWeapon])
+  }, [selectedVoice, voicesEnabled])
 
   const applyTheme = useCallback(
     (themeValue: string) => {
@@ -362,7 +363,7 @@ export default function DashboardPage() {
           const osc = ctx.createOscillator()
           const gain = ctx.createGain()
           osc.type = "sine"
-          osc.frequency.value = isOn ? 880 : 220
+          osc.frequency.value = isOn ? 550 : 220
           osc.connect(gain)
           gain.connect(ctx.destination)
           osc.start()
@@ -378,6 +379,10 @@ export default function DashboardPage() {
   const handleScriptEnabledChange = useCallback(
     (val: boolean) => {
       setScriptEnabled(val)
+      if (initialScriptRef.current) {
+        initialScriptRef.current = false
+        return
+      }
       playToggleFeedback(val)
     },
     [playToggleFeedback],
