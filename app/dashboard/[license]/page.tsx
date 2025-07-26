@@ -734,15 +734,6 @@ export default function DashboardPage() {
       }}
     >
       <div className="container relative mx-auto p-8">
-        <a
-          href="https://google.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="old version"
-          className="absolute top-2 left-2 text-gray-400 hover:text-white"
-        >
-          <ArrowLeft className="w-4 h-4" />
-        </a>
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
           <div className="flex items-center gap-4">
@@ -804,11 +795,15 @@ export default function DashboardPage() {
           {/* Action Buttons */}
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-4">
-              <Button
-                className="bg-green-600 hover:bg-green-700 text-white text-lg px-6 py-3"
+              <a
+                href="https://google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="old version"
+                className="text-accent hover:opacity-80"
               >
-                Temporary
-              </Button>
+                <ArrowLeft className="w-4 h-4" />
+              </a>
               <Button
                 className={`border border-accent bg-transparent hover:bg-accent/10 ${
                   selectedTheme === "default" || selectedTheme === "mono"
