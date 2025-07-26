@@ -736,38 +736,38 @@ export default function DashboardPage() {
       <div className="container relative mx-auto p-8">
         {/* Removed old version link */}
         {/* Header */}
-        <div className="flex items-center justify-between mb-12">
-          <div className="flex items-center gap-4">
+        <div className="grid grid-cols-3 items-center justify-items-center gap-6 mb-12">
+          <div className="flex items-center gap-4 justify-start">
             <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-14 w-auto" />
             <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Purge 2.0
             </h1>
           </div>
-          <p
-            className={`self-center ${
-              selectedTheme === "default" || selectedTheme === "mono"
-                ? "text-gray-400"
-                : "text-gray-200"
-            }`}
-          >
-            License:&nbsp;
-            <span
-              style={{
-                color:
-                  selectedTheme === "default" || selectedTheme === "mono"
-                    ? `hsl(var(--accent))`
-                    : "white",
-              }}
-              className="font-semibold"
+          <div className="flex flex-col items-center gap-2">
+            <p
+              className={`self-center ${
+                selectedTheme === "default" || selectedTheme === "mono"
+                  ? "text-gray-400"
+                  : "text-gray-200"
+              }`}
             >
-              {licenseKey}
-            </span>
-          </p>
-          {/* API Connection Status */}
-          <div
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 ${selectedTheme !== "default" ? "bg-black/50" : ""}`}
-            style={{ borderColor: API_COLORS[apiConnectionStatus] }}
-          >
+              License:&nbsp;
+              <span
+                style={{
+                  color:
+                    selectedTheme === "default" || selectedTheme === "mono"
+                      ? `hsl(var(--accent))`
+                      : "white",
+                }}
+                className="font-semibold"
+              >
+                {licenseKey}
+              </span>
+            </p>
+            <div
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 ${selectedTheme !== "default" ? "bg-black/50" : ""}`}
+              style={{ borderColor: API_COLORS[apiConnectionStatus] }}
+            >
               {apiConnectionStatus === "pending" && (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" style={{ color: API_COLORS.pending }} />
@@ -793,6 +793,7 @@ export default function DashboardPage() {
                 </>
               )}
             </div>
+          </div>
           {/* Action Buttons */}
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-4">
