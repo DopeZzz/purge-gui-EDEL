@@ -539,6 +539,16 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null
+      if (
+        target &&
+        (target.closest("input, textarea, select, button, [role='switch'], [role='button']") ||
+          target.isContentEditable)
+      ) {
+        // Ignore hotkeys when focused on interactive elements
+        return
+      }
+
       let key = event.code
       if (!KEY_NAME_TO_CODE[key] && CODE_ALIAS_MAP[key]) {
         key = CODE_ALIAS_MAP[key]
