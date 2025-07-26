@@ -741,9 +741,23 @@ export default function DashboardPage() {
               Purge 2.0
             </h1>
           </div>
-          <p className="text-gray-400 self-center">
+          <p
+            className={`self-center ${
+              selectedTheme === "default" || selectedTheme === "mono"
+                ? "text-gray-400"
+                : "text-gray-200"
+            }`}
+          >
             License:&nbsp;
-            <span style={{ color: `hsl(var(--accent))` }} className="font-semibold">
+            <span
+              style={{
+                color:
+                  selectedTheme === "default" || selectedTheme === "mono"
+                    ? `hsl(var(--accent))`
+                    : "white",
+              }}
+              className="font-semibold"
+            >
               {licenseKey}
             </span>
           </p>
@@ -781,7 +795,11 @@ export default function DashboardPage() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
               <Button
-                className="text-accent border border-accent bg-transparent hover:bg-accent/10"
+                className={`border border-accent bg-transparent hover:bg-accent/10 ${
+                  selectedTheme === "default" || selectedTheme === "mono"
+                    ? "text-accent"
+                    : "text-white"
+                }`}
                 onClick={() => window.open(`/docs?license=${licenseKey}`, "_blank")}
               >
                 <HelpCircle className="w-4 h-4 mr-2" />
@@ -789,7 +807,11 @@ export default function DashboardPage() {
               </Button>
             </div>
             <Button
-              className="text-accent border border-accent bg-transparent hover:bg-accent/10"
+              className={`border border-accent bg-transparent hover:bg-accent/10 ${
+                selectedTheme === "default" || selectedTheme === "mono"
+                  ? "text-accent"
+                  : "text-white"
+              }`}
               onClick={() => window.open(`/dashboard/${licenseKey}/download`, "_blank")}
             >
               <Download className="w-4 h-4 mr-2" />
