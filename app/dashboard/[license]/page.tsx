@@ -734,12 +734,22 @@ export default function DashboardPage() {
     >
       <div className="container mx-auto p-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center justify-center flex-wrap gap-6 mb-12">
           <div className="flex items-center gap-3">
             <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-14 w-auto" />
             <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Purge 2.0
             </h1>
+            <a
+              href="https://google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-xs px-2 py-1 rounded border border-accent hover:bg-accent/10 ${
+                selectedTheme === "default" || selectedTheme === "mono" ? "text-accent" : "text-white"
+              }`}
+            >
+              Antigua versión
+            </a>
           </div>
           <p
             className={`self-center ${
