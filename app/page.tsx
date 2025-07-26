@@ -16,6 +16,27 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
+  // Reset theme to default when visiting the login page
+  useEffect(() => {
+    const root = document.documentElement
+    root.style.setProperty(
+      "--primary",
+      "142 76% 36%",
+    )
+    root.style.setProperty(
+      "--secondary",
+      "203 39% 20%",
+    )
+    root.style.setProperty(
+      "--accent",
+      "142 76% 46%",
+    )
+    root.style.setProperty(
+      "--background-gradient",
+      "linear-gradient(135deg, #0f172a 0%, #1e293b 20%, #1e3a8a 45%, #1e3a8a 55%, #1e293b 80%, #0f172a 100%)",
+    )
+  }, [])
+
   useEffect(() => {
     if (error) setError(null)
   }, [licenseKey, error])

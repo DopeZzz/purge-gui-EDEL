@@ -100,6 +100,7 @@ export default function DashboardPage() {
   // UI states
   const [activeTab, setActiveTab] = useState("controls")
   const initialMountRef = useRef(true)
+  const initialVoiceRef = useRef(true)
   const [isSendingDebounced, setIsSendingDebounced] = useState(false)
   const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -270,8 +271,12 @@ export default function DashboardPage() {
     }
   }, [voicesEnabled])
 
-  // Reproducir voz cuando cambia el arma seleccionada si la opción está activada
+  // Reproducir voz cuando cambia el arma seleccionada (ignorar la primera carga)
   useEffect(() => {
+    if (initialVoiceRef.current) {
+      initialVoiceRef.current = false
+      return
+    }
     if (
       voicesEnabled &&
       selectedWeapon &&
@@ -284,10 +289,11 @@ export default function DashboardPage() {
   const applyTheme = useCallback(
     (themeValue: string) => {
       const theme = themeOptions.find((th) => th.value === themeValue)
-      if (theme) {
-        document.documentElement.style.setProperty("--primary", theme.primary)
-        document.documentElement.style.setProperty("--secondary", theme.secondary)
-        document.documentElement.style.setProperty("--accent", theme.accent)
+      const root = document.getElementById("dashboard-root")
+      if (theme && root) {
+        root.style.setProperty("--primary", theme.primary)
+        root.style.setProperty("--secondary", theme.secondary)
+        root.style.setProperty("--accent", theme.accent)
 
         // Set smooth background gradients for each theme with multiple color stops
         let gradient = ""
@@ -650,6 +656,7 @@ export default function DashboardPage() {
 
   return (
     <div
+      id="dashboard-root"
       className="min-h-screen transition-all duration-500"
       style={{
         background:
@@ -1211,7 +1218,7 @@ export default function DashboardPage() {
             <TabsContent value="autodetect" className="mt-6">
               <div className="grid grid-cols-1 gap-8">
                 {/* Detection Accuracy Card */}
-                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm">
+                <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm md:w-1/2 mx-auto">
                   <CardHeader className="pb-4">
                     <CardTitle
                       className="text-xl font-bold text-white flex items-center gap-3"
@@ -1224,7 +1231,7 @@ export default function DashboardPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-gray-300 text-sm">Higher values increase accuracy but may reduce performance.</p>
-                    <div className="space-y-3 md:w-1/2">
+                    <div className="space-y-3 w-full">
                       <div className="flex justify-between items-center w-full">
                         <span className="text-white font-medium">Accuracy</span>
                          <Badge variant="secondary" className="text-green-400 bg-green-900/50 border-green-400/30">
