@@ -100,8 +100,6 @@ export default function DashboardPage() {
   // UI states
   const [activeTab, setActiveTab] = useState("controls")
   const initialMountRef = useRef(true)
-  const initialVoiceRef = useRef(true)
-  const skipVoiceAfterConfigRef = useRef(true)
   const initialVoiceChangeRef = useRef(true)
   const initialScriptRef = useRef(true)
   const [isSendingDebounced, setIsSendingDebounced] = useState(false)
@@ -155,6 +153,20 @@ export default function DashboardPage() {
       console.error(`Could not play voice for ${weaponName} (${audioPath}):`, err)
     }
   }
+
+  const handleWeaponSelect = useCallback(
+    (weapon: string) => {
+      setSelectedWeapon(weapon)
+      if (
+        voicesEnabled &&
+        weapon &&
+        weapon !== "__NONE__"
+      ) {
+        playWeaponVoice(weapon)
+      }
+    },
+    [voicesEnabled, playWeaponVoice],
+  )
 
   const [hipfireKey, setHipfireKey] = useState("")
   const [zoom, setZoom] = useState(false)
@@ -297,25 +309,6 @@ export default function DashboardPage() {
     }
   }, [voicesEnabled])
 
-  // Reproducir voz cuando cambia el arma seleccionada
-  useEffect(() => {
-    if (!configLoaded) return
-    if (initialVoiceRef.current) {
-      initialVoiceRef.current = false
-      return
-    }
-    if (skipVoiceAfterConfigRef.current) {
-      skipVoiceAfterConfigRef.current = false
-      return
-    }
-    if (
-      voicesEnabled &&
-      selectedWeapon &&
-      selectedWeapon !== "__NONE__"
-    ) {
-      playWeaponVoice(selectedWeapon)
-    }
-  }, [selectedWeapon, configLoaded])
 
   // Reproducir voz cuando cambia la voz seleccionada
   useEffect(() => {
@@ -634,7 +627,7 @@ export default function DashboardPage() {
 
   const realtimeHandlers = useMemo(
     () => ({
-      setSelectedWeapon,
+      setSelectedWeapon: handleWeaponSelect,
       setSelectedScope,
       setSelectedBarrel,
       onProgramConnected: handleProgramConnected,
@@ -643,7 +636,7 @@ export default function DashboardPage() {
       setHipfire,
     }),
     [
-      setSelectedWeapon,
+      handleWeaponSelect,
       setSelectedScope,
       setSelectedBarrel,
       handleProgramConnected,
@@ -1062,7 +1055,7 @@ export default function DashboardPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Select value={selectedWeapon} onValueChange={setSelectedWeapon}>
+                  <Select value={selectedWeapon} onValueChange={handleWeaponSelect}>
                     <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white h-12">
                       <SelectValue placeholder="Choose weapon" />
                     </SelectTrigger>
