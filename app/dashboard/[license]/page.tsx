@@ -311,7 +311,7 @@ export default function DashboardPage() {
     ) {
       playWeaponVoice(selectedWeapon)
     }
-  }, [selectedWeapon, voicesEnabled, configLoaded])
+  }, [selectedWeapon, configLoaded])
 
   // Reproducir voz cuando cambia la voz seleccionada
   useEffect(() => {
@@ -762,8 +762,7 @@ export default function DashboardPage() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
               <Button
-                style={{ backgroundColor: `hsl(var(--accent))` }}
-                className="hover:opacity-90 text-black"
+                className="text-accent border border-accent bg-transparent hover:bg-accent/10"
                 onClick={() => window.open(`/docs?license=${licenseKey}`, "_blank")}
               >
                 <HelpCircle className="w-4 h-4 mr-2" />
@@ -771,8 +770,7 @@ export default function DashboardPage() {
               </Button>
             </div>
             <Button
-              style={{ backgroundColor: `hsl(var(--accent))` }}
-              className="hover:opacity-90 text-black"
+              className="text-accent border border-accent bg-transparent hover:bg-accent/10"
               onClick={() => window.open(`/dashboard/${licenseKey}/download`, "_blank")}
             >
               <Download className="w-4 h-4 mr-2" />
