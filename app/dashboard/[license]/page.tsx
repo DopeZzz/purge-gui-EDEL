@@ -102,8 +102,16 @@ export default function DashboardPage() {
   const initialMountRef = useRef(true)
   const initialVoiceChangeRef = useRef(true)
   const initialScriptRef = useRef(true)
+  const voiceReadyRef = useRef(false)
   const [isSendingDebounced, setIsSendingDebounced] = useState(false)
   const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      voiceReadyRef.current = true
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
 
   // New API connection status state
   const [apiConnectionStatus, setApiConnectionStatus] = useState<ApiConnectionStatus>("pending")
@@ -119,7 +127,8 @@ export default function DashboardPage() {
 
   // Función para reproducir audio de voz
   const playWeaponVoice = async (weaponName: string) => {
-    if (!selectedVoice || weaponName === "__NONE__") return
+    if (!selectedVoice || weaponName === "__NONE__" || !voiceReadyRef.current)
+      return
 
     // Mapeo de nombres de armas del sistema a nombres de archivos
     const weaponFileMap: Record<string, string> = {
