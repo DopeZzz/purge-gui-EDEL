@@ -168,14 +168,16 @@ export default function DashboardPage() {
     return false
   })
 
+  const initialWeaponSelectRef = useRef(true)
+
   const handleWeaponSelect = useCallback(
     (weapon: string) => {
       setSelectedWeapon(weapon)
-      if (
-        voicesEnabled &&
-        weapon &&
-        weapon !== "__NONE__"
-      ) {
+      if (initialWeaponSelectRef.current) {
+        initialWeaponSelectRef.current = false
+        return
+      }
+      if (voicesEnabled && weapon && weapon !== "__NONE__") {
         playWeaponVoice(weapon)
       }
     },
