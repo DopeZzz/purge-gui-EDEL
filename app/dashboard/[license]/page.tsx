@@ -154,6 +154,20 @@ export default function DashboardPage() {
     }
   }
 
+  const [voicesEnabled, setVoicesEnabled] = useState(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const stored = localStorage.getItem("voicesEnabled")
+        if (stored !== null) {
+          return stored === "true"
+        }
+      } catch (_) {
+        /* ignore */
+      }
+    }
+    return false
+  })
+
   const handleWeaponSelect = useCallback(
     (weapon: string) => {
       setSelectedWeapon(weapon)
@@ -269,19 +283,6 @@ export default function DashboardPage() {
   useEffect(() => {
     soundEnabledRef.current = soundEnabled
   }, [soundEnabled])
-  const [voicesEnabled, setVoicesEnabled] = useState(() => {
-    if (typeof window !== "undefined") {
-      try {
-        const stored = localStorage.getItem("voicesEnabled")
-        if (stored !== null) {
-          return stored === "true"
-        }
-      } catch (_) {
-        /* ignore */
-      }
-    }
-    return false
-  })
 
   useEffect(() => {
     try {
