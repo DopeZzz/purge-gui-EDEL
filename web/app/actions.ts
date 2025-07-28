@@ -7,6 +7,7 @@ interface LoginResult {
   license?: string
   licenseType?: string
   expiresAt?: string
+  timeLeft?: number
   error?: string
 }
 
@@ -18,11 +19,12 @@ export async function handleLogin(licenseKey: string): Promise<LoginResult> {
   const result = await callLoginApi(licenseKey)
 
   if (result.success) {
-    return { 
-      success: true, 
-      license: licenseKey, 
+    return {
+      success: true,
+      license: licenseKey,
       licenseType: result.licenseType || result.license,
-      expiresAt: result.expiresAt
+      expiresAt: result.expiresAt,
+      timeLeft: result.timeLeft,
     }
   }
   return {

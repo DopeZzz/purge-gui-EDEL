@@ -53,11 +53,15 @@ export default function DashboardPage() {
   const licenseKey = params.license as string
   const { toast } = useToast()
   const [licenseType, setLicenseType] = useState<string | null>(null)
+  const [licenseExpiresAt, setLicenseExpiresAt] = useState<string | null>(null)
+  const [licenseTimeLeft, setLicenseTimeLeft] = useState<string | null>(null)
 
   useEffect(() => {
     try {
       const lt = localStorage.getItem("licenseType")
       if (lt) setLicenseType(lt)
+      const exp = localStorage.getItem("licenseExpiresAt")
+      if (exp) setLicenseExpiresAt(exp)
     } catch (_) {
       /* ignore */
     }
@@ -67,6 +71,34 @@ export default function DashboardPage() {
     if (!licenseType) return true
     return !["WEEK", "TRIAL", "MONTH", "LIFETIME"].includes(licenseType.toUpperCase())
   }, [licenseType])
+
+  useEffect(() => {
+    if (!licenseExpiresAt) return
+    const lower = licenseExpiresAt.toLowerCase()
+    if (lower.startsWith("activate")) {
+      setLicenseTimeLeft("Activate on first run")
+      return
+    }
+    if (lower === "lifetime") {
+      setLicenseTimeLeft("Lifetime")
+      return
+    }
+
+    const calc = () => {
+      const diff = new Date(licenseExpiresAt).getTime() - Date.now()
+      if (diff <= 0) {
+        setLicenseTimeLeft("Expired")
+      } else {
+        const d = Math.floor(diff / 86400000)
+        const h = Math.floor((diff % 86400000) / 3600000)
+        const m = Math.floor((diff % 3600000) / 60000)
+        setLicenseTimeLeft(`${d}d ${h}h ${m}m`)
+      }
+    }
+    calc()
+    const id = setInterval(calc, 60000)
+    return () => clearInterval(id)
+  }, [licenseExpiresAt])
 
   useEffect(() => {
     if (!autodetectAllowed) {
@@ -680,6 +712,28 @@ export default function DashboardPage() {
                 {licenseKey}
               </span>
             </p>
+            {licenseTimeLeft && (
+              <p
+                className={`self-center hidden sm:block ${
+                  selectedTheme === "default" || selectedTheme === "mono"
+                    ? "text-gray-400"
+                    : "text-gray-200"
+                }`}
+              >
+                Expires in:&nbsp;
+                <span
+                  style={{
+                    color:
+                      selectedTheme === "default" || selectedTheme === "mono"
+                        ? `hsl(var(--accent))`
+                        : "white",
+                  }}
+                  className="font-semibold"
+                >
+                  {licenseTimeLeft}
+                </span>
+              </p>
+            )}
             <div
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 ${selectedTheme !== "default" ? "bg-black/50" : ""}`}
               style={{ borderColor: API_COLORS[apiConnectionStatus] }}

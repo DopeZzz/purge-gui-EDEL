@@ -3,6 +3,7 @@ export interface AuthApiResult {
   license?: string
   licenseType?: string
   expiresAt?: string
+  timeLeft?: number
   token?: string
   config?: any
   error?: string
@@ -18,7 +19,10 @@ export async function callLoginApi(serial: string): Promise<AuthApiResult> {
     const data = await postJson<any>(LOGIN_ENDPOINT, { serial })
     return {
       success: true,
-      license: data.license,
+      license: serial,
+      licenseType: data.license_type || data.license,
+      expiresAt: data.expires_at,
+      timeLeft: typeof data.time_left === 'number' ? data.time_left : undefined,
       token: data.token,
       config: data.config,
     }
