@@ -164,19 +164,7 @@ export default function DashboardPage() {
     }
   }
 
-  const [voicesEnabled, setVoicesEnabled] = useState(() => {
-    if (typeof window !== "undefined") {
-      try {
-        const stored = localStorage.getItem("voicesEnabled")
-        if (stored !== null) {
-          return stored === "true"
-        }
-      } catch (_) {
-        /* ignore */
-      }
-    }
-    return false
-  })
+  const [voicesEnabled, setVoicesEnabled] = useState(false)
 
   const initialWeaponSelectRef = useRef(true)
 
@@ -248,79 +236,21 @@ export default function DashboardPage() {
   const [selectedTheme, setSelectedTheme] = useState<string>(themeOptions[0].value)
   const [backgroundGradient, setBackgroundGradient] = useState<string>("")
 
-  // Load saved theme from localStorage on mount
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("selectedTheme")
-      if (saved && themeOptions.some((t) => t.value === saved)) {
-        setSelectedTheme(saved)
-      }
-    } catch (_) {
-      /* ignore */
-    }
-  }, [])
 
   const voiceOptions = [
     { value: "britney", label: "Britney" },
     { value: "grandpa", label: "Grandpa" },
     { value: "john", label: "John" },
   ] as const
-  const [selectedVoice, setSelectedVoice] = useState<string>(() => {
-    if (typeof window !== "undefined") {
-      try {
-        const saved = localStorage.getItem("selectedVoice")
-        if (saved && voiceOptions.some((v) => v.value === saved)) {
-          return saved
-        }
-      } catch (_) {
-        /* ignore */
-      }
-    }
-    return voiceOptions[0].value
-  })
-  const [soundEnabled, setSoundEnabled] = useState(() => {
-    if (typeof window !== "undefined") {
-      try {
-        const stored = localStorage.getItem("soundEnabled")
-        if (stored !== null) {
-          return stored === "true"
-        }
-      } catch (_) {
-        /* ignore */
-      }
-    }
-    return true
-  })
+  const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0].value)
+  const [soundEnabled, setSoundEnabled] = useState(true)
   const soundEnabledRef = useRef(soundEnabled)
   useEffect(() => {
     soundEnabledRef.current = soundEnabled
   }, [soundEnabled])
 
-  useEffect(() => {
-    try {
-      localStorage.setItem("soundEnabled", soundEnabled.toString())
-    } catch (_) {
-      /* ignore */
-    }
-  }, [soundEnabled])
 
 
-  useEffect(() => {
-    try {
-      localStorage.setItem("selectedVoice", selectedVoice)
-    } catch (_) {
-      /* ignore */
-    }
-  }, [selectedVoice])
-
-
-  useEffect(() => {
-    try {
-      localStorage.setItem("voicesEnabled", voicesEnabled.toString())
-    } catch (_) {
-      /* ignore */
-    }
-  }, [voicesEnabled])
 
 
   // Reproducir voz cuando cambia la voz seleccionada
@@ -382,11 +312,6 @@ export default function DashboardPage() {
 
   useEffect(() => {
     applyTheme(selectedTheme)
-    try {
-      localStorage.setItem("selectedTheme", selectedTheme)
-    } catch (_) {
-      /* ignore */
-    }
   }, [selectedTheme, applyTheme])
 
   // SOUND: Plays a short beep when the script is toggled on or off
@@ -483,6 +408,10 @@ export default function DashboardPage() {
       if (typeof cfg.script_toggle_key === "number") setScriptToggleKey(codeToKeyName(cfg.script_toggle_key))
       if (typeof cfg.auto_detection_toggle_key === "number")
         setAutoDetectToggleKey(codeToKeyName(cfg.auto_detection_toggle_key))
+      if (typeof cfg.selected_theme === "string") setSelectedTheme(cfg.selected_theme)
+      if (typeof cfg.sound_enabled === "boolean") setSoundEnabled(cfg.sound_enabled)
+      if (typeof cfg.voices_enabled === "boolean") setVoicesEnabled(cfg.voices_enabled)
+      if (typeof cfg.selected_voice === "string") setSelectedVoice(cfg.selected_voice)
       initialWeaponSelectRef.current = false
       setConfigLoaded(true)
     }
@@ -521,6 +450,10 @@ export default function DashboardPage() {
       auto_detection_toggle_key: keyNameToCode(autoDetectToggleKey) ?? undefined,
       auto_detection: autoDetection,
       script_on: scriptEnabled,
+      selected_theme: selectedTheme,
+      sound_enabled: soundEnabled,
+      voices_enabled: voicesEnabled,
+      selected_voice: selectedVoice,
     }
   }, [
     licenseKey,
@@ -545,6 +478,10 @@ export default function DashboardPage() {
     autoDetectToggleKey,
     autoDetection,
     scriptEnabled,
+    selectedTheme,
+    soundEnabled,
+    voicesEnabled,
+    selectedVoice,
   ])
 
   useEffect(() => {

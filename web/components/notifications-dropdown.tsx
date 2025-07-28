@@ -15,11 +15,21 @@ interface Notification {
   priority: 'high' | 'medium' | 'low'
 }
 
+const defaultNotifications: Notification[] = [
+  {
+    id: '1',
+    title: 'NEW PURGE 2.0 IS OUT!',
+    message: 'Enjoy now the future of Purge No Recoil Scripting',
+    type: 'success',
+    timestamp: '2025-07-23T15:20:00Z',
+    priority: 'high',
+  },
+]
+
 export function NotificationsDropdown() {
-  const [notifications, setNotifications] = useState<Notification[]>([])
+  const [notifications] = useState<Notification[]>(defaultNotifications)
   const [readNotifications, setReadNotifications] = useState<Set<string>>(new Set())
   const [isOpen, setIsOpen] = useState(false)
-  const [loading, setLoading] = useState(true)
 
   // Cargar notificaciones leídas del localStorage
   useEffect(() => {
@@ -29,28 +39,6 @@ export function NotificationsDropdown() {
     }
   }, [])
 
-  // Obtener notificaciones del API
-  useEffect(() => {
-    async function fetchNotifications() {
-      try {
-        const res = await fetch('/api/notifications')
-        if (res.ok) {
-          const data = await res.json()
-          setNotifications(data)
-        }
-      } catch (error) {
-        console.error('Failed to fetch notifications:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchNotifications()
-    
-    // Actualizar cada 5 minutos
-    const interval = setInterval(fetchNotifications, 5 * 60 * 1000)
-    return () => clearInterval(interval)
-  }, [])
 
   // Calcular notificaciones no leídas
   const unreadCount = notifications.filter(n => !readNotifications.has(n.id)).length
@@ -157,12 +145,7 @@ export function NotificationsDropdown() {
 
             {/* Content */}
             <div className="max-h-80 overflow-y-auto">
-              {loading ? (
-                <div className="p-4 text-center text-gray-400">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-500 mx-auto mb-2"></div>
-                  Loading notifications...
-                </div>
-              ) : notifications.length === 0 ? (
+              {notifications.length === 0 ? (
                 <div className="p-4 text-center text-gray-400">
                   <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
                   No notifications yet
