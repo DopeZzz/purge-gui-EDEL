@@ -58,9 +58,6 @@ export default function LoginPage() {
           if (result.expiresAt) {
             localStorage.setItem('licenseExpiresAt', result.expiresAt)
           }
-          if (typeof result.timeLeft === 'number') {
-            localStorage.setItem('licenseTimeLeft', String(result.timeLeft))
-          }
         } catch (_) {
           /* ignore */
         }

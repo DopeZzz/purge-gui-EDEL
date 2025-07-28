@@ -30,7 +30,6 @@ import {
   Eye,
   Crosshair,
   Radar,
-  Shield,
   LogOut,
   Wifi,
   WifiOff,
@@ -54,17 +53,11 @@ export default function DashboardPage() {
   const licenseKey = params.license as string
   const { toast } = useToast()
   const [licenseType, setLicenseType] = useState<string | null>(null)
-  const [licenseExpiresAt, setLicenseExpiresAt] = useState<string | null>(null)
-  const [licenseTimeLeft, setLicenseTimeLeft] = useState<string | null>(null)
 
   useEffect(() => {
     try {
       const lt = localStorage.getItem("licenseType")
       if (lt) setLicenseType(lt)
-      const exp = localStorage.getItem("licenseExpiresAt")
-      if (exp) setLicenseExpiresAt(exp)
-      const tl = localStorage.getItem("licenseTimeLeft")
-      if (tl) setLicenseTimeLeft(tl)
     } catch (_) {
       /* ignore */
     }
@@ -74,34 +67,6 @@ export default function DashboardPage() {
     if (!licenseType) return true
     return !["WEEK", "TRIAL", "MONTH", "LIFETIME"].includes(licenseType.toUpperCase())
   }, [licenseType])
-
-  useEffect(() => {
-    if (!licenseExpiresAt) return
-    const lower = licenseExpiresAt.toLowerCase()
-    if (lower.startsWith("activate")) {
-      setLicenseTimeLeft("Activate on first run")
-      return
-    }
-    if (lower === "lifetime") {
-      setLicenseTimeLeft("Lifetime")
-      return
-    }
-
-    const calc = () => {
-      const diff = new Date(licenseExpiresAt).getTime() - Date.now()
-      if (diff <= 0) {
-        setLicenseTimeLeft("Expired")
-      } else {
-        const d = Math.floor(diff / 86400000)
-        const h = Math.floor((diff % 86400000) / 3600000)
-        const m = Math.floor((diff % 3600000) / 60000)
-        setLicenseTimeLeft(`${d}d ${h}h ${m}m`)
-      }
-    }
-    calc()
-    const id = setInterval(calc, 60000)
-    return () => clearInterval(id)
-  }, [licenseExpiresAt])
 
   useEffect(() => {
     if (!autodetectAllowed) {
@@ -715,28 +680,6 @@ export default function DashboardPage() {
                 {licenseKey}
               </span>
             </p>
-            {licenseTimeLeft && (
-              <p
-                className={`self-center ${
-                  selectedTheme === "default" || selectedTheme === "mono"
-                    ? "text-gray-400"
-                    : "text-gray-200"
-                }`}
-              >
-                Expires in:&nbsp;
-                <span
-                  style={{
-                    color:
-                      selectedTheme === "default" || selectedTheme === "mono"
-                        ? `hsl(var(--accent))`
-                        : "white",
-                  }}
-                  className="font-semibold"
-                >
-                  {licenseTimeLeft}
-                </span>
-              </p>
-            )}
             <div
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 ${selectedTheme !== "default" ? "bg-black/50" : ""}`}
               style={{ borderColor: API_COLORS[apiConnectionStatus] }}
@@ -815,33 +758,7 @@ export default function DashboardPage() {
           </div>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
-          <Card className="bg-gray-900/50 border-gray-700/50 text-center">
-            <CardContent className="p-4">
-              <div className="flex items-center justify-center mb-2">
-                <Shield className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
-                <span className="text-sm font-medium">License</span>
-              </div>
-              <Badge
-                variant="secondary"
-                style={{
-                  color: `hsl(var(--accent))`,
-                  backgroundColor: `hsl(var(--accent) / 0.15)`,
-                  borderColor: `hsl(var(--accent) / 0.3)`,
-                }}
-                className="text-xs"
-              >
-                {licenseType || "Unknown"}
-              </Badge>
-              {licenseTimeLeft && (
-                <p className="text-xs text-gray-400 mt-2">
-                  {licenseTimeLeft === "Lifetime" || licenseTimeLeft.startsWith("Activate")
-                    ? licenseTimeLeft
-                    : `Expires in ${licenseTimeLeft}`}
-                </p>
-              )}
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
           <Card className="bg-gray-900/50 border-gray-700/50 text-center">
             <CardContent className="p-4">
               <div className="flex items-center justify-center mb-2">

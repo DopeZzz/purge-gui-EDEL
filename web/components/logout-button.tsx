@@ -10,7 +10,6 @@ export function LogoutButton() {
   const handleLogout = () => {
     localStorage.removeItem('licenseType')
     localStorage.removeItem('licenseExpiresAt')
-    localStorage.removeItem('licenseTimeLeft')
 
     router.push('/')
   }
