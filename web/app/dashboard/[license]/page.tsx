@@ -726,11 +726,15 @@ export default function DashboardPage() {
                       : "text-gray-200"
                   }`}
                 >
-                  {expiresAt === 'lifetime'
-                    ? 'Lifetime'
-                    : expiresAt === 'activate on first run'
-                    ? 'Activate on first run'
-                    : `Time left: ${timeLeft !== null ? formatTimeLeft(timeLeft) : ''}`}
+                  {`Time left: ${
+                    expiresAt === 'lifetime'
+                      ? 'Lifetime'
+                      : expiresAt === 'activate on first run'
+                      ? 'Activate on first run'
+                      : timeLeft !== null
+                      ? formatTimeLeft(timeLeft)
+                      : ''
+                  }`}
                 </p>
               )}
             </div>
