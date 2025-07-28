@@ -410,7 +410,8 @@ export default function DashboardPage() {
         setAutoDetectToggleKey(codeToKeyName(cfg.auto_detection_toggle_key))
       if (typeof cfg.selected_theme === "string") setSelectedTheme(cfg.selected_theme)
       if (typeof cfg.sound_enabled === "boolean") setSoundEnabled(cfg.sound_enabled)
-      if (typeof cfg.voices_enabled === "boolean") setVoicesEnabled(cfg.voices_enabled)
+      // Ensure voice feedback is disabled by default when no setting is stored
+      setVoicesEnabled(cfg.voices_enabled ?? false)
       if (typeof cfg.selected_voice === "string") setSelectedVoice(cfg.selected_voice)
       initialWeaponSelectRef.current = false
       setConfigLoaded(true)
