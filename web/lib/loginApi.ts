@@ -19,6 +19,8 @@ export async function callLoginApi(serial: string): Promise<AuthApiResult> {
     return {
       success: true,
       license: data.license,
+      licenseType: data.license_type,
+      expiresAt: data.expires_at,
       token: data.token,
       config: data.config,
     }
