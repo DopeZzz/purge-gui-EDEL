@@ -30,6 +30,7 @@ import {
   Eye,
   Crosshair,
   Radar,
+  Shield,
   LogOut,
   Wifi,
   WifiOff,
@@ -814,7 +815,33 @@ export default function DashboardPage() {
           </div>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+          <Card className="bg-gray-900/50 border-gray-700/50 text-center">
+            <CardContent className="p-4">
+              <div className="flex items-center justify-center mb-2">
+                <Shield className="w-5 h-5 mr-2" style={{ color: `hsl(var(--accent))` }} />
+                <span className="text-sm font-medium">License</span>
+              </div>
+              <Badge
+                variant="secondary"
+                style={{
+                  color: `hsl(var(--accent))`,
+                  backgroundColor: `hsl(var(--accent) / 0.15)`,
+                  borderColor: `hsl(var(--accent) / 0.3)`,
+                }}
+                className="text-xs"
+              >
+                {licenseType || "Unknown"}
+              </Badge>
+              {licenseTimeLeft && (
+                <p className="text-xs text-gray-400 mt-2">
+                  {licenseTimeLeft === "Lifetime" || licenseTimeLeft.startsWith("Activate")
+                    ? licenseTimeLeft
+                    : `Expires in ${licenseTimeLeft}`}
+                </p>
+              )}
+            </CardContent>
+          </Card>
           <Card className="bg-gray-900/50 border-gray-700/50 text-center">
             <CardContent className="p-4">
               <div className="flex items-center justify-center mb-2">
