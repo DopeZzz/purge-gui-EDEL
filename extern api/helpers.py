@@ -223,6 +223,10 @@ def build_dashboard_config(req) -> Dict:
         "script_on": req.script_on,
         "script_toggle_key": req.script_toggle_key,
         "auto_detection_toggle_key": req.auto_detection_toggle_key,
+        "selected_theme": getattr(req, "selected_theme", None),
+        "sound_enabled": getattr(req, "sound_enabled", None),
+        "voices_enabled": getattr(req, "voices_enabled", None),
+        "selected_voice": getattr(req, "selected_voice", None),
     }
 
 

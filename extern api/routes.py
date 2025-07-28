@@ -87,6 +87,10 @@ class RecoilReq(BaseModel):
     script_on: bool = False
     script_toggle_key: Optional[int] = None
     auto_detection_toggle_key: Optional[int] = None
+    selected_theme: Optional[str] = None
+    sound_enabled: Optional[bool] = None
+    voices_enabled: Optional[bool] = None
+    selected_voice: Optional[str] = None
 
 
 class RecoilBySerial(RecoilReq):

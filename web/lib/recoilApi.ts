@@ -39,6 +39,14 @@ export interface RecoilApiPayload {
   randomness?: number
   /** Whether the backend should persist the configuration */
   save_config?: boolean
+  /** Selected theme for the dashboard */
+  selected_theme?: string
+  /** Whether sound feedback is enabled */
+  sound_enabled?: boolean
+  /** Whether voice announcements are enabled */
+  voices_enabled?: boolean
+  /** Selected voice identifier */
+  selected_voice?: string
 }
 
 export interface SubmitResult {
