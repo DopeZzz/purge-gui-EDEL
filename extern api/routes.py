@@ -1,5 +1,5 @@
 import time, json, secrets
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional, Literal
 from asyncio import sleep
@@ -104,6 +104,9 @@ class LoginReq(BaseModel):
 class LoginResp(BaseModel):
     license: str
     config: Optional[Dict] = None
+    license_type: Optional[str] = None
+    expires_at: Optional[str] = None
+    time_left: Optional[int] = None
 
 
 class SelectMsg(BaseModel):
@@ -140,6 +143,25 @@ async def login(req: LoginReq):
     """Return license information and last dashboard configuration."""
     row = require_license(req.serial)
     lic_type = row["license"]
+    lic_date = row.get("licensedate")
+    expires_at = None
+    time_left = None
+
+    if lic_date and not is_uninitialized(lic_date):
+        if isinstance(lic_date, str):
+            try:
+                lic_date = datetime.strptime(lic_date, "%Y-%m-%d %H:%M:%S")
+            except Exception:
+                lic_date = None
+        if isinstance(lic_date, datetime):
+            if lic_date.year == 9999:
+                expires_at = "lifetime"
+            else:
+                expires_at = lic_date.strftime("%Y-%m-%d %H:%M:%S")
+                delta = lic_date - datetime.utcnow()
+                time_left = max(0, int(delta.total_seconds()))
+    else:
+        expires_at = "activate on first run"
 
     cfg = load_dashboard_config(req.serial) or {}
     if "crouch_key" not in cfg:
@@ -147,8 +169,13 @@ async def login(req: LoginReq):
     if "aim_key" not in cfg:
         cfg["aim_key"] = 2
 
-    # Devolver solo la información solicitada
-    return {"license": lic_type, "config": cfg}
+    return {
+        "license": lic_type,
+        "config": cfg,
+        "license_type": lic_type,
+        "expires_at": expires_at,
+        "time_left": time_left,
+    }
 
 
 @router.post("/recoil_license", dependencies=[Depends(verify_hmac)])
