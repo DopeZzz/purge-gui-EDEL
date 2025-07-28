@@ -24,7 +24,7 @@ export function MobileSidebar({ activeTab, setActiveTab }: MobileSidebarProps) {
 
   return (
     <>
-      {/* Mobile Header */}
+      
       <div className="lg:hidden bg-[#141b3c] border-b border-[#2a3284]/30 p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
@@ -44,7 +44,7 @@ export function MobileSidebar({ activeTab, setActiveTab }: MobileSidebarProps) {
         </Button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      
       {isOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-black/50" onClick={() => setIsOpen(false)}>
           <div className="bg-[#141b3c] w-72 h-full border-r border-[#2a3284]/30" onClick={(e) => e.stopPropagation()}>

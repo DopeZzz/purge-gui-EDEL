@@ -31,7 +31,6 @@ export function NotificationsDropdown() {
   const [readNotifications, setReadNotifications] = useState<Set<string>>(new Set())
   const [isOpen, setIsOpen] = useState(false)
 
-  // Cargar notificaciones leídas del localStorage
   useEffect(() => {
     const stored = localStorage.getItem('readNotifications')
     if (stored) {
@@ -40,10 +39,8 @@ export function NotificationsDropdown() {
   }, [])
 
 
-  // Calcular notificaciones no leídas
   const unreadCount = notifications.filter(n => !readNotifications.has(n.id)).length
 
-  // Marcar notificación como leída
   const markAsRead = (id: string) => {
     const newRead = new Set(readNotifications)
     newRead.add(id)
@@ -51,14 +48,12 @@ export function NotificationsDropdown() {
     localStorage.setItem('readNotifications', JSON.stringify(Array.from(newRead)))
   }
 
-  // Marcar todas como leídas
   const markAllAsRead = () => {
     const allIds = new Set(notifications.map(n => n.id))
     setReadNotifications(allIds)
     localStorage.setItem('readNotifications', JSON.stringify(Array.from(allIds)))
   }
 
-  // Obtener icono según tipo
   const getIcon = (type: string) => {
     switch (type) {
       case 'info': return <Info className="w-4 h-4 text-blue-400" />
@@ -69,7 +64,6 @@ export function NotificationsDropdown() {
     }
   }
 
-  // Obtener color del borde según prioridad
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'high': return 'border-l-red-500'
@@ -79,7 +73,6 @@ export function NotificationsDropdown() {
     }
   }
 
-  // Formatear tiempo relativo
   const getRelativeTime = (timestamp: string) => {
     const now = new Date()
     const time = new Date(timestamp)
@@ -110,15 +103,15 @@ export function NotificationsDropdown() {
 
       {isOpen && (
         <>
-          {/* Overlay para cerrar */}
+          
           <div 
             className="fixed inset-0 z-40" 
             onClick={() => setIsOpen(false)}
           />
           
-          {/* Dropdown */}
+          
           <div className="absolute right-0 top-full mt-2 w-96 bg-gray-900 border border-gray-700 rounded-lg shadow-xl z-50 max-h-96 overflow-hidden">
-            {/* Header */}
+            
             <div className="flex items-center justify-between p-4 border-b border-gray-700">
               <h3 className="text-white font-semibold">Notifications</h3>
               <div className="flex items-center gap-2">
@@ -143,7 +136,7 @@ export function NotificationsDropdown() {
               </div>
             </div>
 
-            {/* Content */}
+            
             <div className="max-h-80 overflow-y-auto">
               {notifications.length === 0 ? (
                 <div className="p-4 text-center text-gray-400">

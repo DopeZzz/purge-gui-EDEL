@@ -5,7 +5,6 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   Mouse4:             5,   // VK_XBUTTON1
   Mouse5:             6,   // VK_XBUTTON2
 
-  // Control y modificadores
   Backspace:          8,   // VK_BACK
   Tab:                9,   // VK_TAB
   Enter:             13,   // VK_RETURN
@@ -23,7 +22,6 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   Escape:            27,   // VK_ESCAPE
   Space:             32,   // VK_SPACE
 
-  // Navegación
   PageUp:            33,   // VK_PRIOR
   PageDown:          34,   // VK_NEXT
   End:               35,   // VK_END
@@ -39,7 +37,6 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   Insert:            45,   // VK_INSERT
   Delete:            46,   // VK_DELETE
 
-  // Números (fila superior)
   Digit0:            48,
   Digit1:            49,
   Digit2:            50,
@@ -51,7 +48,6 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   Digit8:            56,
   Digit9:            57,
 
-  // Letras
   KeyA:              65,
   KeyB:              66,
   KeyC:              67,
@@ -79,13 +75,11 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   KeyY:              89,
   KeyZ:              90,
 
-  // Teclas de Windows y aplicaciones
   LeftMeta:          91,   // VK_LWIN
   RightMeta:         92,   // VK_RWIN
   ContextMenu:       93,   // VK_APPS
   Sleep:             95,   // VK_SLEEP
 
-  // Teclado numérico (numpad)
   Numpad0:           96,
   Numpad1:           97,
   Numpad2:           98,
@@ -103,7 +97,6 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   NumpadDecimal:    110,   // VK_DECIMAL
   NumpadDivide:     111,   // VK_DIVIDE
 
-  // Función
   F1:               112,
   F2:               113,
   F3:               114,
@@ -117,11 +110,9 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   F11:              122,
   F12:              123,
 
-  // Bloqueos y scroll
   NumLock:          144,   // VK_NUMLOCK
   ScrollLock:       145,   // VK_SCROLL
 
-  // Teclas OEM / símbolos (varían según distribución)
   Semicolon:        186,   // VK_OEM_1
   Equal:            187,   // VK_OEM_PLUS
   Comma:            188,   // VK_OEM_COMMA

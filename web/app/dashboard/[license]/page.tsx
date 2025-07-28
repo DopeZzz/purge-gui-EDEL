@@ -83,13 +83,9 @@ export default function DashboardPage() {
     }
   }
 
-  // Script/Feature states (no longer control connection badge)
   const [autoDetection, setAutoDetection] = useState(true)
   const [scriptEnabled, setScriptEnabled] = useState(false)
 
-  // Configuration states
-  // Initialise with the first weapon option. Explicitly type as string so the
-  // setter can be used wherever a `(value: string) => void` is expected.
   const [selectedWeapon, setSelectedWeapon] = useState<string>(WEAPON_NAMES_API[0])
   const [selectedScope, setSelectedScope] = useState(SCOPE_OPTIONS[0].value)
   const [selectedBarrel, setSelectedBarrel] = useState(BARREL_OPTIONS[0].value)
@@ -98,7 +94,6 @@ export default function DashboardPage() {
   const [scopeSensitivity, setScopeSensitivity] = useState([0.5])
   const [randomness, setRandomness] = useState([0])
 
-  // UI states
   const [activeTab, setActiveTab] = useState("controls")
   const initialMountRef = useRef(true)
   const initialVoiceChangeRef = useRef(true)
@@ -114,7 +109,6 @@ export default function DashboardPage() {
     return () => clearTimeout(timer)
   }, [])
 
-  // New API connection status state
   const [apiConnectionStatus, setApiConnectionStatus] = useState<ApiConnectionStatus>("pending")
   const API_COLORS = {
     connected: "#22c55e", // verde  (green‑500)
@@ -122,16 +116,13 @@ export default function DashboardPage() {
     disconnected: "#ef4444", // rojo   (red‑500)
   } as const
 
-  // Misc states from original code
   const [detectionAccuracy, setDetectionAccuracy] = useState([0.8])
   const [hipfire, setHipfire] = useState(false)
 
-  // Función para reproducir audio de voz
   const playWeaponVoice = async (weaponName: string) => {
     if (!selectedVoice || weaponName === "__NONE__" || !voiceReadyRef.current)
       return
 
-    // Mapeo de nombres de armas del sistema a nombres de archivos
     const weaponFileMap: Record<string, string> = {
       "Assault Rifle": "Assault Riffle", // Note: matches the actual file name with "Riffle"
       "Custom SMG": "Custom SMG",
@@ -154,7 +145,6 @@ export default function DashboardPage() {
     const fileName = weaponFileMap[weaponName] || "None"
     const audioPath = `/voices/${selectedVoice}/${fileName}.mp3`
 
-    // Crear y reproducir audio ----------------- ⬇️ pega esto
     try {
       const audio = new Audio(audioPath)
       audio.volume = 0.5 // volumen al 50 %
@@ -189,7 +179,6 @@ export default function DashboardPage() {
   const [scopeHotkeys, setScopeHotkeys] = useState<Record<string, string>>({})
   const [barrelHotkeys, setBarrelHotkeys] = useState<Record<string, string>>({})
 
-  // Default hotkeys for first time users
   const [crouchKey, setCrouchKey] = useState(codeToKeyName(162))
   const [aimKey, setAimKey] = useState(codeToKeyName(2))
   const [scriptToggleKey, setScriptToggleKey] = useState("")
@@ -253,7 +242,6 @@ export default function DashboardPage() {
 
 
 
-  // Reproducir voz cuando cambia la voz seleccionada
   useEffect(() => {
     if (initialVoiceChangeRef.current) {
       initialVoiceChangeRef.current = false
@@ -277,7 +265,6 @@ export default function DashboardPage() {
         root.style.setProperty("--secondary", theme.secondary)
         root.style.setProperty("--accent", theme.accent)
 
-        // Set smooth background gradients for each theme with multiple color stops
         let gradient = ""
         switch (themeValue) {
           case "default":
@@ -314,7 +301,6 @@ export default function DashboardPage() {
     applyTheme(selectedTheme)
   }, [selectedTheme, applyTheme])
 
-  // SOUND: Plays a short beep when the script is toggled on or off
   const playToggleFeedback = useCallback((isOn: boolean) => {
     if (soundEnabledRef.current) {
       try {
@@ -347,7 +333,6 @@ export default function DashboardPage() {
     [playToggleFeedback],
   )
 
-  // Load saved configuration on initial mount
   useEffect(() => {
     const loadConfig = async () => {
       if (!licenseKey) {
@@ -410,7 +395,6 @@ export default function DashboardPage() {
         setAutoDetectToggleKey(codeToKeyName(cfg.auto_detection_toggle_key))
       if (typeof cfg.selected_theme === "string") setSelectedTheme(cfg.selected_theme)
       if (typeof cfg.sound_enabled === "boolean") setSoundEnabled(cfg.sound_enabled)
-      // Ensure voice feedback is disabled by default when no setting is stored
       setVoicesEnabled(cfg.voices_enabled ?? false)
       if (typeof cfg.selected_voice === "string") setSelectedVoice(cfg.selected_voice)
       initialWeaponSelectRef.current = false
@@ -493,7 +477,6 @@ export default function DashboardPage() {
         (target.closest("input, textarea, select, button, [role='switch'], [role='button']") ||
           target.isContentEditable)
       ) {
-        // Ignore hotkeys when focused on interactive elements
         return
       }
 
@@ -528,26 +511,22 @@ export default function DashboardPage() {
         setApiConnectionStatus("pending")
       }
       const payload = { ...getCurrentPayload(), save_config: false }
-      // console.log("Checking API connection with payload:", payload);
       try {
         const result = await submitConfiguration(payload)
         if (result.success) {
           setApiConnectionStatus("connected")
           if (!isSilent) {
-            // console.log("API Connection Check: Connected");
           }
         } else {
           setApiConnectionStatus("disconnected")
           if (!isSilent) {
             console.error("API Connection Check: Disconnected -", result.error)
-            // toast({ title: "API Connection Issue", description: result.error || "Failed to connect to API.", variant: "destructive" });
           }
         }
       } catch (error) {
         setApiConnectionStatus("disconnected")
         if (!isSilent) {
           console.error("API Connection Check: Failed -", error)
-          // toast({ title: "API Connection Error", description: "Network error during connection check.", variant: "destructive" });
         }
       }
     },
@@ -556,7 +535,6 @@ export default function DashboardPage() {
 
   const handleSendConfiguration = useCallback(async () => {
     const payload = { ...getCurrentPayload(), save_config: true }
-    // console.log("Auto-sending configuration:", payload);
     const result = await submitConfiguration(payload)
     if (result.success) {
       setApiConnectionStatus("connected")
@@ -672,8 +650,8 @@ export default function DashboardPage() {
       }}
     >
       <div className="container relative mx-auto p-8">
-        {/* Removed old version link */}
-        {/* Header */}
+        
+        
         <div className="flex items-center justify-between gap-6 mb-12">
           <div className="flex items-center gap-4">
             <img src="/images/purge-logo.png" alt="PURGE Logo" className="h-14 w-auto" />
@@ -732,7 +710,7 @@ export default function DashboardPage() {
               )}
             </div>
           </div>
-          {/* Action Buttons */}
+          
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-4">
               <Button
@@ -779,7 +757,7 @@ export default function DashboardPage() {
             </button>
           </div>
         </div>
-        {/* Status Cards */}
+        
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
           <Card className="bg-gray-900/50 border-gray-700/50 text-center">
             <CardContent className="p-4">
@@ -1253,7 +1231,7 @@ export default function DashboardPage() {
           {autodetectAllowed && (
             <TabsContent value="autodetect" className="mt-6">
               <div className="grid grid-cols-1 gap-8">
-                {/* Detection Accuracy Card */}
+                
                 <Card className="bg-gray-900/50 border-gray-700/50 shadow-xl backdrop-blur-sm md:w-1/3">
                   <CardHeader className="pb-4">
                     <CardTitle
@@ -1421,7 +1399,7 @@ export default function DashboardPage() {
                   </div>
                   {voicesEnabled && (
                     <>
-                      {/* Voice Selector */}
+                      
                       <div className="space-y-4">
                         <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                           Voice Selection
