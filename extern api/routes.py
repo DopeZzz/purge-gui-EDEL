@@ -178,6 +178,41 @@ async def login(req: LoginReq):
     }
 
 
+class LicenseInfoResp(BaseModel):
+    expires_at: Optional[str] = None
+    time_left: Optional[int] = None
+
+
+@router.get("/license_info/{serial}", response_model=LicenseInfoResp)
+async def license_info(serial: str):
+    """Return remaining time for a license."""
+    row = require_license(serial)
+    lic_date = row.get("licensedate")
+    expires_at = None
+    time_left = None
+
+    if lic_date and not is_uninitialized(lic_date):
+        if isinstance(lic_date, str):
+            try:
+                lic_date = datetime.strptime(lic_date, "%Y-%m-%d %H:%M:%S")
+            except Exception:
+                lic_date = None
+        if isinstance(lic_date, datetime):
+            if lic_date.year == 9999:
+                expires_at = "lifetime"
+            else:
+                expires_at = lic_date.strftime("%Y-%m-%d %H:%M:%S")
+                delta = lic_date - datetime.utcnow()
+                time_left = max(0, int(delta.total_seconds()))
+    else:
+        expires_at = "activate on first run"
+
+    return {
+        "expires_at": expires_at,
+        "time_left": time_left,
+    }
+
+
 @router.post("/recoil_license", dependencies=[Depends(verify_hmac)])
 async def recoil_license(request: Request, req: RecoilBySerial):
     if (

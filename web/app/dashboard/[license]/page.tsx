@@ -53,6 +53,8 @@ export default function DashboardPage() {
   const licenseKey = params.license as string
   const { toast } = useToast()
   const [licenseType, setLicenseType] = useState<string | null>(null)
+  const [expiresAt, setExpiresAt] = useState<string | null>(null)
+  const [timeLeft, setTimeLeft] = useState<number | null>(null)
 
   useEffect(() => {
     try {
@@ -73,6 +75,41 @@ export default function DashboardPage() {
       setAutoDetection(false)
     }
   }, [autodetectAllowed])
+
+  useEffect(() => {
+    if (!licenseKey) return
+    const fetchInfo = async () => {
+      try {
+        const res = await fetch(`/api/license-info/${licenseKey}`)
+        if (!res.ok) return
+        const data = await res.json()
+        setExpiresAt(data.expires_at ?? null)
+        setTimeLeft(typeof data.time_left === 'number' ? data.time_left : null)
+      } catch (_) {
+        /* ignore */
+      }
+    }
+    fetchInfo()
+  }, [licenseKey])
+
+  useEffect(() => {
+    if (timeLeft === null) return
+    const id = setInterval(() => {
+      setTimeLeft((t) => (t && t > 0 ? t - 1 : 0))
+    }, 1000)
+    return () => clearInterval(id)
+  }, [timeLeft])
+
+  const formatTimeLeft = (secs: number): string => {
+    const d = Math.floor(secs / 86400)
+    const h = Math.floor((secs % 86400) / 3600)
+    const m = Math.floor((secs % 3600) / 60)
+    const s = secs % 60
+    if (d > 0) return `${d}d ${h}h ${m}m`
+    if (h > 0) return `${h}h ${m}m`
+    if (m > 0) return `${m}m ${s}s`
+    return `${s}s`
+  }
 
   const CODE_ALIAS_MAP: Record<string, string> = {}
   for (const name in KEY_NAME_TO_CODE) {
@@ -680,6 +717,21 @@ export default function DashboardPage() {
                 {licenseKey}
               </span>
             </p>
+            {expiresAt && (
+              <p
+                className={`self-center ${
+                  selectedTheme === "default" || selectedTheme === "mono"
+                    ? "text-gray-400"
+                    : "text-gray-200"
+                }`}
+              >
+                {expiresAt === 'lifetime'
+                  ? 'Lifetime'
+                  : expiresAt === 'activate on first run'
+                  ? 'Activate on first run'
+                  : `Time left: ${timeLeft !== null ? formatTimeLeft(timeLeft) : ''}`}
+              </p>
+            )}
             <div
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 ${selectedTheme !== "default" ? "bg-black/50" : ""}`}
               style={{ borderColor: API_COLORS[apiConnectionStatus] }}
