@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'
 
-// Notificaciones
 const notifications = [
 {
     id: '1',
@@ -16,7 +15,6 @@ const notifications = [
 
 export async function GET() {
   try {
-    // Ordenar por timestamp descendente (más recientes primero)
     const sortedNotifications = notifications.sort((a, b) => 
       new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
     )

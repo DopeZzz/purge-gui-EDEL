@@ -16,7 +16,6 @@ interface Handlers {
 export function useRealtimeUpdates(serial: string | undefined, handlers: Handlers) {
   const handlersRef = useRef(handlers)
 
-  // Keep handlers ref up to date without re-running the websocket effect
   useEffect(() => {
     handlersRef.current = handlers
   }, [handlers])

@@ -22,7 +22,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
 
   return (
     <div className="w-72 bg-[#141b3c] border-r border-[#2a3284]/30 h-full flex flex-col relative">
-      {/* Header */}
+      
       <div className="p-4 border-b border-[#2a3284]/30 bg-[#141b3c]">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3 flex-1">
@@ -34,7 +34,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         </div>
       </div>
 
-      {/* Navigation */}
+      
       <div className="flex-1 p-3 bg-[#141b3c] overflow-y-auto">
         <nav className="space-y-1">
           {tabs.map((tab) => {
@@ -58,7 +58,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         </nav>
       </div>
 
-      {/* Background overlay to ensure consistent background */}
+      
       <div className="absolute inset-0 bg-[#141b3c] -z-10"></div>
     </div>
   )

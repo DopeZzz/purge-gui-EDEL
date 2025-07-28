@@ -16,7 +16,6 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
-  // Reset theme to default when visiting the login page
   useEffect(() => {
     const root = document.documentElement
     root.style.setProperty(
