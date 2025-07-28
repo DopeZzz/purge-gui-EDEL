@@ -716,7 +716,7 @@ export default function DashboardPage() {
             </p>
             {licenseTimeLeft && (
               <p
-                className={`self-center hidden sm:block ${
+                className={`self-center ${
                   selectedTheme === "default" || selectedTheme === "mono"
                     ? "text-gray-400"
                     : "text-gray-200"
