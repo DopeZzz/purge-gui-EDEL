@@ -697,27 +697,7 @@ export default function DashboardPage() {
             </h1>
           </div>
           <div className="flex items-center gap-24">
-            <p
-              className={`self-center ${
-                selectedTheme === "default" || selectedTheme === "mono"
-                  ? "text-gray-400"
-                  : "text-gray-200"
-              }`}
-            >
-              License:&nbsp;
-              <span
-                style={{
-                  color:
-                    selectedTheme === "default" || selectedTheme === "mono"
-                      ? `hsl(var(--accent))`
-                      : "white",
-                }}
-                className="font-semibold"
-              >
-                {licenseKey}
-              </span>
-            </p>
-            {expiresAt && (
+            <div className="flex flex-col">
               <p
                 className={`self-center ${
                   selectedTheme === "default" || selectedTheme === "mono"
@@ -725,13 +705,35 @@ export default function DashboardPage() {
                     : "text-gray-200"
                 }`}
               >
-                {expiresAt === 'lifetime'
-                  ? 'Lifetime'
-                  : expiresAt === 'activate on first run'
-                  ? 'Activate on first run'
-                  : `Time left: ${timeLeft !== null ? formatTimeLeft(timeLeft) : ''}`}
+                License:&nbsp;
+                <span
+                  style={{
+                    color:
+                      selectedTheme === "default" || selectedTheme === "mono"
+                        ? `hsl(var(--accent))`
+                        : "white",
+                  }}
+                  className="font-semibold"
+                >
+                  {licenseKey}
+                </span>
               </p>
-            )}
+              {expiresAt && (
+                <p
+                  className={`self-center ${
+                    selectedTheme === "default" || selectedTheme === "mono"
+                      ? "text-gray-400"
+                      : "text-gray-200"
+                  }`}
+                >
+                  {expiresAt === 'lifetime'
+                    ? 'Lifetime'
+                    : expiresAt === 'activate on first run'
+                    ? 'Activate on first run'
+                    : `Time left: ${timeLeft !== null ? formatTimeLeft(timeLeft) : ''}`}
+                </p>
+              )}
+            </div>
             <div
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 ${selectedTheme !== "default" ? "bg-black/50" : ""}`}
               style={{ borderColor: API_COLORS[apiConnectionStatus] }}
