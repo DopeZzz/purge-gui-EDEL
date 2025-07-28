@@ -62,6 +62,8 @@ export default function DashboardPage() {
       if (lt) setLicenseType(lt)
       const exp = localStorage.getItem("licenseExpiresAt")
       if (exp) setLicenseExpiresAt(exp)
+      const tl = localStorage.getItem("licenseTimeLeft")
+      if (tl) setLicenseTimeLeft(tl)
     } catch (_) {
       /* ignore */
     }
