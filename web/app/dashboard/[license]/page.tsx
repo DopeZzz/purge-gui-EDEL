@@ -784,7 +784,7 @@ export default function DashboardPage() {
                     ? "text-accent"
                     : "text-white"
                 }`}
-                onClick={() => window.open("https://google.com", "_blank")}
+                onClick={() => window.open("https://purgerecoil.club/login.php", "_blank")}
                 title="old version"
               >
                 <ArrowLeft className="w-4 h-4" />
