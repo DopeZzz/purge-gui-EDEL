@@ -812,7 +812,7 @@ export default function DashboardPage() {
               <Download className="w-4 h-4 mr-2" />
               Download
             </Button>
-            <NotificationsDropdown />
+            <NotificationsDropdown serial={licenseKey || null} />
             <button
               onClick={handleLogout}
               className="p-2 rounded-full text-gray-300 hover:text-red-400 hover:bg-white/10 transition-colors"

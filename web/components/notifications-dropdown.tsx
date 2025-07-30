@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
+interface Props {
+  serial: string | null
+}
+
 interface Notification {
   id: string
   title: string
@@ -26,32 +30,60 @@ const defaultNotifications: Notification[] = [
   },
 ]
 
-export function NotificationsDropdown() {
+export function NotificationsDropdown({ serial }: Props) {
   const [notifications] = useState<Notification[]>(defaultNotifications)
   const [readNotifications, setReadNotifications] = useState<Set<string>>(new Set())
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem('readNotifications')
-    if (stored) {
-      setReadNotifications(new Set(JSON.parse(stored)))
+    if (!serial) return
+    const load = async () => {
+      try {
+        const res = await fetch(`/api/read-notifications/${serial}`)
+        if (!res.ok) return
+        const ids: string[] = await res.json()
+        setReadNotifications(new Set(ids))
+      } catch (_) {
+        /* ignore */
+      }
     }
-  }, [])
+    load()
+  }, [serial])
 
 
   const unreadCount = notifications.filter(n => !readNotifications.has(n.id)).length
 
-  const markAsRead = (id: string) => {
+  const markAsRead = async (id: string) => {
     const newRead = new Set(readNotifications)
     newRead.add(id)
     setReadNotifications(newRead)
-    localStorage.setItem('readNotifications', JSON.stringify(Array.from(newRead)))
+    if (serial) {
+      try {
+        await fetch(`/api/read-notifications/${serial}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: Array.from(newRead) }),
+        })
+      } catch (_) {
+        /* ignore */
+      }
+    }
   }
 
-  const markAllAsRead = () => {
+  const markAllAsRead = async () => {
     const allIds = new Set(notifications.map(n => n.id))
     setReadNotifications(allIds)
-    localStorage.setItem('readNotifications', JSON.stringify(Array.from(allIds)))
+    if (serial) {
+      try {
+        await fetch(`/api/read-notifications/${serial}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: Array.from(allIds) }),
+        })
+      } catch (_) {
+        /* ignore */
+      }
+    }
   }
 
   const getIcon = (type: string) => {
