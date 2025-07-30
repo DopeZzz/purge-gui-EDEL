@@ -352,6 +352,24 @@ async def get_dashboard_config(serial: str):
     return cfg or {}
 
 
+class ReadNotificationsReq(BaseModel):
+    ids: List[str] = Field(default_factory=list)
+
+
+@router.get("/read_notifications/{serial}")
+async def get_read_notifications(serial: str):
+    cfg = load_dashboard_config(serial) or {}
+    return cfg.get("read_notifications", [])
+
+
+@router.post("/read_notifications/{serial}")
+async def set_read_notifications(serial: str, req: ReadNotificationsReq):
+    cfg = load_dashboard_config(serial) or {}
+    cfg["read_notifications"] = req.ids
+    save_dashboard_config(serial, cfg)
+    return {"ok": True}
+
+
 @router.post("/push")
 async def push(data: Dict):
     await hub.send(data["serial"], json.dumps(data["data"], ensure_ascii=False))
