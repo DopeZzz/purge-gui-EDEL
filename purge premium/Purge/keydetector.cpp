@@ -36,13 +36,18 @@ bool handleKeyPress(int* key, std::atomic<bool>& isKeyDown, bool* toggleState) {
 
 template <size_t N>
 void handleKeySelection(const std::array<int*, N>& keys, void (*updateFunction)(int), int& currentIndex) {
-	for (size_t i = 0; i < keys.size(); ++i) {
-		if (GetAsyncKeyState(*keys[i]) & 0x8000) {
-			currentIndex = static_cast<int>(i);
-			updateFunction(currentIndex);
-			break;
-		}
-	}
+        for (size_t i = 0; i < keys.size(); ++i) {
+                int vk = *keys[i];
+                if (vk == 0)
+                        continue;
+
+                SHORT state = GetAsyncKeyState(vk);
+                if (state & 0x1 || state & 0x8000) {
+                        currentIndex = static_cast<int>(i);
+                        updateFunction(currentIndex);
+                        break;
+                }
+        }
 }
 
 void checkKeyTrigger(int* onmagx, int* keyonoffx, bool* afk, bool* onoffx, bool* hipx, int* keyhipx, int* keyzoomx, bool* onzoomx, bool* autosave,
