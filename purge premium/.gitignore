@@ -1,0 +1,44 @@
+# ========================
+# Visual Studio & MSBuild
+# ========================
+*.obj
+*.exe
+*.pdb
+*.ipdb
+*.log
+*.tlog
+*.ilk
+*.user
+*.idb
+*.suo
+*.cache
+*.ncb
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+
+# Carpeta de configuración de VS
+.vs/
+
+# ========================
+# Build outputs
+# ========================
+[Bb]in/
+[Oo]bj/
+x64/
+Release/
+Debug/
+
+# ========================
+# Archivos grandes o específicos del proyecto
+# ========================
+*.weights
+Purge/yw.h
+
+# ========================
+# Git internals
+# ========================
+*.orig
+*.rej
+*.bak
