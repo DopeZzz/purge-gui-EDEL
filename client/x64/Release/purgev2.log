@@ -1,0 +1,1020 @@
+2025-07-08 14:26:14 dll attach
+2025-07-08 14:26:14 worker thread starting
+2025-07-08 14:26:14 auth request status=200 err=0 ''
+2025-07-08 14:26:14 authentication successful
+2025-07-08 14:26:14 ws_conn wss://notepadhelper.space/rr/ws?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrenoyIiwiaWF0IjoxNzUxOTc3NTczLCJleHAiOjE3NTE5ODExNzN9.iGJzjpFdWcbXrK5sU0uZXx5ARsHPJ1eJTLcA9IIxnCCUv2zi3-8JimHhuxb9rDfUYlF-StrRh3Yg1_aC8dzWSeQjZxgwX2rZ3ZRUINu4JYmbq7HwoTllV-MNegjjj3enKMAnRyz5LbAJuUpW56iHyoR_Ec4icfE-ReHNupQD_cUXjLDdzpsSqFpPsB-Y6rybUC2ZWtMaAuELdarPGbovklQM4CuW3nkVsv4V3F35r37EBZ6nltKMYpHgu2_Z4rSpkyoELfwBEOC9AAM1CzE4ID0bmb_FelfGTmQ1HZcOKW4C2oFZD4BGJZtHDCIERnxrM33gYguvjf-000dJfxfRLw
+2025-07-08 14:26:14 ws open
+2025-07-08 14:26:14 ws_conn result open
+2025-07-08 14:26:22 sendROI trigger
+2025-07-08 14:26:22 sendROI start
+2025-07-08 14:26:22 ws detect request
+2025-07-08 14:26:22 ws detect_resp 1
+2025-07-08 14:26:22 sendROI detections=1
+2025-07-08 14:26:22 select weapon M39 Rifle
+2025-07-08 14:26:43 sendROI trigger
+2025-07-08 14:26:43 sendROI start
+2025-07-08 14:26:43 ws detect request
+2025-07-08 14:26:43 ws detect_resp 0
+2025-07-08 14:26:43 sendROI no detections
+2025-07-08 14:26:43 sendROI trigger
+2025-07-08 14:26:43 sendROI start
+2025-07-08 14:26:43 ws detect request
+2025-07-08 14:26:44 ws detect_resp 1
+2025-07-08 14:26:44 sendROI no detections
+2025-07-08 14:26:44 sendROI trigger
+2025-07-08 14:26:44 sendROI start
+2025-07-08 14:26:44 ws detect request
+2025-07-08 14:26:44 ws detect_resp 1
+2025-07-08 14:26:44 sendROI detections=1
+2025-07-08 14:26:44 select weapon Custom SMG
+2025-07-08 14:26:46 sendROI trigger
+2025-07-08 14:26:46 sendROI start
+2025-07-08 14:26:46 ws detect request
+2025-07-08 14:26:46 ws detect_resp 1
+2025-07-08 14:26:46 sendROI detections=1
+2025-07-08 14:26:46 select weapon Custom SMG
+2025-07-08 14:26:47 sendROI trigger
+2025-07-08 14:26:47 sendROI start
+2025-07-08 14:26:47 ws detect request
+2025-07-08 14:26:47 ws detect_resp 1
+2025-07-08 14:26:47 sendROI detections=1
+2025-07-08 14:26:47 select weapon Custom SMG
+2025-07-08 14:26:47 sendROI trigger
+2025-07-08 14:26:47 sendROI start
+2025-07-08 14:26:47 ws detect request
+2025-07-08 14:26:47 ws detect_resp 1
+2025-07-08 14:26:47 sendROI detections=1
+2025-07-08 14:26:47 select weapon Custom SMG
+2025-07-08 14:29:34 dll detach
+2025-07-08 14:29:49 dll attach
+2025-07-08 14:29:49 worker thread starting
+2025-07-08 14:29:49 auth request status=200 err=0 ''
+2025-07-08 14:29:49 authentication successful
+2025-07-08 14:29:49 ws_conn wss://notepadhelper.space/rr/ws?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrenoyIiwiaWF0IjoxNzUxOTc3Nzg4LCJleHAiOjE3NTE5ODEzODh9.Vw1wVQFPeKZjb7V0U7b1GnXcA8p3vTXmaagXTErhnza9LEZIHS8tITXvB-Anp1L07ZdKGLJxog6oy7l0692aJHhYLQEnsew8q5VjbVhbNwTFxAEKxwRz-kqC9LjmtmKZsp_sZXDwipJ5OMra5bRIFZTqC5lq40oGHZD5_vWdNEzoMn0yV0IgZ2viKJ88SKSm1jXQEpbreZ_Y7-4Df9CeaWLITpq2ycQ56B2PwrVGDg4Sa2NRycV3blpqqUaiHDIzeazIsvxikNOqWtyk0ToIPT_tEtpw3vKfmKNT9I7bsvv5-SJMZI8KzsattpiDq6PimAPmWm-bEpMHkHtlTzfVyA
+2025-07-08 14:29:49 ws open
+2025-07-08 14:29:49 ws_conn result open
+2025-07-08 14:29:53 sendROI trigger
+2025-07-08 14:29:53 sendROI start
+2025-07-08 14:29:53 ws detect request
+2025-07-08 14:29:53 ws detect_resp 0
+2025-07-08 14:29:53 sendROI no detections
+2025-07-08 14:29:56 sendROI trigger
+2025-07-08 14:29:56 sendROI start
+2025-07-08 14:29:56 ws detect request
+2025-07-08 14:29:56 ws detect_resp 0
+2025-07-08 14:29:56 sendROI no detections
+2025-07-08 14:29:57 sendROI trigger
+2025-07-08 14:29:57 sendROI start
+2025-07-08 14:29:57 ws detect request
+2025-07-08 14:29:57 ws detect_resp 1
+2025-07-08 14:29:57 sendROI detections=1
+2025-07-08 14:29:57 select weapon M39 Rifle
+2025-07-08 14:29:58 sendROI trigger
+2025-07-08 14:29:58 sendROI start
+2025-07-08 14:29:58 ws detect request
+2025-07-08 14:29:58 ws detect_resp 0
+2025-07-08 14:29:58 sendROI no detections
+2025-07-08 14:29:59 sendROI trigger
+2025-07-08 14:29:59 sendROI start
+2025-07-08 14:29:59 ws detect request
+2025-07-08 14:29:59 ws detect_resp 0
+2025-07-08 14:29:59 sendROI no detections
+2025-07-08 14:30:03 sendROI trigger
+2025-07-08 14:30:03 sendROI start
+2025-07-08 14:30:03 ws detect request
+2025-07-08 14:30:03 ws detect_resp 0
+2025-07-08 14:30:03 sendROI no detections
+2025-07-08 14:30:03 sendROI trigger
+2025-07-08 14:30:03 sendROI start
+2025-07-08 14:30:03 ws detect request
+2025-07-08 14:30:04 ws detect_resp 0
+2025-07-08 14:30:04 sendROI no detections
+2025-07-08 14:30:04 sendROI trigger
+2025-07-08 14:30:04 sendROI start
+2025-07-08 14:30:04 ws detect request
+2025-07-08 14:30:04 ws detect_resp 1
+2025-07-08 14:30:04 sendROI detections=1
+2025-07-08 14:30:04 select weapon Custom SMG
+2025-07-08 14:30:04 sendROI trigger
+2025-07-08 14:30:04 sendROI start
+2025-07-08 14:30:04 ws detect request
+2025-07-08 14:30:04 ws detect_resp 1
+2025-07-08 14:30:04 sendROI detections=1
+2025-07-08 14:30:04 select weapon Custom SMG
+2025-07-08 14:30:05 sendROI trigger
+2025-07-08 14:30:05 sendROI start
+2025-07-08 14:30:05 ws detect request
+2025-07-08 14:30:05 ws detect_resp 0
+2025-07-08 14:30:05 sendROI no detections
+2025-07-08 14:30:05 sendROI trigger
+2025-07-08 14:30:05 sendROI start
+2025-07-08 14:30:05 ws detect request
+2025-07-08 14:30:05 ws detect_resp 1
+2025-07-08 14:30:05 sendROI detections=1
+2025-07-08 14:30:05 select weapon Custom SMG
+2025-07-08 14:32:39 dll detach
+2025-07-08 15:01:53 dll attach
+2025-07-08 15:01:53 worker thread starting
+2025-07-08 15:01:53 auth request status=200 err=0 ''
+2025-07-08 15:01:53 authentication successful
+2025-07-08 15:01:53 ws_conn wss://notepadhelper.space/rr/ws?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrenoyIiwiaWF0IjoxNzUxOTc5NzEyLCJleHAiOjE3NTE5ODMzMTJ9.tIWiqLosielHq4mwMKaZAaGvWaqwdIkyOaxhVXZabFsckU7E6uGtMoZOQPGuPaoEXnOWCbjrho5yhvc4FWy72s7a86KQnBF1oD29Zn44THdQToDO9cFTeiqXWQz-S_QCu-5oHosk7f_go5Bmgkdkz1EhkmgDQDVWm54uYjWuli-9TJ3kICD-36OjQ4sf1-EczWCXZ3zgp77Gd1rTg_vvquvD7gbQcnihQLE56BqW4xgBUgeDq1LHzY_wmKtaY3X4kcNFbZKe1KOVZ_TBkw3QaOhqOnV4Y89EFIOrZNWN0vRBs28I1UNBR2h1sbow4gKLQFx08mOWvOR9IgH7ikC_OA
+2025-07-08 15:01:53 ws open
+2025-07-08 15:01:53 ws_conn result open
+2025-07-08 15:02:05 sendROI trigger
+2025-07-08 15:02:05 sendROI start
+2025-07-08 15:02:05 ws detect request
+2025-07-08 15:02:06 ws detect_resp 1
+2025-07-08 15:02:06 sendROI detections=1
+2025-07-08 15:02:06 select weapon M39 Rifle
+2025-07-08 15:04:50 dll detach
+2025-07-08 15:05:29 dll attach
+2025-07-08 15:05:29 worker thread starting
+2025-07-08 15:05:30 auth request status=200 err=0 ''
+2025-07-08 15:05:30 authentication successful
+2025-07-08 15:05:30 ws_conn wss://notepadhelper.space/rr/ws?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrenoyIiwiaWF0IjoxNzUxOTc5OTI5LCJleHAiOjE3NTE5ODM1Mjl9.jpqoEWiNT_qnICDKcTNQnGJDE5j8NcC2EhCHfU7qALj64GMLVId43bxOLLnZluHZPNabV6dxv0G1sPtMX-Rj2Ico60WjF_AcmSxIM4OOsPcEF7tGeUEXDyhvMed9sQ_pFI3JeabY3T6HAKBLKNiuvEzi1JDLPEZ-beV9grOLDUCci-gxZvd_BJROgNk8m2rFCnBTNAdD4VOif34oW6upZ3oAIOYosSO4C4TGRD0Oy4X8NR1FbZWmowJFFFsBbZHkG8dIhgUAqcGMWN6uyAKR6CaChztiJpZEX_TjQjfcQDy9feer954ss4sAo9b0t1yN8Q7Atk0YL3BDcfaSu8fGcQ
+2025-07-08 15:05:30 ws open
+2025-07-08 15:05:30 ws_conn result open
+2025-07-08 15:05:33 sendROI trigger
+2025-07-08 15:05:33 sendROI start
+2025-07-08 15:05:33 ws detect request
+2025-07-08 15:05:33 ws detect_resp 0
+2025-07-08 15:05:33 sendROI no detections
+2025-07-08 15:05:34 sendROI trigger
+2025-07-08 15:05:34 sendROI start
+2025-07-08 15:05:34 ws detect request
+2025-07-08 15:05:34 ws detect_resp 1
+2025-07-08 15:05:34 sendROI no detections
+2025-07-08 15:05:34 sendROI trigger
+2025-07-08 15:05:34 sendROI start
+2025-07-08 15:05:34 ws detect request
+2025-07-08 15:05:34 ws detect_resp 0
+2025-07-08 15:05:34 sendROI no detections
+2025-07-08 15:05:34 sendROI trigger
+2025-07-08 15:05:34 sendROI start
+2025-07-08 15:05:34 ws detect request
+2025-07-08 15:05:34 ws detect_resp 0
+2025-07-08 15:05:34 sendROI no detections
+2025-07-08 15:05:36 sendROI trigger
+2025-07-08 15:05:36 sendROI start
+2025-07-08 15:05:36 ws detect request
+2025-07-08 15:05:36 ws detect_resp 0
+2025-07-08 15:05:36 sendROI no detections
+2025-07-08 15:05:37 sendROI trigger
+2025-07-08 15:05:37 sendROI start
+2025-07-08 15:05:37 ws detect request
+2025-07-08 15:05:37 ws detect_resp 1
+2025-07-08 15:05:37 sendROI no detections
+2025-07-08 15:05:37 sendROI trigger
+2025-07-08 15:05:37 sendROI start
+2025-07-08 15:05:37 ws detect request
+2025-07-08 15:05:37 ws detect_resp 0
+2025-07-08 15:05:37 sendROI no detections
+2025-07-08 15:05:37 sendROI trigger
+2025-07-08 15:05:37 sendROI start
+2025-07-08 15:05:37 ws detect request
+2025-07-08 15:05:37 ws detect_resp 0
+2025-07-08 15:05:37 sendROI no detections
+2025-07-08 15:05:38 sendROI trigger
+2025-07-08 15:05:38 sendROI start
+2025-07-08 15:05:38 ws detect request
+2025-07-08 15:05:38 ws detect_resp 0
+2025-07-08 15:05:38 sendROI no detections
+2025-07-08 15:05:40 sendROI trigger
+2025-07-08 15:05:40 sendROI start
+2025-07-08 15:05:40 ws detect request
+2025-07-08 15:05:40 ws detect_resp 1
+2025-07-08 15:05:40 sendROI detections=1
+2025-07-08 15:05:40 select weapon Custom SMG
+2025-07-08 15:05:41 sendROI trigger
+2025-07-08 15:05:41 sendROI start
+2025-07-08 15:05:41 ws detect request
+2025-07-08 15:05:41 ws detect_resp 0
+2025-07-08 15:05:41 sendROI no detections
+2025-07-08 15:05:41 sendROI trigger
+2025-07-08 15:05:41 sendROI start
+2025-07-08 15:05:41 ws detect request
+2025-07-08 15:05:41 ws detect_resp 1
+2025-07-08 15:05:41 sendROI no detections
+2025-07-08 15:05:41 sendROI trigger
+2025-07-08 15:05:41 sendROI start
+2025-07-08 15:05:41 ws detect request
+2025-07-08 15:05:41 ws detect_resp 0
+2025-07-08 15:05:41 sendROI no detections
+2025-07-08 15:05:46 sendROI trigger
+2025-07-08 15:05:46 sendROI start
+2025-07-08 15:05:46 ws detect request
+2025-07-08 15:05:46 ws detect_resp 1
+2025-07-08 15:05:46 sendROI detections=1
+2025-07-08 15:05:46 select weapon M39 Rifle
+2025-07-08 15:05:47 sendROI trigger
+2025-07-08 15:05:47 sendROI start
+2025-07-08 15:05:47 ws detect request
+2025-07-08 15:05:47 ws detect_resp 1
+2025-07-08 15:05:47 sendROI detections=1
+2025-07-08 15:05:47 select weapon M39 Rifle
+2025-07-08 15:05:53 sendROI trigger
+2025-07-08 15:05:53 sendROI start
+2025-07-08 15:05:53 ws detect request
+2025-07-08 15:05:53 ws detect_resp 0
+2025-07-08 15:05:53 sendROI no detections
+2025-07-08 15:05:53 sendROI trigger
+2025-07-08 15:05:53 sendROI start
+2025-07-08 15:05:53 ws detect request
+2025-07-08 15:05:53 ws detect_resp 0
+2025-07-08 15:05:53 sendROI no detections
+2025-07-08 15:05:55 sendROI trigger
+2025-07-08 15:05:55 sendROI start
+2025-07-08 15:05:55 ws detect request
+2025-07-08 15:05:55 ws detect_resp 0
+2025-07-08 15:05:55 sendROI no detections
+2025-07-08 15:05:55 sendROI trigger
+2025-07-08 15:05:55 sendROI start
+2025-07-08 15:05:55 ws detect request
+2025-07-08 15:05:55 ws detect_resp 1
+2025-07-08 15:05:55 sendROI detections=1
+2025-07-08 15:05:55 select weapon Custom SMG
+2025-07-08 15:05:55 sendROI trigger
+2025-07-08 15:05:55 sendROI start
+2025-07-08 15:05:55 ws detect request
+2025-07-08 15:05:55 ws detect_resp 1
+2025-07-08 15:05:55 sendROI detections=1
+2025-07-08 15:05:55 select weapon Custom SMG
+2025-07-08 15:05:56 sendROI trigger
+2025-07-08 15:05:56 sendROI start
+2025-07-08 15:05:56 ws detect request
+2025-07-08 15:05:56 ws detect_resp 0
+2025-07-08 15:05:56 sendROI no detections
+2025-07-08 15:05:56 sendROI trigger
+2025-07-08 15:05:56 sendROI start
+2025-07-08 15:05:56 ws detect request
+2025-07-08 15:05:56 ws detect_resp 0
+2025-07-08 15:05:56 sendROI no detections
+2025-07-08 15:05:56 sendROI trigger
+2025-07-08 15:05:56 sendROI start
+2025-07-08 15:05:56 ws detect request
+2025-07-08 15:05:56 ws detect_resp 0
+2025-07-08 15:05:56 sendROI no detections
+2025-07-08 15:06:12 sendROI trigger
+2025-07-08 15:06:12 sendROI start
+2025-07-08 15:06:12 ws detect request
+2025-07-08 15:06:12 ws detect_resp 0
+2025-07-08 15:06:12 sendROI no detections
+2025-07-08 15:06:13 sendROI trigger
+2025-07-08 15:06:13 sendROI start
+2025-07-08 15:06:13 ws detect request
+2025-07-08 15:06:13 ws detect_resp 0
+2025-07-08 15:06:13 sendROI no detections
+2025-07-08 15:06:14 sendROI trigger
+2025-07-08 15:06:14 sendROI start
+2025-07-08 15:06:14 ws detect request
+2025-07-08 15:06:14 ws detect_resp 0
+2025-07-08 15:06:14 sendROI no detections
+2025-07-08 15:06:24 sendROI trigger
+2025-07-08 15:06:24 sendROI start
+2025-07-08 15:06:24 ws detect request
+2025-07-08 15:06:24 ws detect_resp 2
+2025-07-08 15:06:24 sendROI no detections
+2025-07-08 15:06:25 sendROI trigger
+2025-07-08 15:06:25 sendROI start
+2025-07-08 15:06:25 ws detect request
+2025-07-08 15:06:25 ws detect_resp 0
+2025-07-08 15:06:25 sendROI no detections
+2025-07-08 15:06:25 sendROI trigger
+2025-07-08 15:06:25 sendROI start
+2025-07-08 15:06:25 ws detect request
+2025-07-08 15:06:25 ws detect_resp 0
+2025-07-08 15:06:25 sendROI no detections
+2025-07-08 15:06:26 sendROI trigger
+2025-07-08 15:06:26 sendROI start
+2025-07-08 15:06:26 ws detect request
+2025-07-08 15:06:26 ws detect_resp 0
+2025-07-08 15:06:26 sendROI no detections
+2025-07-08 15:06:26 sendROI trigger
+2025-07-08 15:06:26 sendROI start
+2025-07-08 15:06:26 ws detect request
+2025-07-08 15:06:26 ws detect_resp 0
+2025-07-08 15:06:26 sendROI no detections
+2025-07-08 15:06:29 sendROI trigger
+2025-07-08 15:06:29 sendROI start
+2025-07-08 15:06:29 ws detect request
+2025-07-08 15:06:29 ws detect_resp 0
+2025-07-08 15:06:29 sendROI no detections
+2025-07-08 15:06:29 sendROI trigger
+2025-07-08 15:06:29 sendROI start
+2025-07-08 15:06:29 ws detect request
+2025-07-08 15:06:29 ws detect_resp 0
+2025-07-08 15:06:29 sendROI no detections
+2025-07-08 15:07:05 sendROI trigger
+2025-07-08 15:07:05 sendROI start
+2025-07-08 15:07:05 ws detect request
+2025-07-08 15:07:05 ws detect_resp 0
+2025-07-08 15:07:05 sendROI no detections
+2025-07-08 15:07:05 sendROI trigger
+2025-07-08 15:07:05 sendROI start
+2025-07-08 15:07:05 ws detect request
+2025-07-08 15:07:05 ws detect_resp 0
+2025-07-08 15:07:05 sendROI no detections
+2025-07-08 15:10:42 sendROI trigger
+2025-07-08 15:10:42 sendROI start
+2025-07-08 15:10:42 ws detect request
+2025-07-08 15:10:42 ws detect_resp 0
+2025-07-08 15:10:42 sendROI no detections
+2025-07-08 15:10:42 sendROI trigger
+2025-07-08 15:10:42 sendROI start
+2025-07-08 15:10:42 ws detect request
+2025-07-08 15:10:42 ws detect_resp 0
+2025-07-08 15:10:42 sendROI no detections
+2025-07-08 15:10:42 sendROI trigger
+2025-07-08 15:10:42 sendROI start
+2025-07-08 15:10:42 ws detect request
+2025-07-08 15:10:43 ws detect_resp 0
+2025-07-08 15:10:43 sendROI no detections
+2025-07-08 15:10:45 sendROI trigger
+2025-07-08 15:10:45 sendROI start
+2025-07-08 15:10:45 ws detect request
+2025-07-08 15:10:45 ws detect_resp 1
+2025-07-08 15:10:45 sendROI detections=1
+2025-07-08 15:10:45 select weapon Custom SMG
+2025-07-08 15:10:45 sendROI trigger
+2025-07-08 15:10:45 sendROI start
+2025-07-08 15:10:45 ws detect request
+2025-07-08 15:10:46 ws detect_resp 1
+2025-07-08 15:10:46 sendROI no detections
+2025-07-08 15:10:46 sendROI trigger
+2025-07-08 15:10:46 sendROI start
+2025-07-08 15:10:46 ws detect request
+2025-07-08 15:10:46 ws detect_resp 1
+2025-07-08 15:10:46 sendROI detections=1
+2025-07-08 15:10:46 select weapon Custom SMG
+2025-07-08 15:10:46 sendROI trigger
+2025-07-08 15:10:46 sendROI start
+2025-07-08 15:10:46 ws detect request
+2025-07-08 15:10:46 ws detect_resp 1
+2025-07-08 15:10:46 sendROI detections=1
+2025-07-08 15:10:46 select weapon Custom SMG
+2025-07-08 15:10:47 sendROI trigger
+2025-07-08 15:10:47 sendROI start
+2025-07-08 15:10:47 ws detect request
+2025-07-08 15:10:48 ws detect_resp 1
+2025-07-08 15:10:48 sendROI detections=1
+2025-07-08 15:10:48 select weapon M39 Rifle
+2025-07-08 15:10:49 sendROI trigger
+2025-07-08 15:10:49 sendROI start
+2025-07-08 15:10:49 ws detect request
+2025-07-08 15:10:49 ws detect_resp 1
+2025-07-08 15:10:49 sendROI detections=1
+2025-07-08 15:10:49 select weapon M39 Rifle
+2025-07-08 15:10:49 sendROI trigger
+2025-07-08 15:10:49 sendROI start
+2025-07-08 15:10:49 ws detect request
+2025-07-08 15:10:49 ws detect_resp 0
+2025-07-08 15:10:49 sendROI no detections
+2025-07-08 15:10:50 sendROI trigger
+2025-07-08 15:10:50 sendROI start
+2025-07-08 15:10:50 ws detect request
+2025-07-08 15:10:50 ws detect_resp 1
+2025-07-08 15:10:50 sendROI detections=1
+2025-07-08 15:10:50 select weapon M39 Rifle
+2025-07-08 15:10:50 sendROI trigger
+2025-07-08 15:10:50 sendROI start
+2025-07-08 15:10:50 ws detect request
+2025-07-08 15:10:50 ws detect_resp 1
+2025-07-08 15:10:50 sendROI detections=1
+2025-07-08 15:10:50 select weapon M39 Rifle
+2025-07-08 15:10:51 sendROI trigger
+2025-07-08 15:10:51 sendROI start
+2025-07-08 15:10:51 ws detect request
+2025-07-08 15:10:51 ws detect_resp 1
+2025-07-08 15:10:51 sendROI detections=1
+2025-07-08 15:10:51 select weapon M39 Rifle
+2025-07-08 15:10:52 sendROI trigger
+2025-07-08 15:10:52 sendROI start
+2025-07-08 15:10:52 ws detect request
+2025-07-08 15:10:52 ws detect_resp 0
+2025-07-08 15:10:52 sendROI no detections
+2025-07-08 15:10:52 sendROI trigger
+2025-07-08 15:10:52 sendROI start
+2025-07-08 15:10:52 ws detect request
+2025-07-08 15:10:52 ws detect_resp 1
+2025-07-08 15:10:52 sendROI detections=1
+2025-07-08 15:10:52 select weapon M39 Rifle
+2025-07-08 15:11:03 sendROI trigger
+2025-07-08 15:11:03 sendROI start
+2025-07-08 15:11:03 ws detect request
+2025-07-08 15:11:04 ws detect_resp 0
+2025-07-08 15:11:04 sendROI no detections
+2025-07-08 15:11:04 sendROI trigger
+2025-07-08 15:11:04 sendROI start
+2025-07-08 15:11:04 ws detect request
+2025-07-08 15:11:04 ws detect_resp 0
+2025-07-08 15:11:04 sendROI no detections
+2025-07-08 15:11:04 sendROI trigger
+2025-07-08 15:11:04 sendROI start
+2025-07-08 15:11:04 ws detect request
+2025-07-08 15:11:04 ws detect_resp 0
+2025-07-08 15:11:04 sendROI no detections
+2025-07-08 15:11:05 sendROI trigger
+2025-07-08 15:11:05 sendROI start
+2025-07-08 15:11:05 ws detect request
+2025-07-08 15:11:05 ws detect_resp 0
+2025-07-08 15:11:05 sendROI no detections
+2025-07-08 15:11:05 sendROI trigger
+2025-07-08 15:11:05 sendROI start
+2025-07-08 15:11:05 ws detect request
+2025-07-08 15:11:05 ws detect_resp 0
+2025-07-08 15:11:05 sendROI no detections
+2025-07-08 15:11:05 sendROI trigger
+2025-07-08 15:11:05 sendROI start
+2025-07-08 15:11:05 ws detect request
+2025-07-08 15:11:06 ws detect_resp 0
+2025-07-08 15:11:06 sendROI no detections
+2025-07-08 15:11:06 sendROI trigger
+2025-07-08 15:11:06 sendROI start
+2025-07-08 15:11:06 ws detect request
+2025-07-08 15:11:06 ws detect_resp 0
+2025-07-08 15:11:06 sendROI no detections
+2025-07-08 15:11:06 sendROI trigger
+2025-07-08 15:11:06 sendROI start
+2025-07-08 15:11:06 ws detect request
+2025-07-08 15:11:06 ws detect_resp 0
+2025-07-08 15:11:06 sendROI no detections
+2025-07-08 15:11:07 sendROI trigger
+2025-07-08 15:11:07 sendROI start
+2025-07-08 15:11:07 ws detect request
+2025-07-08 15:11:07 ws detect_resp 0
+2025-07-08 15:11:07 sendROI no detections
+2025-07-08 15:11:07 sendROI trigger
+2025-07-08 15:11:07 sendROI start
+2025-07-08 15:11:07 ws detect request
+2025-07-08 15:11:07 ws detect_resp 0
+2025-07-08 15:11:07 sendROI no detections
+2025-07-08 15:13:47 sendROI trigger
+2025-07-08 15:13:47 sendROI start
+2025-07-08 15:13:47 ws detect request
+2025-07-08 15:13:47 ws detect_resp 0
+2025-07-08 15:13:47 sendROI no detections
+2025-07-08 15:13:47 sendROI trigger
+2025-07-08 15:13:47 sendROI start
+2025-07-08 15:13:47 ws detect request
+2025-07-08 15:13:47 ws detect_resp 0
+2025-07-08 15:13:47 sendROI no detections
+2025-07-08 15:13:47 sendROI trigger
+2025-07-08 15:13:47 sendROI start
+2025-07-08 15:13:47 ws detect request
+2025-07-08 15:13:48 ws detect_resp 0
+2025-07-08 15:13:48 sendROI no detections
+2025-07-08 15:14:30 sendROI trigger
+2025-07-08 15:14:30 sendROI start
+2025-07-08 15:14:30 ws detect request
+2025-07-08 15:14:30 ws detect_resp 0
+2025-07-08 15:14:30 sendROI no detections
+2025-07-08 15:14:30 sendROI trigger
+2025-07-08 15:14:30 sendROI start
+2025-07-08 15:14:30 ws detect request
+2025-07-08 15:14:30 ws detect_resp 0
+2025-07-08 15:14:30 sendROI no detections
+2025-07-08 15:14:31 sendROI trigger
+2025-07-08 15:14:31 sendROI start
+2025-07-08 15:14:31 ws detect request
+2025-07-08 15:14:31 ws detect_resp 0
+2025-07-08 15:14:31 sendROI no detections
+2025-07-08 15:14:31 sendROI trigger
+2025-07-08 15:14:31 sendROI start
+2025-07-08 15:14:31 ws detect request
+2025-07-08 15:14:31 ws detect_resp 0
+2025-07-08 15:14:31 sendROI no detections
+2025-07-08 15:14:31 sendROI trigger
+2025-07-08 15:14:31 sendROI start
+2025-07-08 15:14:31 ws detect request
+2025-07-08 15:14:31 ws detect_resp 0
+2025-07-08 15:14:31 sendROI no detections
+2025-07-08 15:14:32 sendROI trigger
+2025-07-08 15:14:32 sendROI start
+2025-07-08 15:14:32 ws detect request
+2025-07-08 15:14:32 ws detect_resp 0
+2025-07-08 15:14:32 sendROI no detections
+2025-07-08 15:14:32 sendROI trigger
+2025-07-08 15:14:32 sendROI start
+2025-07-08 15:14:32 ws detect request
+2025-07-08 15:14:32 ws detect_resp 0
+2025-07-08 15:14:32 sendROI no detections
+2025-07-08 15:14:33 sendROI trigger
+2025-07-08 15:14:33 sendROI start
+2025-07-08 15:14:33 ws detect request
+2025-07-08 15:14:33 ws detect_resp 0
+2025-07-08 15:14:33 sendROI no detections
+2025-07-08 15:14:33 sendROI trigger
+2025-07-08 15:14:33 sendROI start
+2025-07-08 15:14:33 ws detect request
+2025-07-08 15:14:33 ws detect_resp 0
+2025-07-08 15:14:33 sendROI no detections
+2025-07-08 15:14:33 sendROI trigger
+2025-07-08 15:14:33 sendROI start
+2025-07-08 15:14:33 ws detect request
+2025-07-08 15:14:34 ws detect_resp 0
+2025-07-08 15:14:34 sendROI no detections
+2025-07-08 15:14:34 sendROI trigger
+2025-07-08 15:14:34 sendROI start
+2025-07-08 15:14:34 ws detect request
+2025-07-08 15:14:34 ws detect_resp 0
+2025-07-08 15:14:34 sendROI no detections
+2025-07-08 15:14:34 sendROI trigger
+2025-07-08 15:14:34 sendROI start
+2025-07-08 15:14:34 ws detect request
+2025-07-08 15:14:34 ws detect_resp 0
+2025-07-08 15:14:34 sendROI no detections
+2025-07-08 15:14:35 sendROI trigger
+2025-07-08 15:14:35 sendROI start
+2025-07-08 15:14:35 ws detect request
+2025-07-08 15:14:35 ws detect_resp 0
+2025-07-08 15:14:35 sendROI no detections
+2025-07-08 15:15:12 sendROI trigger
+2025-07-08 15:15:12 sendROI start
+2025-07-08 15:15:12 ws detect request
+2025-07-08 15:15:12 ws detect_resp 0
+2025-07-08 15:15:12 sendROI no detections
+2025-07-08 15:15:12 sendROI trigger
+2025-07-08 15:15:12 sendROI start
+2025-07-08 15:15:12 ws detect request
+2025-07-08 15:15:13 ws detect_resp 0
+2025-07-08 15:15:13 sendROI no detections
+2025-07-08 15:15:15 sendROI trigger
+2025-07-08 15:15:15 sendROI start
+2025-07-08 15:15:15 ws detect request
+2025-07-08 15:15:15 ws detect_resp 0
+2025-07-08 15:15:15 sendROI no detections
+2025-07-08 15:15:15 sendROI trigger
+2025-07-08 15:15:15 sendROI start
+2025-07-08 15:15:15 ws detect request
+2025-07-08 15:15:15 ws detect_resp 0
+2025-07-08 15:15:15 sendROI no detections
+2025-07-08 15:15:22 sendROI trigger
+2025-07-08 15:15:22 sendROI start
+2025-07-08 15:15:22 ws detect request
+2025-07-08 15:15:23 ws detect_resp 1
+2025-07-08 15:15:23 sendROI detections=1
+2025-07-08 15:15:23 select weapon M39 Rifle
+2025-07-08 15:15:26 sendROI trigger
+2025-07-08 15:15:26 sendROI start
+2025-07-08 15:15:26 ws detect request
+2025-07-08 15:15:26 ws detect_resp 1
+2025-07-08 15:15:26 sendROI detections=1
+2025-07-08 15:15:26 select weapon M39 Rifle
+2025-07-08 15:15:40 sendROI trigger
+2025-07-08 15:15:40 sendROI start
+2025-07-08 15:15:40 ws detect request
+2025-07-08 15:15:40 ws detect_resp 1
+2025-07-08 15:15:40 sendROI detections=1
+2025-07-08 15:15:40 select weapon M39 Rifle
+2025-07-08 15:18:11 sendROI trigger
+2025-07-08 15:18:11 sendROI start
+2025-07-08 15:18:11 ws detect request
+2025-07-08 15:18:11 ws detect_resp 0
+2025-07-08 15:18:11 sendROI no detections
+2025-07-08 15:18:11 sendROI trigger
+2025-07-08 15:18:11 sendROI start
+2025-07-08 15:18:11 ws detect request
+2025-07-08 15:18:11 ws detect_resp 0
+2025-07-08 15:18:11 sendROI no detections
+2025-07-08 15:18:14 sendROI trigger
+2025-07-08 15:18:14 sendROI start
+2025-07-08 15:18:14 ws detect request
+2025-07-08 15:18:15 ws detect_resp 0
+2025-07-08 15:18:15 sendROI no detections
+2025-07-08 15:18:18 sendROI trigger
+2025-07-08 15:18:18 sendROI start
+2025-07-08 15:18:18 ws detect request
+2025-07-08 15:18:18 ws detect_resp 0
+2025-07-08 15:18:18 sendROI no detections
+2025-07-08 15:18:18 sendROI trigger
+2025-07-08 15:18:18 sendROI start
+2025-07-08 15:18:18 ws detect request
+2025-07-08 15:18:18 ws detect_resp 0
+2025-07-08 15:18:18 sendROI no detections
+2025-07-08 15:18:19 sendROI trigger
+2025-07-08 15:18:19 sendROI start
+2025-07-08 15:18:19 ws detect request
+2025-07-08 15:18:19 ws detect_resp 0
+2025-07-08 15:18:19 sendROI no detections
+2025-07-08 15:18:20 sendROI trigger
+2025-07-08 15:18:20 sendROI start
+2025-07-08 15:18:20 ws detect request
+2025-07-08 15:18:20 ws detect_resp 0
+2025-07-08 15:18:20 sendROI no detections
+2025-07-08 15:54:37 sendROI trigger
+2025-07-08 15:54:37 sendROI start
+2025-07-08 15:54:37 ws detect request
+2025-07-08 15:54:37 ws detect_resp 0
+2025-07-08 15:54:37 sendROI no detections
+2025-07-08 15:54:37 sendROI trigger
+2025-07-08 15:54:37 sendROI start
+2025-07-08 15:54:37 ws detect request
+2025-07-08 15:54:37 ws detect_resp 0
+2025-07-08 15:54:37 sendROI no detections
+2025-07-08 15:54:37 sendROI trigger
+2025-07-08 15:54:37 sendROI start
+2025-07-08 15:54:37 ws detect request
+2025-07-08 15:54:38 ws detect_resp 0
+2025-07-08 15:54:38 sendROI no detections
+2025-07-08 15:54:38 sendROI trigger
+2025-07-08 15:54:38 sendROI start
+2025-07-08 15:54:38 ws detect request
+2025-07-08 15:54:38 ws detect_resp 0
+2025-07-08 15:54:38 sendROI no detections
+2025-07-08 15:54:38 sendROI trigger
+2025-07-08 15:54:38 sendROI start
+2025-07-08 15:54:38 ws detect request
+2025-07-08 15:54:38 ws detect_resp 0
+2025-07-08 15:54:38 sendROI no detections
+2025-07-08 15:54:38 sendROI trigger
+2025-07-08 15:54:38 sendROI start
+2025-07-08 15:54:38 ws detect request
+2025-07-08 15:54:39 ws detect_resp 0
+2025-07-08 15:54:39 sendROI no detections
+2025-07-08 15:54:39 sendROI trigger
+2025-07-08 15:54:39 sendROI start
+2025-07-08 15:54:39 ws detect request
+2025-07-08 15:54:40 ws detect_resp 0
+2025-07-08 15:54:40 sendROI no detections
+2025-07-08 15:54:40 sendROI trigger
+2025-07-08 15:54:40 sendROI start
+2025-07-08 15:54:40 ws detect request
+2025-07-08 15:54:40 ws detect_resp 0
+2025-07-08 15:54:40 sendROI no detections
+2025-07-08 15:54:40 sendROI trigger
+2025-07-08 15:54:40 sendROI start
+2025-07-08 15:54:40 ws detect request
+2025-07-08 15:54:40 ws detect_resp 0
+2025-07-08 15:54:40 sendROI no detections
+2025-07-08 15:54:40 sendROI trigger
+2025-07-08 15:54:40 sendROI start
+2025-07-08 15:54:40 ws detect request
+2025-07-08 15:54:41 ws detect_resp 0
+2025-07-08 15:54:41 sendROI no detections
+2025-07-08 15:54:41 sendROI trigger
+2025-07-08 15:54:41 sendROI start
+2025-07-08 15:54:41 ws detect request
+2025-07-08 15:54:41 ws detect_resp 0
+2025-07-08 15:54:41 sendROI no detections
+2025-07-08 15:54:41 sendROI trigger
+2025-07-08 15:54:41 sendROI start
+2025-07-08 15:54:41 ws detect request
+2025-07-08 15:54:41 ws detect_resp 0
+2025-07-08 15:54:41 sendROI no detections
+2025-07-08 15:54:42 sendROI trigger
+2025-07-08 15:54:42 sendROI start
+2025-07-08 15:54:42 ws detect request
+2025-07-08 15:54:42 ws detect_resp 1
+2025-07-08 15:54:42 sendROI detections=1
+2025-07-08 15:54:42 select weapon M39 Rifle
+2025-07-08 15:56:29 sendROI trigger
+2025-07-08 15:56:29 sendROI start
+2025-07-08 15:56:29 ws detect request
+2025-07-08 15:56:29 ws detect_resp 0
+2025-07-08 15:56:29 sendROI no detections
+2025-07-08 15:56:29 sendROI trigger
+2025-07-08 15:56:29 sendROI start
+2025-07-08 15:56:29 ws detect request
+2025-07-08 15:56:29 ws detect_resp 0
+2025-07-08 15:56:29 sendROI no detections
+2025-07-08 15:56:30 sendROI trigger
+2025-07-08 15:56:30 sendROI start
+2025-07-08 15:56:30 ws detect request
+2025-07-08 15:56:30 ws detect_resp 0
+2025-07-08 15:56:30 sendROI no detections
+2025-07-08 15:56:31 sendROI trigger
+2025-07-08 15:56:31 sendROI start
+2025-07-08 15:56:31 ws detect request
+2025-07-08 15:56:31 ws detect_resp 0
+2025-07-08 15:56:31 sendROI no detections
+2025-07-08 15:56:31 sendROI trigger
+2025-07-08 15:56:31 sendROI start
+2025-07-08 15:56:31 ws detect request
+2025-07-08 15:56:31 ws detect_resp 0
+2025-07-08 15:56:31 sendROI no detections
+2025-07-08 15:56:46 sendROI trigger
+2025-07-08 15:56:46 sendROI start
+2025-07-08 15:56:46 ws detect request
+2025-07-08 15:56:46 ws detect_resp 0
+2025-07-08 15:56:46 sendROI no detections
+2025-07-08 15:56:47 sendROI trigger
+2025-07-08 15:56:47 sendROI start
+2025-07-08 15:56:47 ws detect request
+2025-07-08 15:56:47 ws detect_resp 0
+2025-07-08 15:56:47 sendROI no detections
+2025-07-08 15:56:50 sendROI trigger
+2025-07-08 15:56:50 sendROI start
+2025-07-08 15:56:50 ws detect request
+2025-07-08 15:56:50 ws detect_resp 0
+2025-07-08 15:56:50 sendROI no detections
+2025-07-08 15:56:50 sendROI trigger
+2025-07-08 15:56:50 sendROI start
+2025-07-08 15:56:50 ws detect request
+2025-07-08 15:56:50 ws detect_resp 0
+2025-07-08 15:56:50 sendROI no detections
+2025-07-08 15:56:51 sendROI trigger
+2025-07-08 15:56:51 sendROI start
+2025-07-08 15:56:51 ws detect request
+2025-07-08 15:56:51 ws detect_resp 0
+2025-07-08 15:56:51 sendROI no detections
+2025-07-08 15:58:17 sendROI trigger
+2025-07-08 15:58:17 sendROI start
+2025-07-08 15:58:17 ws detect request
+2025-07-08 15:58:17 ws detect_resp 0
+2025-07-08 15:58:17 sendROI no detections
+2025-07-08 15:58:17 sendROI trigger
+2025-07-08 15:58:17 sendROI start
+2025-07-08 15:58:17 ws detect request
+2025-07-08 15:58:18 ws detect_resp 0
+2025-07-08 15:58:18 sendROI no detections
+2025-07-08 15:58:18 sendROI trigger
+2025-07-08 15:58:18 sendROI start
+2025-07-08 15:58:18 ws detect request
+2025-07-08 15:58:18 ws detect_resp 0
+2025-07-08 15:58:18 sendROI no detections
+2025-07-08 15:58:18 sendROI trigger
+2025-07-08 15:58:18 sendROI start
+2025-07-08 15:58:18 ws detect request
+2025-07-08 15:58:18 ws detect_resp 0
+2025-07-08 15:58:18 sendROI no detections
+2025-07-08 16:00:06 sendROI trigger
+2025-07-08 16:00:06 sendROI start
+2025-07-08 16:00:06 ws detect request
+2025-07-08 16:00:06 ws detect_resp 0
+2025-07-08 16:00:06 sendROI no detections
+2025-07-08 16:00:06 sendROI trigger
+2025-07-08 16:00:06 sendROI start
+2025-07-08 16:00:06 ws detect request
+2025-07-08 16:00:06 ws detect_resp 0
+2025-07-08 16:00:06 sendROI no detections
+2025-07-08 16:01:21 sendROI trigger
+2025-07-08 16:01:21 sendROI start
+2025-07-08 16:01:21 ws detect request
+2025-07-08 16:01:21 ws detect_resp 0
+2025-07-08 16:01:21 sendROI no detections
+2025-07-08 16:01:22 sendROI trigger
+2025-07-08 16:01:22 sendROI start
+2025-07-08 16:01:22 ws detect request
+2025-07-08 16:01:22 ws detect_resp 0
+2025-07-08 16:01:22 sendROI no detections
+2025-07-08 16:02:49 sendROI trigger
+2025-07-08 16:02:49 sendROI start
+2025-07-08 16:02:49 ws detect request
+2025-07-08 16:02:49 ws detect_resp 0
+2025-07-08 16:02:49 sendROI no detections
+2025-07-08 16:02:49 sendROI trigger
+2025-07-08 16:02:49 sendROI start
+2025-07-08 16:02:49 ws detect request
+2025-07-08 16:02:49 ws detect_resp 1
+2025-07-08 16:02:49 sendROI no detections
+2025-07-08 16:02:50 sendROI trigger
+2025-07-08 16:02:50 sendROI start
+2025-07-08 16:02:50 ws detect request
+2025-07-08 16:02:50 ws detect_resp 1
+2025-07-08 16:02:50 sendROI detections=1
+2025-07-08 16:02:50 select weapon Custom SMG
+2025-07-08 16:02:50 sendROI trigger
+2025-07-08 16:02:50 sendROI start
+2025-07-08 16:02:50 ws detect request
+2025-07-08 16:02:50 ws detect_resp 0
+2025-07-08 16:02:50 sendROI no detections
+2025-07-08 16:02:50 sendROI trigger
+2025-07-08 16:02:50 sendROI start
+2025-07-08 16:02:50 ws detect request
+2025-07-08 16:02:50 ws detect_resp 0
+2025-07-08 16:02:50 sendROI no detections
+2025-07-08 16:02:51 sendROI trigger
+2025-07-08 16:02:51 sendROI start
+2025-07-08 16:02:51 ws detect request
+2025-07-08 16:02:51 ws detect_resp 0
+2025-07-08 16:02:51 sendROI no detections
+2025-07-08 16:02:51 sendROI trigger
+2025-07-08 16:02:51 sendROI start
+2025-07-08 16:02:51 ws detect request
+2025-07-08 16:02:51 ws detect_resp 1
+2025-07-08 16:02:51 sendROI detections=1
+2025-07-08 16:02:51 select weapon Custom SMG
+2025-07-08 16:02:51 sendROI trigger
+2025-07-08 16:02:51 sendROI start
+2025-07-08 16:02:51 ws detect request
+2025-07-08 16:02:51 ws detect_resp 1
+2025-07-08 16:02:51 sendROI detections=1
+2025-07-08 16:02:51 select weapon Custom SMG
+2025-07-08 16:02:52 sendROI trigger
+2025-07-08 16:02:52 sendROI start
+2025-07-08 16:02:52 ws detect request
+2025-07-08 16:02:52 ws detect_resp 1
+2025-07-08 16:02:52 sendROI detections=1
+2025-07-08 16:02:52 select weapon Custom SMG
+2025-07-08 16:02:54 sendROI trigger
+2025-07-08 16:02:54 sendROI start
+2025-07-08 16:02:54 ws detect request
+2025-07-08 16:02:54 ws detect_resp 0
+2025-07-08 16:02:54 sendROI no detections
+2025-07-08 16:02:54 sendROI trigger
+2025-07-08 16:02:54 sendROI start
+2025-07-08 16:02:54 ws detect request
+2025-07-08 16:02:54 ws detect_resp 0
+2025-07-08 16:02:54 sendROI no detections
+2025-07-08 16:02:55 sendROI trigger
+2025-07-08 16:02:55 sendROI start
+2025-07-08 16:02:55 ws detect request
+2025-07-08 16:02:55 ws detect_resp 0
+2025-07-08 16:02:55 sendROI no detections
+2025-07-08 16:02:55 sendROI trigger
+2025-07-08 16:02:55 sendROI start
+2025-07-08 16:02:55 ws detect request
+2025-07-08 16:02:55 ws detect_resp 0
+2025-07-08 16:02:55 sendROI no detections
+2025-07-08 16:02:55 sendROI trigger
+2025-07-08 16:02:55 sendROI start
+2025-07-08 16:02:55 ws detect request
+2025-07-08 16:02:56 ws detect_resp 0
+2025-07-08 16:02:56 sendROI no detections
+2025-07-08 16:02:56 sendROI trigger
+2025-07-08 16:02:56 sendROI start
+2025-07-08 16:02:56 ws detect request
+2025-07-08 16:02:56 ws detect_resp 0
+2025-07-08 16:02:56 sendROI no detections
+2025-07-08 16:02:56 sendROI trigger
+2025-07-08 16:02:56 sendROI start
+2025-07-08 16:02:56 ws detect request
+2025-07-08 16:02:56 ws detect_resp 1
+2025-07-08 16:02:56 sendROI no detections
+2025-07-08 16:02:56 sendROI trigger
+2025-07-08 16:02:56 sendROI start
+2025-07-08 16:02:56 ws detect request
+2025-07-08 16:02:56 ws detect_resp 0
+2025-07-08 16:02:56 sendROI no detections
+2025-07-08 16:02:59 sendROI trigger
+2025-07-08 16:02:59 sendROI start
+2025-07-08 16:02:59 ws detect request
+2025-07-08 16:03:00 ws detect_resp 1
+2025-07-08 16:03:00 sendROI no detections
+2025-07-08 16:03:00 sendROI trigger
+2025-07-08 16:03:00 sendROI start
+2025-07-08 16:03:00 ws detect request
+2025-07-08 16:03:00 ws detect_resp 1
+2025-07-08 16:03:00 sendROI no detections
+2025-07-08 16:03:00 sendROI trigger
+2025-07-08 16:03:00 sendROI start
+2025-07-08 16:03:00 ws detect request
+2025-07-08 16:03:00 ws detect_resp 1
+2025-07-08 16:03:00 sendROI no detections
+2025-07-08 16:03:00 sendROI trigger
+2025-07-08 16:03:00 sendROI start
+2025-07-08 16:03:00 ws detect request
+2025-07-08 16:03:00 ws detect_resp 1
+2025-07-08 16:03:00 sendROI no detections
+2025-07-08 16:03:01 sendROI trigger
+2025-07-08 16:03:01 sendROI start
+2025-07-08 16:03:01 ws detect request
+2025-07-08 16:03:01 ws detect_resp 1
+2025-07-08 16:03:01 sendROI no detections
+2025-07-08 16:03:01 sendROI trigger
+2025-07-08 16:03:01 sendROI start
+2025-07-08 16:03:01 ws detect request
+2025-07-08 16:03:01 ws detect_resp 1
+2025-07-08 16:03:01 sendROI no detections
+2025-07-08 16:03:02 sendROI trigger
+2025-07-08 16:03:02 sendROI start
+2025-07-08 16:03:02 ws detect request
+2025-07-08 16:03:02 ws detect_resp 1
+2025-07-08 16:03:02 sendROI no detections
+2025-07-08 16:03:03 sendROI trigger
+2025-07-08 16:03:03 sendROI start
+2025-07-08 16:03:03 ws detect request
+2025-07-08 16:03:03 ws detect_resp 1
+2025-07-08 16:03:03 sendROI no detections
+2025-07-08 16:03:04 sendROI trigger
+2025-07-08 16:03:04 sendROI start
+2025-07-08 16:03:04 ws detect request
+2025-07-08 16:03:04 ws detect_resp 1
+2025-07-08 16:03:04 sendROI detections=1
+2025-07-08 16:03:04 select weapon M39 Rifle
+2025-07-08 16:03:04 sendROI trigger
+2025-07-08 16:03:04 sendROI start
+2025-07-08 16:03:04 ws detect request
+2025-07-08 16:03:04 ws detect_resp 1
+2025-07-08 16:03:04 sendROI detections=1
+2025-07-08 16:03:04 select weapon M39 Rifle
+2025-07-08 16:03:45 sendROI trigger
+2025-07-08 16:03:45 sendROI start
+2025-07-08 16:03:45 ws detect request
+2025-07-08 16:03:45 ws detect_resp 0
+2025-07-08 16:03:45 sendROI no detections
+2025-07-08 16:03:46 sendROI trigger
+2025-07-08 16:03:46 sendROI start
+2025-07-08 16:03:46 ws detect request
+2025-07-08 16:03:46 ws detect_resp 0
+2025-07-08 16:03:46 sendROI no detections
+2025-07-08 16:12:32 sendROI trigger
+2025-07-08 16:12:32 sendROI start
+2025-07-08 16:12:32 ws detect request
+2025-07-08 16:12:32 ws detect_resp 0
+2025-07-08 16:12:32 sendROI no detections
+2025-07-08 16:12:32 sendROI trigger
+2025-07-08 16:12:32 sendROI start
+2025-07-08 16:12:32 ws detect request
+2025-07-08 16:12:32 ws detect_resp 0
+2025-07-08 16:12:32 sendROI no detections
+2025-07-08 16:23:56 sendROI trigger
+2025-07-08 16:23:56 sendROI start
+2025-07-08 16:23:56 ws detect request
+2025-07-08 16:23:56 ws detect_resp 0
+2025-07-08 16:23:56 sendROI no detections
+2025-07-08 16:23:56 sendROI trigger
+2025-07-08 16:23:56 sendROI start
+2025-07-08 16:23:56 ws detect request
+2025-07-08 16:23:56 ws detect_resp 0
+2025-07-08 16:23:56 sendROI no detections
+2025-07-08 16:24:36 sendROI trigger
+2025-07-08 16:24:36 sendROI start
+2025-07-08 16:24:36 ws detect request
+2025-07-08 16:24:36 ws detect_resp 0
+2025-07-08 16:24:36 sendROI no detections
+2025-07-08 16:24:36 sendROI trigger
+2025-07-08 16:24:36 sendROI start
+2025-07-08 16:24:36 ws detect request
+2025-07-08 16:24:37 ws detect_resp 0
+2025-07-08 16:24:37 sendROI no detections
+2025-07-08 16:24:37 sendROI trigger
+2025-07-08 16:24:37 sendROI start
+2025-07-08 16:24:37 ws detect request
+2025-07-08 16:24:37 ws detect_resp 0
+2025-07-08 16:24:37 sendROI no detections
+2025-07-08 16:24:38 sendROI trigger
+2025-07-08 16:24:38 sendROI start
+2025-07-08 16:24:38 ws detect request
+2025-07-08 16:24:38 ws detect_resp 0
+2025-07-08 16:24:38 sendROI no detections
+2025-07-08 16:24:39 sendROI trigger
+2025-07-08 16:24:39 sendROI start
+2025-07-08 16:24:39 ws detect request
+2025-07-08 16:24:39 ws detect_resp 0
+2025-07-08 16:24:39 sendROI no detections
+2025-07-08 16:24:43 sendROI trigger
+2025-07-08 16:24:43 sendROI start
+2025-07-08 16:24:43 ws detect request
+2025-07-08 16:24:44 ws detect_resp 0
+2025-07-08 16:24:44 sendROI no detections
+2025-07-08 16:24:44 sendROI trigger
+2025-07-08 16:24:44 sendROI start
+2025-07-08 16:24:44 ws detect request
+2025-07-08 16:24:44 ws detect_resp 0
+2025-07-08 16:24:44 sendROI no detections
+2025-07-08 16:24:44 sendROI trigger
+2025-07-08 16:24:44 sendROI start
+2025-07-08 16:24:44 ws detect request
+2025-07-08 16:24:45 ws detect_resp 0
+2025-07-08 16:24:45 sendROI no detections
+2025-07-08 16:24:46 sendROI trigger
+2025-07-08 16:24:46 sendROI start
+2025-07-08 16:24:46 ws detect request
+2025-07-08 16:24:46 ws detect_resp 0
+2025-07-08 16:24:46 sendROI no detections
+2025-07-08 16:24:55 sendROI trigger
+2025-07-08 16:24:55 sendROI start
+2025-07-08 16:24:55 ws detect request
+2025-07-08 16:24:55 ws detect_resp 0
+2025-07-08 16:24:55 sendROI no detections
+2025-07-08 16:24:55 sendROI trigger
+2025-07-08 16:24:55 sendROI start
+2025-07-08 16:24:55 ws detect request
+2025-07-08 16:24:56 ws detect_resp 0
+2025-07-08 16:24:56 sendROI no detections
+2025-07-08 16:30:20 sendROI trigger
+2025-07-08 16:30:20 sendROI start
+2025-07-08 16:30:20 ws detect request
+2025-07-08 16:30:20 ws detect_resp 1
+2025-07-08 16:30:20 sendROI detections=1
+2025-07-08 16:30:20 select weapon M39 Rifle
+2025-07-08 16:30:24 sendROI trigger
+2025-07-08 16:30:24 sendROI start
+2025-07-08 16:30:24 ws detect request
+2025-07-08 16:30:24 ws detect_resp 1
+2025-07-08 16:30:24 sendROI detections=1
+2025-07-08 16:30:24 select weapon M39 Rifle
+2025-07-08 16:30:25 sendROI trigger
+2025-07-08 16:30:25 sendROI start
+2025-07-08 16:30:25 ws detect request
+2025-07-08 16:30:25 ws detect_resp 1
+2025-07-08 16:30:25 sendROI detections=1
+2025-07-08 16:30:25 select weapon M39 Rifle
+2025-07-08 16:30:25 sendROI trigger
+2025-07-08 16:30:25 sendROI start
+2025-07-08 16:30:25 ws detect request
+2025-07-08 16:30:25 ws detect_resp 1
+2025-07-08 16:30:25 sendROI detections=1
+2025-07-08 16:30:25 select weapon M39 Rifle
+2025-07-08 16:30:31 sendROI trigger
+2025-07-08 16:30:31 sendROI start
+2025-07-08 16:30:31 ws detect request
+2025-07-08 16:30:31 ws detect_resp 0
+2025-07-08 16:30:31 sendROI no detections
+2025-07-08 16:30:31 sendROI trigger
+2025-07-08 16:30:31 sendROI start
+2025-07-08 16:30:31 ws detect request
+2025-07-08 16:30:31 ws detect_resp 0
+2025-07-08 16:30:31 sendROI no detections
+2025-07-08 16:30:36 ws close code=1006
