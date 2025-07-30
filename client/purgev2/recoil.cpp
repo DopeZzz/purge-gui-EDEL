@@ -299,7 +299,7 @@ namespace recoil {
 
                     if ((now & 0x8000) && !(prev_[vk] & 0x8000))
                     {
-                        if (wkeys_.count(vk) && wkeys_[vk] != cur_weapon_) {
+                        if (wkeys_.count(vk)) {
                             cur_weapon_ = wkeys_[vk];
                             select("weapon", cur_weapon_);
                         }
