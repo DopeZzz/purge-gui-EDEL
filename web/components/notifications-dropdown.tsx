@@ -6,10 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
-interface Props {
-  serial: string | null
-}
-
 interface Notification {
   id: string
   title: string
@@ -30,60 +26,32 @@ const defaultNotifications: Notification[] = [
   },
 ]
 
-export function NotificationsDropdown({ serial }: Props) {
+export function NotificationsDropdown() {
   const [notifications] = useState<Notification[]>(defaultNotifications)
   const [readNotifications, setReadNotifications] = useState<Set<string>>(new Set())
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    if (!serial) return
-    const load = async () => {
-      try {
-        const res = await fetch(`/api/read-notifications/${serial}`)
-        if (!res.ok) return
-        const ids: string[] = await res.json()
-        setReadNotifications(new Set(ids))
-      } catch (_) {
-        /* ignore */
-      }
+    const stored = localStorage.getItem('readNotifications')
+    if (stored) {
+      setReadNotifications(new Set(JSON.parse(stored)))
     }
-    load()
-  }, [serial])
+  }, [])
 
 
   const unreadCount = notifications.filter(n => !readNotifications.has(n.id)).length
 
-  const markAsRead = async (id: string) => {
+  const markAsRead = (id: string) => {
     const newRead = new Set(readNotifications)
     newRead.add(id)
     setReadNotifications(newRead)
-    if (serial) {
-      try {
-        await fetch(`/api/read-notifications/${serial}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ids: Array.from(newRead) }),
-        })
-      } catch (_) {
-        /* ignore */
-      }
-    }
+    localStorage.setItem('readNotifications', JSON.stringify(Array.from(newRead)))
   }
 
-  const markAllAsRead = async () => {
+  const markAllAsRead = () => {
     const allIds = new Set(notifications.map(n => n.id))
     setReadNotifications(allIds)
-    if (serial) {
-      try {
-        await fetch(`/api/read-notifications/${serial}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ids: Array.from(allIds) }),
-        })
-      } catch (_) {
-        /* ignore */
-      }
-    }
+    localStorage.setItem('readNotifications', JSON.stringify(Array.from(allIds)))
   }
 
   const getIcon = (type: string) => {
