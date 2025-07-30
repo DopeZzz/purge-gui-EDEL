@@ -136,6 +136,7 @@ export default function DashboardPage() {
   const initialVoiceChangeRef = useRef(true)
   const initialScriptRef = useRef(true)
   const voiceReadyRef = useRef(false)
+  const lastVoiceRef = useRef<string | null>(null)
   const [isSendingDebounced, setIsSendingDebounced] = useState(false)
   const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -181,6 +182,12 @@ export default function DashboardPage() {
     }
     const fileName = weaponFileMap[weaponName] || "None"
     const audioPath = `/voices/${selectedVoice}/${fileName}.mp3`
+
+    if (lastVoiceRef.current === audioPath) {
+      return
+    }
+
+    lastVoiceRef.current = audioPath
 
     try {
       const audio = new Audio(audioPath)
