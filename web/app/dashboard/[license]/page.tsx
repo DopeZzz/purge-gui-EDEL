@@ -181,7 +181,7 @@ export default function DashboardPage() {
       __NONE__: "None",
     }
     const fileName = weaponFileMap[weaponName] || "None"
-    const audioPath = `/voices/${selectedVoice}/${fileName}.mp3`
+    const audioPath = `/api/voices/${selectedVoice}/${fileName}`
 
     if (lastVoiceRef.current === audioPath) {
       return
