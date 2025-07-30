@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef, useCallback, useMemo } from "react"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
@@ -51,6 +51,7 @@ type ApiConnectionStatus = "pending" | "connected" | "disconnected"
 export default function DashboardPage() {
   const params = useParams()
   const licenseKey = params.license as string
+  const router = useRouter()
   const { toast } = useToast()
   const [licenseType, setLicenseType] = useState<string | null>(null)
   const [expiresAt, setExpiresAt] = useState<string | null>(null)
@@ -807,7 +808,7 @@ export default function DashboardPage() {
                   ? "text-accent"
                   : "text-white"
               }`}
-              onClick={() => window.open(`/dashboard/${licenseKey}/download`, "_blank")}
+              onClick={() => router.push(`/dashboard/${licenseKey}/download`)}
             >
               <Download className="w-4 h-4 mr-2" />
               Download
