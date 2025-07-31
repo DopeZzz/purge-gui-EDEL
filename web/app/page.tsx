@@ -58,9 +58,7 @@ export default function LoginPage() {
           if (result.expiresAt) {
             localStorage.setItem('licenseExpiresAt', result.expiresAt)
           }
-        } catch (_) {
-          /* ignore */
-        }
+        } catch (_) {}
       }
       router.push(`/dashboard/${result.license}`)
     } else {

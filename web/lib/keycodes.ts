@@ -1,41 +1,41 @@
 export const KEY_NAME_TO_CODE: Record<string, number> = {
-  MouseLeft:          1,   // VK_LBUTTON
-  MouseRight:         2,   // VK_RBUTTON
-  MouseMiddle:        4,   // VK_MBUTTON
-  Mouse4:             5,   // VK_XBUTTON1
-  Mouse5:             6,   // VK_XBUTTON2
+  MouseLeft:          1,
+  MouseRight:         2,
+  MouseMiddle:        4,
+  Mouse4:             5,
+  Mouse5:             6,
 
-  Backspace:          8,   // VK_BACK
-  Tab:                9,   // VK_TAB
-  Enter:             13,   // VK_RETURN
-  Shift:             16,   // VK_SHIFT
-  Control:           17,   // VK_CONTROL
-  Alt:               18,   // VK_MENU
-  LeftShift:        160,   // VK_LSHIFT
-  RightShift:       161,   // VK_RSHIFT
-  LeftControl:      162,   // VK_LCONTROL
-  RightControl:     163,   // VK_RCONTROL
-  LeftAlt:          164,   // VK_LMENU
-  RightAlt:         165,   // VK_RMENU
-  PauseBreak:        19,   // VK_PAUSE
-  CapsLock:          20,   // VK_CAPITAL
-  Escape:            27,   // VK_ESCAPE
-  Space:             32,   // VK_SPACE
+  Backspace:          8,
+  Tab:                9,
+  Enter:             13,
+  Shift:             16,
+  Control:           17,
+  Alt:               18,
+  LeftShift:        160,
+  RightShift:       161,
+  LeftControl:      162,
+  RightControl:     163,
+  LeftAlt:          164,
+  RightAlt:         165,
+  PauseBreak:        19,
+  CapsLock:          20,
+  Escape:            27,
+  Space:             32,
 
-  PageUp:            33,   // VK_PRIOR
-  PageDown:          34,   // VK_NEXT
-  End:               35,   // VK_END
-  Home:              36,   // VK_HOME
-  ArrowLeft:         37,   // VK_LEFT
-  ArrowUp:           38,   // VK_UP
-  ArrowRight:        39,   // VK_RIGHT
-  ArrowDown:         40,   // VK_DOWN
-  Select:            41,   // VK_SELECT
-  Print:             42,   // VK_PRINT
-  Execute:           43,   // VK_EXECUTE
-  PrintScreen:       44,   // VK_SNAPSHOT
-  Insert:            45,   // VK_INSERT
-  Delete:            46,   // VK_DELETE
+  PageUp:            33,
+  PageDown:          34,
+  End:               35,
+  Home:              36,
+  ArrowLeft:         37,
+  ArrowUp:           38,
+  ArrowRight:        39,
+  ArrowDown:         40,
+  Select:            41,
+  Print:             42,
+  Execute:           43,
+  PrintScreen:       44,
+  Insert:            45,
+  Delete:            46,
 
   Digit0:            48,
   Digit1:            49,
@@ -75,10 +75,10 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   KeyY:              89,
   KeyZ:              90,
 
-  LeftMeta:          91,   // VK_LWIN
-  RightMeta:         92,   // VK_RWIN
-  ContextMenu:       93,   // VK_APPS
-  Sleep:             95,   // VK_SLEEP
+  LeftMeta:          91,
+  RightMeta:         92,
+  ContextMenu:       93,
+  Sleep:             95,
 
   Numpad0:           96,
   Numpad1:           97,
@@ -90,12 +90,12 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   Numpad7:          103,
   Numpad8:          104,
   Numpad9:          105,
-  NumpadMultiply:   106,   // VK_MULTIPLY
-  NumpadAdd:        107,   // VK_ADD
-  NumpadSeparator:  108,   // VK_SEPARATOR
-  NumpadSubtract:   109,   // VK_SUBTRACT
-  NumpadDecimal:    110,   // VK_DECIMAL
-  NumpadDivide:     111,   // VK_DIVIDE
+  NumpadMultiply:   106,
+  NumpadAdd:        107,
+  NumpadSeparator:  108,
+  NumpadSubtract:   109,
+  NumpadDecimal:    110,
+  NumpadDivide:     111,
 
   F1:               112,
   F2:               113,
@@ -110,20 +110,20 @@ export const KEY_NAME_TO_CODE: Record<string, number> = {
   F11:              122,
   F12:              123,
 
-  NumLock:          144,   // VK_NUMLOCK
-  ScrollLock:       145,   // VK_SCROLL
+  NumLock:          144,
+  ScrollLock:       145,
 
-  Semicolon:        186,   // VK_OEM_1
-  Equal:            187,   // VK_OEM_PLUS
-  Comma:            188,   // VK_OEM_COMMA
-  Minus:            189,   // VK_OEM_MINUS
-  Period:           190,   // VK_OEM_PERIOD
-  Slash:            191,   // VK_OEM_2
-  Backquote:        192,   // VK_OEM_3
-  BracketLeft:      219,   // VK_OEM_4
-  Backslash:        220,   // VK_OEM_5
-  BracketRight:     221,   // VK_OEM_6
-  Quote:            222    // VK_OEM_7
+  Semicolon:        186,
+  Equal:            187,
+  Comma:            188,
+  Minus:            189,
+  Period:           190,
+  Slash:            191,
+  Backquote:        192,
+  BracketLeft:      219,
+  Backslash:        220,
+  BracketRight:     221,
+  Quote:            222
 };
 
 export function keyNameToCode(name: string | null | undefined): number | null {
