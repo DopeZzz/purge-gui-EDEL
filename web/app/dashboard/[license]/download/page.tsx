@@ -58,7 +58,7 @@ export default function DownloadPage() {
             <p className="text-xl font-semibold">Your download should begin shortly.</p>
             <Button
               variant="outline"
-              onClick={() => router.back()}
+              onClick={() => router.push(`/dashboard/${licenseKey ?? ""}`)}
               className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white px-8 py-3 rounded-lg transition-all duration-200"
             >
               Go Back
