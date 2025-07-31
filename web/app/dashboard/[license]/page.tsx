@@ -271,9 +271,9 @@ export default function DashboardPage() {
 
 
   const voiceOptions = [
-    { value: "britney", label: "Britney" },
-    { value: "grandpa", label: "Grandpa" },
-    { value: "john", label: "John" },
+    { value: "Brittney", label: "Brittney" },
+    { value: "Grandpa", label: "Grandpa" },
+    { value: "John", label: "John" },
   ] as const
   const [selectedVoice, setSelectedVoice] = useState<string>(voiceOptions[0].value)
   const [soundEnabled, setSoundEnabled] = useState(true)

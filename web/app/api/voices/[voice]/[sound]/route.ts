@@ -9,7 +9,16 @@ export async function GET(
   ctx: { params: { voice: string; sound: string } },
 ) {
   const { voice, sound } = ctx.params
-  const filePath = join(process.cwd(), 'public', 'voices', voice, `${sound}.mp3`)
+  const normalizedSound = sound.endsWith('.mp3')
+    ? sound.slice(0, -4)
+    : sound
+  const filePath = join(
+    process.cwd(),
+    'public',
+    'voices',
+    voice,
+    `${normalizedSound}.mp3`,
+  )
   try {
     const data = await fs.readFile(filePath)
     return new NextResponse(data, {
