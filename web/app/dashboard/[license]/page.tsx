@@ -60,9 +60,7 @@ export default function DashboardPage() {
     try {
       const lt = localStorage.getItem("licenseType")
       if (lt) setLicenseType(lt)
-    } catch (_) {
-      /* ignore */
-    }
+    } catch (_) {}
   }, [])
 
   const autodetectAllowed = useMemo(() => {
@@ -85,9 +83,7 @@ export default function DashboardPage() {
         const data = await res.json()
         setExpiresAt(data.expires_at ?? null)
         setTimeLeft(typeof data.time_left === 'number' ? data.time_left : null)
-      } catch (_) {
-        /* ignore */
-      }
+      } catch (_) {}
     }
     fetchInfo()
   }, [licenseKey])
@@ -149,9 +145,9 @@ export default function DashboardPage() {
 
   const [apiConnectionStatus, setApiConnectionStatus] = useState<ApiConnectionStatus>("pending")
   const API_COLORS = {
-    connected: "#22c55e", // verde  (green‑500)
-    pending: "#facc15", // amarillo (yellow‑400)
-    disconnected: "#ef4444", // rojo   (red‑500)
+    connected: "#22c55e",
+    pending: "#facc15",
+    disconnected: "#ef4444",
   } as const
 
   const [detectionAccuracy, setDetectionAccuracy] = useState([0.8])
@@ -162,9 +158,9 @@ export default function DashboardPage() {
       return
 
     const weaponFileMap: Record<string, string> = {
-      "Assault Rifle": "Assault Rifle", // Note: matches the actual file name with "Riffle"
+      "Assault Rifle": "Assault Rifle",
       "Custom SMG": "Custom SMG",
-      "HighCaliber Revolver": "Highcaliber Revolver", // Note: no space in "Highcaliber"
+      "HighCaliber Revolver": "Highcaliber Revolver",
       HMLMG: "HMLMG",
       "LR-300": "LR-300",
       M249: "M249",
@@ -173,8 +169,8 @@ export default function DashboardPage() {
       MP5A4: "MP5A4",
       Python: "Python",
       Revolver: "Revolver",
-      "SemiAutomatic Rifle": "Semiautomatic Rifle", // Note: no capital A in "automatic"
-      "SemiAutomatic Pistol": "Semiautomatic Pistol", // Note: no capital A in "automatic"
+      "SemiAutomatic Rifle": "Semiautomatic Rifle",
+      "SemiAutomatic Pistol": "Semiautomatic Pistol",
       SKS: "SKS",
       "Handmade SMG": "Handmade SMG",
       Thompson: "Thompson",
@@ -191,7 +187,7 @@ export default function DashboardPage() {
 
     try {
       const audio = new Audio(audioPath)
-      audio.volume = 0.5 // volumen al 50 %
+      audio.volume = 0.5
       await audio.play()
     } catch (err) {
       console.error(`Could not play voice for ${weaponName} (${audioPath}):`, err)
@@ -357,9 +353,7 @@ export default function DashboardPage() {
         gain.connect(ctx.destination)
         osc.start()
         osc.stop(ctx.currentTime + 0.15)
-      } catch (_) {
-        /* ignore */
-      }
+      } catch (_) {}
     }
   }, [])
 
@@ -626,10 +620,8 @@ export default function DashboardPage() {
     try {
       localStorage.removeItem("licenseType")
       localStorage.removeItem("licenseExpiresAt")
-    } catch (_) {
-      /* ignore */
-    }
-    window.location.href = "/" // vuelve al login
+    } catch (_) {}
+    window.location.href = "/"
   }
 
   useRealtimeUpdates(licenseKey, realtimeHandlers)
@@ -637,7 +629,7 @@ export default function DashboardPage() {
   useEffect(() => {
     if (!licenseKey || !configLoaded || hasCheckedRef.current) return
     hasCheckedRef.current = true
-    const intervalId = setInterval(() => checkApiConnection(true), 5 * 60 * 1000) // 5 minutes, silent check
+    const intervalId = setInterval(() => checkApiConnection(true), 5 * 60 * 1000)
     return () => clearInterval(intervalId)
   }, [licenseKey, checkApiConnection, configLoaded])
 
@@ -681,7 +673,7 @@ export default function DashboardPage() {
     autoDetection,
     scriptEnabled,
     handleSendConfiguration,
-  ]) // cierra array
+  ])
 
   return (
     <div
