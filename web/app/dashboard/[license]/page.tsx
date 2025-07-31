@@ -162,7 +162,7 @@ export default function DashboardPage() {
       return
 
     const weaponFileMap: Record<string, string> = {
-      "Assault Rifle": "Assault Riffle", // Note: matches the actual file name with "Riffle"
+      "Assault Rifle": "Assault Rifle", // Note: matches the actual file name with "Riffle"
       "Custom SMG": "Custom SMG",
       "HighCaliber Revolver": "Highcaliber Revolver", // Note: no space in "Highcaliber"
       HMLMG: "HMLMG",
